@@ -1,4 +1,8 @@
 document.getElementById("scene1").addEventListener("click", function (){
-    var hiddentbtn = document.querySelectorAll('.bouton_cacher');
-    hiddentbtn.style.visibility = "visible";
+    var hiddenBtnList = document.querySelectorAll('.bouton_cacher');
+    if(hiddenBtnList){
+        for (var i = 0; i < hiddenBtnList.length; i++) {
+            hiddenBtnList[i].style.visibility = "visible";
+        }
+    }
 })
