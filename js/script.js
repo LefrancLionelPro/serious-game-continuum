@@ -21,6 +21,7 @@ function addVideo(url){
     newVideo.src = url;
     newVideo.autoplay = true;
     newVideo.muted = true;
+    newVideo.classList.add('video');
     containerVid.appendChild(newVideo);
 }
 
@@ -52,7 +53,7 @@ function chargerScene(idScene) {
 
 chargerScene("intro");
 
-document.getElementById("conteneur-video").addEventListener("click", function (){
+document.getElementById("video").addEventListener("click", function (){
     const hiddenBtnList = document.querySelectorAll('.bouton_cacher');
 
     this.pause();
