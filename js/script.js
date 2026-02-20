@@ -1,16 +1,3 @@
-// document.getElementById("scene1").addEventListener("click", function (){
-//     const hiddenBtnList = document.querySelectorAll('.bouton_cacher');
-//
-//     this.pause();
-//     if(hiddenBtnList){
-//         for (let i = 0; i < hiddenBtnList.length; i++) {
-//             hiddenBtnList[i].style.visibility = "visible";
-//         }
-//     }
-//
-//     this.style.pointerEvents = "none";
-// });
-
 const scenario = {
     "intro" : {
         videoSrc : "assets/video/Collab.mp4",
@@ -21,7 +8,10 @@ const scenario = {
     },
     "scene_suivante_A": {
         videoSrc: "assets/video/popularité.mp4",
-        choix: []
+        choix: [
+            { texte: "Option A", cible: "scene_suivante_A"},
+            { texte: "Option B", cible: "intro" },
+        ]
     }
 };
 
@@ -38,6 +28,8 @@ const containerBtn = document.getElementById("conteneur-boutons");
 function addBouton(texte, cible){
     let newBtn = document.createElement('button');
     newBtn.innerText = texte;
+    newBtn.classList.add('bouton_cacher');
+    newBtn.style.visibility = 'unvisible';
 
     newBtn.addEventListener('click',function(){
         chargerScene(cible);
@@ -59,3 +51,16 @@ function chargerScene(idScene) {
 }
 
 chargerScene("intro");
+
+document.getElementById("conteneur-video").addEventListener("click", function (){
+    const hiddenBtnList = document.querySelectorAll('.bouton_cacher');
+
+    this.pause();
+    if(hiddenBtnList){
+        for (let i = 0; i < hiddenBtnList.length; i++) {
+            hiddenBtnList[i].style.visibility = "visible";
+        }
+    }
+
+    this.style.pointerEvents = "none";
+});
