@@ -22,6 +22,20 @@ function addVideo(url){
     newVideo.autoplay = true;
     newVideo.muted = true;
     newVideo.classList.add('video');
+
+    newVideo.addEventListener("click", function (){
+        this.pause();
+
+        const hiddenBtnList = document.querySelectorAll('.bouton_cacher');
+        if(hiddenBtnList){
+            for (let i = 0; i < hiddenBtnList.length; i++) {
+                hiddenBtnList[i].style.visibility = "visible";
+            }
+        }
+
+        this.style.pointerEvents = "none";
+    });
+
     containerVid.appendChild(newVideo);
 }
 
@@ -52,16 +66,3 @@ function chargerScene(idScene) {
 }
 
 chargerScene("intro");
-
-document.getElementById("video").addEventListener("click", function (){
-    const hiddenBtnList = document.querySelectorAll('.bouton_cacher');
-
-    this.pause();
-    if(hiddenBtnList){
-        for (let i = 0; i < hiddenBtnList.length; i++) {
-            hiddenBtnList[i].style.visibility = "visible";
-        }
-    }
-
-    this.style.pointerEvents = "none";
-});
