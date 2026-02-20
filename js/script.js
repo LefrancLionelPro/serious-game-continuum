@@ -29,7 +29,7 @@ function addBouton(texte, cible){
     let newBtn = document.createElement('button');
     newBtn.innerText = texte;
     newBtn.classList.add('bouton_cacher');
-    newBtn.style.visibility = 'unvisible';
+    newBtn.style.visibility = 'hidden';
 
     newBtn.addEventListener('click',function(){
         chargerScene(cible);
