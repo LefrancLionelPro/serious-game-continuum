@@ -160,11 +160,11 @@ function afficherFormulaireID() {
             let nameValue = inputPrenom.value;
             let lettre = nameValue.charAt(0).toUpperCase();
 
-            trueID = lettre + annee +dpt;
             mdp = motDePasse.value;
             sexe = sexelist.value;
             annee = birthYear.value;
             dpt = department.value;
+            trueID = lettre + annee +dpt;
 
             console.log(trueID);
             console.log(mdp);
