@@ -3,6 +3,7 @@ let annee;
 let sexe;
 let mdp;
 let dpt;
+let dataChoice;
 
 const scenario = {
     "intro" : {
@@ -147,9 +148,9 @@ function afficherFormulaireID() {
     department.size = 2;
     department.maxLength = 2;
 
-    let dataChoice = document.createElement("input");
-    dataChoice.id = "dataChoice";
-    dataChoice.type = "checkbox";
+    let dataChoiceCheck = document.createElement("input");
+    dataChoiceCheck.id = "dataChoice";
+    dataChoiceCheck.type = "checkbox";
 
     let dataChoiceText = document.createElement("p");
     dataChoiceText.innerText = "Je consent à transmettre mes données à des fins de recherches"
@@ -172,8 +173,8 @@ function afficherFormulaireID() {
     form.appendChild(revealPwdCheck);
 
     form.appendChild(dataChoiceText);
-    form.appendChild(dataChoice);
-    dataChoiceText.appendChild(dataChoice);
+    form.appendChild(dataChoiceCheck);
+    dataChoiceText.appendChild(dataChoiceCheck);
 
     form.appendChild(btnValider);
 
@@ -194,6 +195,7 @@ function afficherFormulaireID() {
             sexe = sexelist.value;
             annee = birthYear.value;
             dpt = department.value;
+            dataChoice = dataChoiceCheck.value;
             trueID = lettre + annee +dpt;
 
             console.log(trueID);
@@ -201,6 +203,7 @@ function afficherFormulaireID() {
             console.log(sexe);
             console.log(annee);
             console.log(dpt);
+            console.log(dataChoice);
 
             chargerScene("intro")
         }
