@@ -87,6 +87,7 @@ function afficherFormulaireID() {
     let inputPrenom = document.createElement('input');
     inputPrenom.placeholder = "Entrez votre Prénom";
     inputPrenom.id = "inputPrenom";
+    inputPrenom.type = "text";
 
     let sexes = document.createElement("input");
     sexes.list = "list";
@@ -105,18 +106,18 @@ function afficherFormulaireID() {
 
 
     let birthYear = document.createElement("input");
-    birthYear.placeholder = "Entrez votre année de naissance";
     birthYear.type = "text";
+    birthYear.pattern = "0-9";
+    birthYear.placeholder = "Entrez votre année de naissance";
     birthYear.size = 4;
     birthYear.maxLength = 4;
-    birthYear.type = "number";
 
     let department = document.createElement("input");
-    department.placeholder = "Entrez le numéro de votre département";
     department.type = "text";
+    department.pattern = "0-9"
+    department.placeholder = "Entrez le numéro de votre département";
     department.size = 2;
     department.maxLength = 2;
-    department.type = "number";
 
     let motDePasse = document.createElement("input");
     motDePasse.type = "password";
