@@ -165,9 +165,14 @@ function afficherFormulaireID() {
 
     form.appendChild(birthYear);
     form.appendChild(department);
+
     form.appendChild(motDePasse);
+    form.appendChild(revealPwdCheck);
+
     form.appendChild(dataChoiceText);
     form.appendChild(dataChoice);
+    dataChoiceText.appendChild(dataChoice);
+
     form.appendChild(btnValider);
 
     containerBtn.appendChild(form);
