@@ -137,6 +137,7 @@ function afficherFormulaireID() {
     form.appendChild(inputPrenom);
     form.appendChild(sexelist);
 
+    sexelist.appendChild(optionBase);
     sexelist.appendChild(option1);
     sexelist.appendChild(option2);
     sexelist.appendChild(option3);
