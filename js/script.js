@@ -92,6 +92,26 @@ function afficherFormulaireID() {
     inputPrenom.id = "inputPrenom";
     inputPrenom.type = "text";
 
+    let motDePasse = document.createElement("input");
+    motDePasse.type = "password";
+    motDePasse.id = "motDePasse";
+    motDePasse.placeholder = "Veuillez rentrer un mot de passe";
+
+    let revealPwdCheck = document.createElement("button");
+    revealPwdCheck.innerText = "voir mot de passe"
+    revealPwdCheck.onclick( function () {
+            var checked = document.getElementById("motDePasse");
+
+            if (checked.type === "password") {
+                checked.type = "text";
+            }
+
+            else {
+                checked.type = "password";
+            }
+        }
+    )
+
     let sexelist = document.createElement("select");
     sexelist.id = "sexelist";
 
@@ -126,10 +146,12 @@ function afficherFormulaireID() {
     department.size = 2;
     department.maxLength = 2;
 
-    let motDePasse = document.createElement("input");
-    motDePasse.type = "password";
-    motDePasse.id = "motDePasse";
-    motDePasse.placeholder = "Veuillez rentrer un mot de passe";
+    let dataChoice = document.createElement("input");
+    dataChoice.id = "dataChoice";
+    dataChoice.type = "checkbox";
+
+    let dataChoiceText = document.createElement("p");
+    dataChoiceText.innerText = "Je consent à transmettre mes données à des fins de recherches"
 
     let btnValider = document.createElement('button');
     btnValider.innerHTML = "Créer mon ID et commencer";
@@ -145,6 +167,8 @@ function afficherFormulaireID() {
     form.appendChild(birthYear);
     form.appendChild(department);
     form.appendChild(motDePasse);
+    form.appendChild(dataChoiceText);
+    form.appendChild(dataChoice);
     form.appendChild(btnValider);
 
     containerBtn.appendChild(form);
