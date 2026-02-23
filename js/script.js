@@ -95,6 +95,11 @@ function afficherFormulaireID() {
     let sexelist = document.createElement("select");
     sexelist.id = "sexelist";
 
+    let optionBase = document.createElement("option");
+    optionBase.value = "Default";
+    optionbase.innerText = "Veuillez choisir votre sexe.";
+    optionBase.selected = true;
+
     let option1 = document.createElement("option");
     option1.value = "Homme";
     option1.innerText = "Homme";
