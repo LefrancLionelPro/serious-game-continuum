@@ -1,9 +1,14 @@
+const supabase = supabase.createClient('https://qbosijwcfspfexrcxcpa.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFib3NpandjZnNwZmV4cmN4Y3BhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzMTczMzYsImV4cCI6MjA4Njg5MzMzNn0.75q8vDiaaUY96i91yIrtHnsWyTJLXqcghHG-mlYE8xY')
+console.log(supabase);
+
 let trueID;
 let annee;
 let sexe;
 let mdp;
 let dpt;
 let dataChoice;
+
+
 
 const scenario = {
     "intro" : {
