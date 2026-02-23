@@ -195,10 +195,12 @@ function afficherFormulaireID() {
             let nameValue = inputPrenom.value;
             let lettre = nameValue.charAt(0).toUpperCase();
 
+            let dptValue = department.value.toUpperCase();
+
             mdp = motDePasse.value;
             sexe = sexelist.value;
             annee = birthYear.value;
-            dpt = department.value;
+            dpt = dptValue;
             dataChoice = dataChoiceCheck.checked;
             trueID = lettre + annee +dpt;
 
