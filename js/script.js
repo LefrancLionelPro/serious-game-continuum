@@ -148,7 +148,6 @@ function afficherFormulaireID() {
 
     let department = document.createElement("input");
     department.type = "text";
-    department.pattern = "[0-9]+"
     department.placeholder = "Entrez le numéro de votre département";
     department.size = 2;
     department.maxLength = 2;
