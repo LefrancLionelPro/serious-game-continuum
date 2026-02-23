@@ -1,4 +1,4 @@
-const supabaseClient = supabase.createClient('https://qbosijwcfspfexrcxcpa.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFib3NpandjZnNwZmV4cmN4Y3BhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzMTczMzYsImV4cCI6MjA4Njg5MzMzNn0.75q8vDiaaUY96i91yIrtHnsWyTJLXqcghHG-mlYE8xY')
+const supabaseClient = supabase.createClient('https://qbosijwcfspfexrcxcpa.supabase.co', 'sb_publishable_T1dqF1VvIR-L3ZTSc4LgBQ_uAcJ_jKE')
 console.log(supabaseClient);
 
 let trueID;
@@ -185,7 +185,7 @@ function afficherFormulaireID() {
 
     containerBtn.appendChild(form);
 
-    btnValider.addEventListener("click", function (event){
+    btnValider.addEventListener("click", async function (event){
         event.preventDefault();
 
         if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexelist.value === "" || motDePasse.value === "") {
@@ -200,7 +200,7 @@ function afficherFormulaireID() {
             sexe = sexelist.value;
             annee = birthYear.value;
             dpt = department.value;
-            dataChoice = dataChoiceCheck.value;
+            dataChoice = dataChoiceCheck.checked;
             trueID = lettre + annee +dpt;
 
             console.log(trueID);
@@ -210,7 +210,25 @@ function afficherFormulaireID() {
             console.log(dpt);
             console.log(dataChoice);
 
-            chargerScene("intro")
+            if (dataChoice) {
+                const { error } = await supabaseClient.from('utilisateurs')
+                    .insert([
+                        {
+                            player_id: trueID,
+                            password: mdp
+                        }
+                    ])
+
+                if (error) {
+                    alert("Erreur lord de l'inscription : " + error.message);
+                }
+
+                chargerScene("intro");
+            }
+
+            else {
+                chargerScene("intro");
+            }
         }
     });
 }
