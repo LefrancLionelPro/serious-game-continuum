@@ -99,7 +99,7 @@ function afficherFormulaireID() {
 
     let revealPwdCheck = document.createElement("button");
     revealPwdCheck.innerText = "voir mot de passe"
-    revealPwdCheck.onclick( function () {
+    revealPwdCheck.onclick(function () {
             var checked = document.getElementById("motDePasse");
 
             if (checked.type === "password") {
