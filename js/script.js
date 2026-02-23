@@ -2,6 +2,7 @@ let trueID;
 let annee;
 let sexe;
 let mdp;
+let dpt;
 
 const scenario = {
     "intro" : {
@@ -153,17 +154,18 @@ function afficherFormulaireID() {
             let nameValue = inputPrenom.value;
             let lettre = nameValue.charAt(0).toUpperCase();
 
-            annee = birthYear.value;
-
-            let dpt = department.value;
-
-            sexe = sexelist.value;
-
             trueID = lettre + annee +dpt;
-
             mdp = motDePasse.value;
+            sexe = sexelist.value;
+            annee = birthYear.value;
+            dpt = department.value;
 
             console.log(trueID);
+            console.log(mdp);
+            console.log(sexe);
+            console.log(annee);
+            console.log(dpt);
+
             chargerScene("intro")
         }
     });
