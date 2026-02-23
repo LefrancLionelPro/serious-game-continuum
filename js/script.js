@@ -97,7 +97,7 @@ function afficherFormulaireID() {
 
     let optionBase = document.createElement("option");
     optionBase.value = "Default";
-    optionbase.innerText = "Veuillez choisir votre sexe.";
+    optionBase.innerText = "Veuillez choisir votre sexe.";
     optionBase.selected = true;
 
     let option1 = document.createElement("option");
