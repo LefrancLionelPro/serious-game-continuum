@@ -90,7 +90,7 @@ function afficherFormulaireID() {
     inputPrenom.type = "text";
 
     let sexes = document.createElement("input");
-    sexes.list = "list";
+    sexes.setAttribute("list", "list")
 
     let datasexes = document.createElement("datalist");
     datasexes.id = "list";
