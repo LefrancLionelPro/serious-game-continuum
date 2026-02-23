@@ -91,31 +91,31 @@ function afficherFormulaireID() {
     inputPrenom.id = "inputPrenom";
     inputPrenom.type = "text";
 
-    let sexes = document.createElement("input");
-    sexes.setAttribute("list", "list")
-
-    let datasexes = document.createElement("datalist");
-    datasexes.id = "list";
+    let sexelist = document.createElement("select");
+    sexelist.id = "sexelist";
 
     let option1 = document.createElement("option");
     option1.value = "Homme";
+    option1.innerText = "Homme";
 
     let option2 = document.createElement("option");
     option2.value = "Femme";
+    option2.innerText = "Femme";
 
     let option3 = document.createElement("option");
     option3.value = "Ne souhaite pas préciser";
+    option3.innerText = "Ne souhaite pas préciser";
 
     let birthYear = document.createElement("input");
     birthYear.type = "text";
-    birthYear.pattern = "0-9";
+    birthYear.pattern = "[0-9]+";
     birthYear.placeholder = "Entrez votre année de naissance";
     birthYear.size = 4;
     birthYear.maxLength = 4;
 
     let department = document.createElement("input");
     department.type = "text";
-    department.pattern = "0-9"
+    department.pattern = "[0-9]+"
     department.placeholder = "Entrez le numéro de votre département";
     department.size = 2;
     department.maxLength = 2;
@@ -129,12 +129,11 @@ function afficherFormulaireID() {
     btnValider.innerHTML = "Créer mon ID et commencer";
 
     form.appendChild(inputPrenom);
-    form.appendChild(sexes);
-    form.appendChild(datasexes);
+    form.appendChild(sexelist);
 
-    datasexes.appendChild(option1);
-    datasexes.appendChild(option2);
-    datasexes.appendChild(option3);
+    sexelist.appendChild(option1);
+    sexelist.appendChild(option2);
+    sexelist.appendChild(option3);
 
     form.appendChild(birthYear);
     form.appendChild(department);
@@ -143,8 +142,10 @@ function afficherFormulaireID() {
 
     containerBtn.appendChild(form);
 
-    btnValider.addEventListener("click", function (){
-        if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexes.value === "" || motDePasse.value === "") {
+    btnValider.addEventListener("click", function (event){
+        event.preventDefault();
+
+        if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexelist.value === "" || motDePasse.value === "") {
             window.alert("veuillez remplir les questions");
         }
 
@@ -156,7 +157,7 @@ function afficherFormulaireID() {
 
             let dpt = department.value;
 
-            sexe = sexes.value;
+            sexe = sexelist.value;
 
             trueID = lettre + annee +dpt;
 
