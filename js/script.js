@@ -84,6 +84,8 @@ function chargerScene(idScene) {
 function afficherFormulaireID() {
     containerBtn.innerHTML = "";
 
+    let form = document.createElement("form");
+
     let inputPrenom = document.createElement('input');
     inputPrenom.placeholder = "Entrez votre Prénom";
     inputPrenom.id = "inputPrenom";
@@ -103,7 +105,6 @@ function afficherFormulaireID() {
 
     let option3 = document.createElement("option");
     option3.value = "Ne souhaite pas préciser";
-
 
     let birthYear = document.createElement("input");
     birthYear.type = "text";
@@ -127,18 +128,20 @@ function afficherFormulaireID() {
     let btnValider = document.createElement('button');
     btnValider.innerHTML = "Créer mon ID et commencer";
 
-    containerBtn.appendChild(inputPrenom);
-    containerBtn.appendChild(sexes);
-    containerBtn.appendChild(datasexes);
+    form.appendChild(inputPrenom);
+    form.appendChild(sexes);
+    form.appendChild(datasexes);
 
     datasexes.appendChild(option1);
     datasexes.appendChild(option2);
     datasexes.appendChild(option3);
 
-    containerBtn.appendChild(birthYear);
-    containerBtn.appendChild(department);
-    containerBtn.appendChild(motDePasse);
-    containerBtn.appendChild(btnValider);
+    form.appendChild(birthYear);
+    form.appendChild(department);
+    form.appendChild(motDePasse);
+    form.appendChild(btnValider);
+
+    containerBtn.appendChild(form);
 
     btnValider.addEventListener("click", function (){
         if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexes.value === "" || motDePasse.value === "") {
