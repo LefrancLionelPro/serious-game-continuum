@@ -71,6 +71,7 @@ function chargerScene(idScene) {
     }
 
     else if (idScene === "login") {
+        login();
         return;
     }
 
@@ -159,6 +160,14 @@ function afficherFormulaireID() {
     let dataChoiceText = document.createElement("p");
     dataChoiceText.innerText = "Je consent à transmettre mes données à des fins de recherches"
 
+    let loginButton = document.createElement("button");
+    loginButton.id("bouton_login");
+    login.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        chargerScene("login");
+    })
+
     let btnValider = document.createElement('button');
     btnValider.innerHTML = "Créer mon ID et commencer";
 
@@ -224,7 +233,24 @@ function afficherFormulaireID() {
                     alert("Erreur lord de l'inscription : " + error.message);
                 }
 
-                chargerScene("intro");
+                containerBtn.innerHTML = "";
+                let text1 = document.createElement("h3");
+                text1.innerText = "Veuillez noter votre identifiant pour vos prochaines sessions" + "<br>";
+                let text2 = document.createElement("p");
+                text2.innerText = trueID + "<br>";
+
+                let acceptBtn = document.createElement("button");
+                acceptBtn.innerHTML = "J'ai noté(é) mon identifiant et je suis prêt(e) à jouer";
+
+                containerBtn.appendChild(text1);
+                containerBtn.appendChild(text2);
+                containerBtn.appendChild(acceptBtn);
+
+                acceptBtn.addEventListener("click", function (event) {
+                    event.preventDefault();
+
+                    chargerScene("intro");
+                });
             }
 
             else {
@@ -232,5 +258,12 @@ function afficherFormulaireID() {
             }
     });
 }
+
+// async function login() {
+//     containerBtn.innerHTML = "";
+//
+//     const userID = await supabaseClient.from('utilisateurs')
+//         .
+// }
 
 chargerScene("identification");
