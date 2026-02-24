@@ -162,7 +162,7 @@ function afficherFormulaireID() {
 
     let loginButton = document.createElement("button");
     loginButton.id = "bouton_login";
-    login.addEventListener("click", function(event) {
+    loginButton.addEventListener("click", function(event) {
         event.preventDefault();
 
         chargerScene("login");
