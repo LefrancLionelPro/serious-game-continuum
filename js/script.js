@@ -349,10 +349,11 @@ async function login() {
         }
 
         if (!data || data.length === 0) {
-            window.alert("Id non trouvé" + error.message);
+            window.alert("Id non trouvé");
+            return;
         }
 
-        else if (data.password === pwd_input.value) {
+        else if (data[0].password === pwd_input.value) {
             containerBtn.innerHTML = "";
             trueID = login_input.value;
             mdp = pwd_input.value;
@@ -378,7 +379,7 @@ async function login() {
         }
 
         else {
-            window.alert("Votre mot de passe est erroné ou erreur : " + error.message);
+            window.alert("Votre mot de passe est erroné");
         }
     })
 
