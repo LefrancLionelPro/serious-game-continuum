@@ -336,10 +336,20 @@ async function login() {
             return;
         }
 
-        const { data, error } = await supabaseClient.from('utilisateurs').select('*').eq('player_id', login_input.value).single();
+        const { data, error } = await supabaseClient.
+            from('utilisateurs').
+            select('*').
+            eq('player_id', login_input.value);
+
+        console.log("Data reçue : " + data);
 
         if (error) {
             window.alert("Erreur lors de l'inscription : " + error.message);
+            return;
+        }
+
+        if (!data || data.length === 0) {
+            window.alert("Id non trouvé" + error.message);
         }
 
         else if (data.password === pwd_input.value) {
