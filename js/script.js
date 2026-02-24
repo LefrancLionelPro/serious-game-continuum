@@ -339,7 +339,7 @@ async function login() {
         const { data, error } = await supabaseClient.from('utilisateurs').select('*').eq('player_id', login_input.value).single();
 
         if (error) {
-            window.alert("Votre identifiant n'existe pas");
+            window.alert("Erreur lors de l'inscription : " + error.message);
         }
 
         else if (data.password === pwd_input.value) {
