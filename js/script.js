@@ -186,7 +186,7 @@ function afficherFormulaireID() {
     })
 
     let btnValider = document.createElement('button');
-    btnValider.innerHTML = "Créer mon ID et commencer";
+    btnValider.innerHTML = "Créer mon ID et/ou commencer";
 
     form.appendChild(prenomText);
     form.appendChild(inputPrenom);
@@ -375,7 +375,10 @@ async function login() {
     form_login.appendChild(loginText);
     form_login.appendChild(login_input);
     form_login.appendChild(pwdText);
+
     form_login.appendChild(pwd_input);
+    form_login.appendChild(revealPwdCheckLogin);
+
     form_login.appendChild(validateBtn);
 
     containerBtn.appendChild(form_login);
