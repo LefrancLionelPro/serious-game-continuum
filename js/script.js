@@ -206,11 +206,13 @@ function afficherFormulaireID() {
             console.log(dpt);
             console.log(dataChoice);
 
-        if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexelist.value === "" || motDePasse.value === "") {
-            window.alert("veuillez remplir les questions");
-
             if (dataChoice) {
-                const {error} = await supabaseClient.from('utilisateurs')
+
+                if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexelist.value === "" || motDePasse.value === "") {
+                    window.alert("veuillez remplir les questions");
+                }
+
+                const { error } = await supabaseClient.from('utilisateurs')
                     .insert([
                         {
                             player_id: trueID,
@@ -228,7 +230,6 @@ function afficherFormulaireID() {
             else {
                 chargerScene("intro");
             }
-        }
     });
 }
 
