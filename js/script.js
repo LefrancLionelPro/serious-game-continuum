@@ -233,9 +233,9 @@ function afficherFormulaireID() {
 
                 containerBtn.innerHTML = "";
                 let text1 = document.createElement("h3");
-                text1.innerText = "Veuillez noter votre identifiant pour vos prochaines sessions" + "<br>";
+                text1.innerText = "Veuillez noter votre identifiant pour vos prochaines sessions";
                 let text2 = document.createElement("p");
-                text2.innerText = trueID + "<br>";
+                text2.innerText = trueID;
 
                 let acceptBtn = document.createElement("button");
                 acceptBtn.innerHTML = "J'ai noté(é) mon identifiant et je suis prêt(e) à jouer";
