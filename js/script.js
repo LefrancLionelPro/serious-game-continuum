@@ -161,7 +161,7 @@ function afficherFormulaireID() {
     dataChoiceText.innerText = "Je consent à transmettre mes données à des fins de recherches"
 
     let loginButton = document.createElement("button");
-    loginButton.id("bouton_login");
+    loginButton.id = "bouton_login";
     login.addEventListener("click", function(event) {
         event.preventDefault();
 
