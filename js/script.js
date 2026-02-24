@@ -188,6 +188,8 @@ function afficherFormulaireID() {
     let btnValider = document.createElement('button');
     btnValider.innerHTML = "Créer mon ID et/ou commencer";
 
+    form.appendChild(formIntro);
+
     form.appendChild(prenomText);
     form.appendChild(inputPrenom);
 
