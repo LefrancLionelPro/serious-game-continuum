@@ -94,10 +94,19 @@ function afficherFormulaireID() {
 
     let form = document.createElement("form");
 
+    let formIntro = document.createElement("h3");
+    formIntro.innerText = "Veuillez rentrer vos informations si vous le souhaitez";
+
+    let prenomText = document.createElement("p");
+    prenomText.innerText = "Votre prénom";
+
     let inputPrenom = document.createElement('input');
-    inputPrenom.placeholder = "Entrez votre Prénom";
     inputPrenom.id = "inputPrenom";
     inputPrenom.type = "text";
+    inputPrenom.placeholder = "Entrez votre Prénom";
+
+    let mdpText = document.createElement("p");
+    mdpText.innerText = "Votre mot de passe";
 
     let motDePasse = document.createElement("input");
     motDePasse.type = "password";
@@ -120,6 +129,9 @@ function afficherFormulaireID() {
         }
     })
 
+    let sexeText = document.createElement("p");
+    sexeText.innerText = "Votre sexe";
+
     let sexelist = document.createElement("select");
     sexelist.id = "sexelist";
 
@@ -140,11 +152,17 @@ function afficherFormulaireID() {
     option3.value = "Ne souhaite pas préciser";
     option3.innerText = "Ne souhaite pas préciser";
 
+    let birthYearText = document.createElement("p");
+    birthYearText.innerText = "Votre année de naissance";
+
     let birthYear = document.createElement("input");
     birthYear.type = "text";
     birthYear.pattern = "[0-9]+";
     birthYear.placeholder = "Entrez votre année de naissance";
     birthYear.maxLength = 4;
+
+    let dptText = document.createElement("p");
+    dptText.innerText = "Le numéro de votre département";
 
     let department = document.createElement("input");
     department.type = "text";
@@ -160,6 +178,7 @@ function afficherFormulaireID() {
 
     let loginButton = document.createElement("button");
     loginButton.id = "bouton_login";
+    loginButton.innerHTML = "J'ai déja un identifiant et je me connecte"
     loginButton.addEventListener("click", function(event) {
         event.preventDefault();
 
@@ -169,7 +188,10 @@ function afficherFormulaireID() {
     let btnValider = document.createElement('button');
     btnValider.innerHTML = "Créer mon ID et commencer";
 
+    form.appendChild(prenomText);
     form.appendChild(inputPrenom);
+
+    form.appendChild(sexeText);
     form.appendChild(sexelist);
 
     sexelist.appendChild(optionBase);
@@ -177,9 +199,13 @@ function afficherFormulaireID() {
     sexelist.appendChild(option2);
     sexelist.appendChild(option3);
 
+    form.appendChild(birthYearText);
     form.appendChild(birthYear);
+
+    form.appendChild(dptText);
     form.appendChild(department);
 
+    form.appendChild(mdpText);
     form.appendChild(motDePasse);
     form.appendChild(revealPwdCheck);
 
@@ -187,6 +213,7 @@ function afficherFormulaireID() {
     form.appendChild(dataChoiceCheck);
     dataChoiceText.appendChild(dataChoiceCheck);
 
+    form.appendChild(loginButton);
     form.appendChild(btnValider);
 
     containerBtn.appendChild(form);
@@ -223,7 +250,9 @@ function afficherFormulaireID() {
                     .insert([
                         {
                             player_id: trueID,
-                            password: mdp
+                            password: mdp,
+                            gender: sexe,
+                            birth_year: annee
                         }
                     ])
 
@@ -257,11 +286,99 @@ function afficherFormulaireID() {
     });
 }
 
-// async function login() {
-//     containerBtn.innerHTML = "";
-//
-//     const userID = await supabaseClient.from('utilisateurs')
-//         .
-// }
+async function login() {
+
+    containerBtn.innerHTML = "";
+
+    let introText = document.createElement("h3");
+    introText.innerText = "Veuillez rentrer votre identifiant et votre mot de passe"
+
+    let loginText = document.createElement("p");
+    loginText.innerText = "Identifiant : ";
+
+    let login_input = document.createElement("input");
+    login_input.type = "text";
+    login_input.placeholder = "Veuillez rentrer votre identifiant";
+
+    let pwdText = document.createElement("p");
+    pwdText.innerText = "Mot de passe : ";
+
+    let pwd_input = document.createElement("input");
+    pwd_input.type = "password";
+    pwd_input.id = "pwd_input";
+    pwd_input.placeholder = "Veuillez rentrer un mot de passe";
+
+    let revealPwdCheckLogin = document.createElement("button");
+    revealPwdCheckLogin.innerText = "voir mot de passe"
+    revealPwdCheckLogin.addEventListener("click", function(event){
+        event.preventDefault();
+
+        var checked = document.getElementById("pwd_input");
+
+        if (checked.type === "password") {
+            checked.type = "text";
+        }
+
+        else {
+            checked.type = "password";
+        }
+    })
+
+    let validateBtn = document.createElement("button");
+    validateBtn.innerText = "Se connecter";
+    validateBtn.addEventListener("click", async function (event) {
+        event.preventDefault();
+
+        if ((login_input.value === "") || (pwd_input.value === "")) {
+            window.alert("Veuillez remplir les tout les champs");
+            return;
+        }
+
+        const { data, error } = await supabaseClient.from('utilisateurs').select('*').eq('player_id', login_input.value).single();
+
+        if (error) {
+            window.alert("Votre identifiant n'existe pas");
+        }
+
+        else if (data.password === pwd_input.value) {
+            containerBtn.innerHTML = "";
+            trueID = login_input.value;
+            mdp = pwd_input.value;
+
+            containerBtn.innerHTML = "";
+            let successText = document.createElement("p");
+            successText.innerText = "Connexion réussi";
+
+            let continueBtn = document.createElement("button");
+            continueBtn.innerHTML = "Jouer";
+            continueBtn.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                chargerScene("intro");
+            })
+
+            let continueForm = document.createElement("form");
+
+            continueForm.appendChild(successText);
+            continueForm.appendChild(continueBtn);
+
+            containerBtn.appendChild(continueForm);
+        }
+
+        else {
+            window.alert("Votre mot de passe est erroné")
+        }
+    })
+
+    let form_login = document.createElement("form");
+
+    form_login.appendChild(loginText);
+    form_login.appendChild(login_input);
+    form_login.appendChild(pwdText);
+    form_login.appendChild(pwd_input);
+    form_login.appendChild(validateBtn);
+
+    containerBtn.appendChild(form_login);
+}
 
 chargerScene("identification");
