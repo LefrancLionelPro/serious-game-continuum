@@ -187,11 +187,6 @@ function afficherFormulaireID() {
     btnValider.addEventListener("click", async function (event){
         event.preventDefault();
 
-        if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexelist.value === "" || motDePasse.value === "") {
-            window.alert("veuillez remplir les questions");
-        }
-
-        else {
             let nameValue = inputPrenom.value;
             let lettre = nameValue.charAt(0).toUpperCase();
 
@@ -211,8 +206,11 @@ function afficherFormulaireID() {
             console.log(dpt);
             console.log(dataChoice);
 
+        if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexelist.value === "" || motDePasse.value === "") {
+            window.alert("veuillez remplir les questions");
+
             if (dataChoice) {
-                const { error } = await supabaseClient.from('utilisateurs')
+                const {error} = await supabaseClient.from('utilisateurs')
                     .insert([
                         {
                             player_id: trueID,
