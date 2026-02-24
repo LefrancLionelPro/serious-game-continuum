@@ -378,7 +378,7 @@ async function login() {
         }
 
         else {
-            window.alert("Votre mot de passe est erroné")
+            window.alert("Votre mot de passe est erroné ou erreur : " + error.message);
         }
     })
 
