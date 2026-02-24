@@ -144,13 +144,11 @@ function afficherFormulaireID() {
     birthYear.type = "text";
     birthYear.pattern = "[0-9]+";
     birthYear.placeholder = "Entrez votre année de naissance";
-    birthYear.size = 4;
     birthYear.maxLength = 4;
 
     let department = document.createElement("input");
     department.type = "text";
     department.placeholder = "Entrez le numéro de votre département";
-    department.size = 2;
     department.maxLength = 2;
 
     let dataChoiceCheck = document.createElement("input");
