@@ -447,8 +447,8 @@ function exportData(){
         data.forEach(ligne => {
             if (!lignesTransformer[ligne.player_id]) {
                 lignesTransformer[ligne.player_id] = {
-                    joueur: ligne.player_id,
-                    date_creation_compte: ligne.created_at.split("T")[0],
+                    Joueurs: ligne.player_id,
+                    Horodateur: ligne.created_at.replace('T', ' ').split('.')[0],
                 };
             }
 
