@@ -142,7 +142,7 @@ function afficherFormulaireID() {
 
     let optionBase = document.createElement("option");
     optionBase.value = "Default";
-    optionBase.innerText = "Veuillez choisir votre sexe.";
+    optionBase.innerText = "Veuillez sélectionner votre sexe";
     optionBase.selected = true;
 
     let option1 = document.createElement("option");
@@ -171,8 +171,10 @@ function afficherFormulaireID() {
 
     let department = document.createElement("input");
     department.type = "text";
-    department.pattern = "^([0-9]{2}|2A|2B|[0-9]{3})$"
     department.placeholder = "Entrez le numéro de votre département";
+    department.maxLength = 3;
+
+    const dptRegex = /^([0-9]{2}|2A|2B|[0-9]{3})$/;
 
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoice";
@@ -250,7 +252,7 @@ function afficherFormulaireID() {
 
             if (dataChoice) {
 
-                if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexelist.value === "" || motDePasse.value === "") {
+                if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexelist.value === "" || motDePasse.value === "" || !dptRegex.test(department.value) || sexelist.value === "Veuillez sélectionner votre sexe") {
                     window.alert("veuillez remplir les questions");
                 }
 
