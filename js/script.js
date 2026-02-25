@@ -9,7 +9,7 @@ let mdp;
 let dpt;
 let dataChoice;
 
-let currentScenatio;
+let currentScenario;
 let choosedOption;
 
 
@@ -100,7 +100,7 @@ function afficherFormulaireID() {
     let form = document.createElement("form");
 
     let formIntro = document.createElement("h3");
-    formIntro.innerText = "Veuillez rentrer vos informations si vous le souhaitez";
+    formIntro.innerText = "Identification";
 
     let prenomText = document.createElement("p");
     prenomText.innerText = "Votre prénom";
@@ -193,7 +193,7 @@ function afficherFormulaireID() {
     })
 
     let btnValider = document.createElement('button');
-    btnValider.innerHTML = "Créer mon ID et/ou commencer";
+    btnValider.innerHTML = "Créer mon identifiant et/ou commencer";
 
     form.appendChild(formIntro);
 
@@ -303,7 +303,7 @@ async function login() {
     containerBtn.innerHTML = "";
 
     let introText = document.createElement("h3");
-    introText.innerText = "Veuillez rentrer votre identifiant et votre mot de passe"
+    introText.innerText = "Connection"
 
     let loginText = document.createElement("p");
     loginText.innerText = "Identifiant : ";
@@ -411,14 +411,14 @@ async function login() {
 }
 
 async function getChoiceData(scene, choix){
-    currentScenatio = scene;
+    currentScenario = scene;
     choosedOption = choix;
 
     const { error } = await supabaseClient.from('reponses')
         .insert([
             {
                 player_id: trueID,
-                scene: currentScenatio,
+                scene: currentScenario,
                 choix: choosedOption,
             }
         ]);
@@ -427,6 +427,51 @@ async function getChoiceData(scene, choix){
         alert("Erreur : " + error.message);
     }
 
+}
+
+function exportData(){
+
+    let exportBtn = document.getElementById("buttonExport");
+
+    exportBtn.addEventListener("click", async function(){
+        const {data, error} = await supabaseClient.from("reponses")
+            .select('player_id, scene, choix, created_at');
+
+        if (error) {
+            window.alert("Erreur : " + error.message);
+            return;
+        }
+
+        var lignesTransformer = {};
+
+        data.forEach(ligne => {
+            if (!lignesTransformer[ligne.player_id]) {
+                lignesTransformer[ligne.player_id] = {
+                    joueur: ligne.player_id,
+                    date_creation_compte: ligne.created_at,
+                };
+            }
+
+            lignesTransformer[ligne.player_id][ligne.scene] = ligne.choix;
+        });
+
+        let finalData = Object.values(lignesTransformer);
+        let textCSV = Papa.unparse(finalData);
+
+        let blob = new Blob([textCSV], { type: "text/csv;charset=utf-8" });
+        let exportUrl = URL.createObjectURL(blob);
+
+        let baliseLien = document.createElement("a");
+        baliseLien.href = exportUrl;
+
+        baliseLien.setAttribute("download", "resultats_jeu.csv");
+
+        document.body.appendChild(baliseLien);
+        baliseLien.click();
+        document.body.removeChild(baliseLien);
+
+        URL.revokeObjectURL(exportUrl);
+        })
 }
 
 chargerScene("identification");
