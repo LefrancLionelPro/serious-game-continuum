@@ -171,8 +171,8 @@ function afficherFormulaireID() {
 
     let department = document.createElement("input");
     department.type = "text";
+    department.pattern = "^([0-9]{2}|2A|2B|[0-9]{3})$"
     department.placeholder = "Entrez le numéro de votre département";
-    department.maxLength = 2;
 
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoice";
