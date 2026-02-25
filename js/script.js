@@ -448,7 +448,7 @@ function exportData(){
             if (!lignesTransformer[ligne.player_id]) {
                 lignesTransformer[ligne.player_id] = {
                     joueur: ligne.player_id,
-                    date_creation_compte: ligne.created_at,
+                    date_creation_compte: ligne.created_at.split("T")[0],
                 };
             }
 
@@ -456,7 +456,9 @@ function exportData(){
         });
 
         let finalData = Object.values(lignesTransformer);
-        let textCSV = Papa.unparse(finalData);
+        let textCSV = Papa.unparse(finalData, {
+            delimiter: ";"
+        });
 
         let blob = new Blob([textCSV], { type: "text/csv;charset=utf-8" });
         let exportUrl = URL.createObjectURL(blob);
