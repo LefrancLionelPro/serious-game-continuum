@@ -2,11 +2,15 @@ const supabaseClient = supabase.createClient('https://qbosijwcfspfexrcxcpa.supab
 console.log(supabaseClient);
 
 let trueID;
+let prenom;
 let annee;
 let sexe;
 let mdp;
 let dpt;
 let dataChoice;
+
+let currentScenatio;
+let choosedOption;
 
 
 
@@ -52,13 +56,14 @@ function addVideo(url){
 }
 
 const containerBtn = document.getElementById("conteneur-boutons");
-function addBouton(texte, cible){
+function addBouton(texte, cible, scenePresent){
     let newBtn = document.createElement('button');
     newBtn.innerText = texte;
     newBtn.classList.add('bouton_cacher');
     newBtn.style.visibility = 'hidden';
 
     newBtn.addEventListener('click',function(){
+        getChoiceData(scenePresent, texte);
         chargerScene(cible);
     });
     containerBtn.appendChild(newBtn);
@@ -84,7 +89,7 @@ function chargerScene(idScene) {
         addVideo(data.videoSrc);
 
         data.choix.forEach(unChoix => {
-            addBouton(unChoix.texte, unChoix.cible);
+            addBouton(unChoix.texte, unChoix.cible, idScene);
         });
     }
 }
@@ -223,11 +228,12 @@ function afficherFormulaireID() {
     btnValider.addEventListener("click", async function (event){
         event.preventDefault();
 
-            let nameValue = inputPrenom.value;
+            let nameValue = inputPrenom.value.trim().toLowerCase();
             let lettre = nameValue.charAt(0).toUpperCase();
 
             let dptValue = department.value.toUpperCase();
 
+            prenom = lettre + nameValue.slice(1);
             mdp = motDePasse.value;
             sexe = sexelist.value;
             annee = birthYear.value;
@@ -252,11 +258,12 @@ function afficherFormulaireID() {
                     .insert([
                         {
                             player_id: trueID,
+                            name: prenom,
                             password: mdp,
                             gender: sexe,
                             birth_year: annee
                         }
-                    ])
+                    ]);
 
                 if (error) {
                     alert("Erreur lord de l'inscription : " + error.message);
@@ -355,8 +362,11 @@ async function login() {
 
         else if (data[0].password === pwd_input.value) {
             containerBtn.innerHTML = "";
-            trueID = login_input.value;
-            mdp = pwd_input.value;
+            trueID = data[0].player_id;
+            prenom = data[0].name;
+            annee = data[0].birth_year;
+            sexe = data[0].gender;
+
 
             containerBtn.innerHTML = "";
             let successText = document.createElement("p");
@@ -395,6 +405,25 @@ async function login() {
     form_login.appendChild(validateBtn);
 
     containerBtn.appendChild(form_login);
+}
+
+async function getChoiceData(scene, choix){
+    currentScenatio = scene;
+    choosedOption = choix;
+
+    const { error } = await supabaseClient.from('reponses')
+        .insert([
+            {
+                player_id: trueID,
+                scene: currentScenatio,
+                choix: choosedOption,
+            }
+        ]);
+
+    if (error) {
+        alert("Erreur : " + error.message);
+    }
+
 }
 
 chargerScene("identification");
