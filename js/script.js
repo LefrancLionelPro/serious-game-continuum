@@ -254,6 +254,7 @@ function afficherFormulaireID() {
 
                 if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexelist.value === "" || motDePasse.value === "" || !dptRegex.test(department.value) || sexelist.value === "Veuillez sélectionner votre sexe") {
                     window.alert("veuillez remplir les questions");
+                    return;
                 }
 
                 const { error } = await supabaseClient.from('utilisateurs')
