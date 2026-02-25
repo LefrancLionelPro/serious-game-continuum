@@ -351,7 +351,7 @@ async function login() {
         console.log("Data reçue : " + data);
 
         if (error) {
-            window.alert("Erreur lors de l'inscription : " + error.message);
+            window.alert("Cet utilisateur existe déja");
             return;
         }
 
