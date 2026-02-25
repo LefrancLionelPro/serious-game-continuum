@@ -429,51 +429,55 @@ async function getChoiceData(scene, choix){
 
 }
 
-function exportData(){
+async function exportData(){
 
-    let exportBtn = document.getElementById("buttonExport");
+    const {data, error} = await supabaseClient.from("reponses")
+        .select('player_id, scene, choix, created_at');
 
-    exportBtn.addEventListener("click", async function(){
-        const {data, error} = await supabaseClient.from("reponses")
-            .select('player_id, scene, choix, created_at');
+    if (error) {
+        window.alert("Erreur : " + error.message);
+        return;
+    }
 
-        if (error) {
-            window.alert("Erreur : " + error.message);
-            return;
+    var lignesTransformer = {};
+
+    data.forEach(ligne => {
+        if (!lignesTransformer[ligne.player_id]) {
+            lignesTransformer[ligne.player_id] = {
+                Joueurs: ligne.player_id,
+                Horodateur: ligne.created_at.replace('T', ' ').split('.')[0],
+            };
         }
 
-        var lignesTransformer = {};
+        lignesTransformer[ligne.player_id][ligne.scene] = ligne.choix;
+    });
 
-        data.forEach(ligne => {
-            if (!lignesTransformer[ligne.player_id]) {
-                lignesTransformer[ligne.player_id] = {
-                    Joueurs: ligne.player_id,
-                    Horodateur: ligne.created_at.replace('T', ' ').split('.')[0],
-                };
-            }
+    let finalData = Object.values(lignesTransformer);
+    let csvRaw = Papa.unparse(finalData, {
+        delimiter: ";"
+    });
 
-            lignesTransformer[ligne.player_id][ligne.scene] = ligne.choix;
-        });
+    let textCSV = "sep=;\n" + csvRaw;
 
-        let finalData = Object.values(lignesTransformer);
-        let textCSV = Papa.unparse(finalData, {
-            delimiter: ";"
-        });
+    let blob = new Blob([textCSV], { type: "text/csv;charset=utf-8" });
+    let exportUrl = URL.createObjectURL(blob);
 
-        let blob = new Blob([textCSV], { type: "text/csv;charset=utf-8" });
-        let exportUrl = URL.createObjectURL(blob);
+    let baliseLien = document.createElement("a");
+    baliseLien.href = exportUrl;
 
-        let baliseLien = document.createElement("a");
-        baliseLien.href = exportUrl;
+    baliseLien.setAttribute("download", "resultats_jeu.csv");
 
-        baliseLien.setAttribute("download", "resultats_jeu.csv");
+    document.body.appendChild(baliseLien);
+    baliseLien.click();
+    document.body.removeChild(baliseLien);
 
-        document.body.appendChild(baliseLien);
-        baliseLien.click();
-        document.body.removeChild(baliseLien);
+    URL.revokeObjectURL(exportUrl);
+}
 
-        URL.revokeObjectURL(exportUrl);
-        })
+let exportBtn = document.getElementById("buttonExport");
+
+if (exportBtn) {
+    exportBtn.addEventListener("click",  exportData);
 }
 
 chargerScene("identification");
