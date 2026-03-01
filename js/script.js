@@ -17,13 +17,15 @@ let choosedOption;
 const scenario = {
     "intro" : {
         videoSrc : "assets/video/Collab.mp4",
+        afk : "scene_suivante_A",
         choix: [
-            { texte: "Option A", cible: "scene_suivante_A"},
-            { texte: "Option B", cible: "scene_suivante_B" },
+            { texte: "Option A", cible: "intro"},
+            { texte: "Option B", cible: "scene_suivante_A" },
         ]
     },
     "scene_suivante_A": {
         videoSrc: "assets/video/popularité.mp4",
+        afk : "intro",
         choix: [
             { texte: "Option A", cible: "scene_suivante_A"},
             { texte: "Option B", cible: "intro" },
@@ -32,12 +34,19 @@ const scenario = {
 };
 
 const containerVid = document.getElementById("conteneur-video");
-function addVideo(url){
+function addVideo(url, afk, scenePresent){
     let newVideo = document.createElement('video');
     newVideo.src = url;
     newVideo.autoplay = true;
     newVideo.muted = true;
     newVideo.classList.add('video');
+
+    newVideo.addEventListener('ended', function(){
+        if (afk){
+            getChoiceData(scenePresent, "N'a rien fait");
+            chargerScene(afk);
+        }
+    })
 
     newVideo.addEventListener("click", function (){
         this.pause();
@@ -481,5 +490,3 @@ if (exportBtn) {
 }
 
 chargerScene("identification");
-
-//je test
