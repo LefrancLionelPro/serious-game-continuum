@@ -95,7 +95,7 @@ function chargerScene(idScene) {
         containerVid.innerHTML = "";
         containerBtn.innerHTML = "";
 
-        addVideo(data.videoSrc);
+        addVideo(data.videoSrc, data.afk, idScene);
 
         data.choix.forEach(unChoix => {
             addBouton(unChoix.texte, unChoix.cible, idScene);
