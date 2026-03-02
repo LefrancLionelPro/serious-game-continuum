@@ -453,7 +453,7 @@ async function getChoiceData(scene, choix){
 async function exportData(){
 
     const {data, error} = await supabaseClient.from("responses")
-        .select('player_id, scene, choix, created_at');
+        .select('run_id, player_id, scene, choix, created_at');
 
     if (error) {
         window.alert("Erreur : " + error.message);
@@ -465,7 +465,7 @@ async function exportData(){
     data.forEach(ligne => {
         if (!lignesTransformer[ligne.run_id]) {
             lignesTransformer[ligne.run_id] = {
-                id: ligne.run_id,
+                id_Partie: ligne.run_id,
                 Joueurs: ligne.player_id,
                 Horodateur: ligne.created_at.replace('T', ' ').split('.')[0],
             };
