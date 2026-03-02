@@ -489,7 +489,9 @@ async function exportData(){
 
     baliseLien.setAttribute("download", "resultats_jeu.csv");
 
-    exportBtn.appendChild(baliseLien);
+    document.body.appendChild(baliseLien);
+    baliseLien.click();
+    document.body.removeChild(baliseLien);
 
     URL.revokeObjectURL(exportUrl);
 }
