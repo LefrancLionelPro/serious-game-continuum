@@ -12,8 +12,6 @@ let dataChoice;
 let currentScenario;
 let choosedOption;
 
-const run = crypto.randomUUID();
-
 
 
 const scenario = {
@@ -241,71 +239,71 @@ function afficherFormulaireID() {
     btnValider.addEventListener("click", async function (event){
         event.preventDefault();
 
-            let nameValue = inputPrenom.value.trim().toLowerCase();
-            let lettre = nameValue.charAt(0).toUpperCase();
+        let nameValue = inputPrenom.value.trim().toLowerCase();
+        let lettre = nameValue.charAt(0).toUpperCase();
 
-            let dptValue = department.value.toUpperCase();
+        let dptValue = department.value.toUpperCase();
 
-            prenom = lettre + nameValue.slice(1);
-            mdp = motDePasse.value;
-            sexe = sexelist.value;
-            annee = birthYear.value;
-            dpt = dptValue;
-            dataChoice = dataChoiceCheck.checked;
-            trueID = lettre + annee +dpt;
+        prenom = lettre + nameValue.slice(1);
+        mdp = motDePasse.value;
+        sexe = sexelist.value;
+        annee = birthYear.value;
+        dpt = dptValue;
+        dataChoice = dataChoiceCheck.checked;
+        trueID = lettre + annee +dpt;
 
-            console.log(trueID);
-            console.log(mdp);
-            console.log(sexe);
-            console.log(annee);
-            console.log(dpt);
-            console.log(dataChoice);
+        console.log(trueID);
+        console.log(mdp);
+        console.log(sexe);
+        console.log(annee);
+        console.log(dpt);
+        console.log(dataChoice);
 
-            if (dataChoice) {
+        if (dataChoice) {
 
-                if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexelist.value === "" || motDePasse.value === "" || !dptRegex.test(department.value) || sexelist.value === "Veuillez sélectionner votre sexe") {
-                    window.alert("veuillez remplir les questions");
-                    return;
-                }
-
-                const { error } = await supabaseClient.from('utilisateurs')
-                    .insert([
-                        {
-                            player_id: trueID,
-                            name: prenom,
-                            password: mdp,
-                            gender: sexe,
-                            birth_year: annee
-                        }
-                    ]);
-
-                if (error) {
-                    alert("Erreur lord de l'inscription : " + error.message);
-                }
-
-                containerBtn.innerHTML = "";
-                let text1 = document.createElement("h3");
-                text1.innerText = "Veuillez noter votre identifiant pour vos prochaines sessions";
-                let text2 = document.createElement("p");
-                text2.innerText = trueID;
-
-                let acceptBtn = document.createElement("button");
-                acceptBtn.innerHTML = "J'ai noté(é) mon identifiant et je suis prêt(e) à jouer";
-
-                containerBtn.appendChild(text1);
-                containerBtn.appendChild(text2);
-                containerBtn.appendChild(acceptBtn);
-
-                acceptBtn.addEventListener("click", function (event) {
-                    event.preventDefault();
-
-                    chargerScene("intro");
-                });
+            if (inputPrenom.value === "" || birthYear.value === "" || department.value === "" || sexelist.value === "" || motDePasse.value === "" || !dptRegex.test(department.value) || sexelist.value === "Veuillez sélectionner votre sexe") {
+                window.alert("veuillez remplir les questions");
+                return;
             }
 
-            else {
+            const { error } = await supabaseClient.from('utilisateurs')
+                .insert([
+                    {
+                        player_id: trueID,
+                        name: prenom,
+                        password: mdp,
+                        gender: sexe,
+                        birth_year: annee
+                    }
+                ]);
+
+            if (error) {
+                alert("Erreur lord de l'inscription : " + error.message);
+            }
+
+            containerBtn.innerHTML = "";
+            let text1 = document.createElement("h3");
+            text1.innerText = "Veuillez noter votre identifiant pour vos prochaines sessions";
+            let text2 = document.createElement("p");
+            text2.innerText = trueID;
+
+            let acceptBtn = document.createElement("button");
+            acceptBtn.innerHTML = "J'ai noté(é) mon identifiant et je suis prêt(e) à jouer";
+
+            containerBtn.appendChild(text1);
+            containerBtn.appendChild(text2);
+            containerBtn.appendChild(acceptBtn);
+
+            acceptBtn.addEventListener("click", function (event) {
+                event.preventDefault();
+
                 chargerScene("intro");
-            }
+            });
+        }
+
+        else {
+            chargerScene("intro");
+        }
     });
 }
 
@@ -358,9 +356,9 @@ async function login() {
         }
 
         const { data, error } = await supabaseClient.
-            from('utilisateurs').
-            select('*').
-            eq('player_id', login_input.value);
+        from('utilisateurs').
+        select('*').
+        eq('player_id', login_input.value);
 
         console.log("Data reçue : " + data);
 
@@ -380,15 +378,6 @@ async function login() {
             prenom = data[0].name;
             annee = data[0].birth_year;
             sexe = data[0].gender;
-
-            await supabaseClient.from('responses').insert([
-                {
-                    player_id: trueID,
-                    scene: "connexion",
-                    choix: "Connexion réussie",
-                    run_id : run
-                }
-            ])
 
 
             containerBtn.innerHTML = "";
@@ -440,7 +429,6 @@ async function getChoiceData(scene, choix){
                 player_id: trueID,
                 scene: currentScenario,
                 choix: choosedOption,
-                run_id : run
             }
         ]);
 
@@ -453,7 +441,7 @@ async function getChoiceData(scene, choix){
 async function exportData(){
 
     const {data, error} = await supabaseClient.from("responses")
-        .select('run_id, player_id, scene, choix, created_at');
+        .select('player_id, scene, choix, created_at');
 
     if (error) {
         window.alert("Erreur : " + error.message);
@@ -463,15 +451,14 @@ async function exportData(){
     var lignesTransformer = {};
 
     data.forEach(ligne => {
-        if (!lignesTransformer[ligne.run_id]) {
-            lignesTransformer[ligne.run_id] = {
-                id_Partie: ligne.run_id,
+        if (!lignesTransformer[ligne.player_id]) {
+            lignesTransformer[ligne.player_id] = {
                 Joueurs: ligne.player_id,
                 Horodateur: ligne.created_at.replace('T', ' ').split('.')[0],
             };
         }
 
-        lignesTransformer[ligne.run_id][ligne.scene] = ligne.choix;
+        lignesTransformer[ligne.player_id][ligne.scene] = ligne.choix;
     });
 
     let finalData = Object.values(lignesTransformer);
