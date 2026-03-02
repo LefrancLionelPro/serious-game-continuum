@@ -1,6 +1,8 @@
+//on variable pour notre client supabase (pour rajouter la base de donnée dans le code)
+//pour info le client s'écrit comme ça "const nomDeLaVariable = supabase.createClient('l'url du projet'), ('la clé publiable')
 const supabaseClient = supabase.createClient('https://qbosijwcfspfexrcxcpa.supabase.co', 'sb_publishable_T1dqF1VvIR-L3ZTSc4LgBQ_uAcJ_jKE')
-console.log(supabaseClient);
 
+//on crée tous les variables qu'on aura besoin
 let trueID;
 let prenom;
 let annee;
@@ -9,12 +11,28 @@ let mdp;
 let dpt;
 let dataChoice;
 
-let currentScenario;
+//on crée des variables pour pouvoir envoyer le scéne présent et le choix du joueur dans cette scène
+let currentScene;
 let choosedOption;
 
+//on crée une variable qui va créer un id aléatoire pour pouvoir stockers plusieurs runs d'un même joueur
 const run = crypto.randomUUID();
 
 
+//on crée nos différentes scènes
+
+/*
+Exemple de scène :
+    "nom de la scène" : {
+    le_source_de_vidéo_présent_dans_la_scène : "assets/video/video.mp4",
+        la_scène_qui_sera_jouer_si_le_joueur_ne_fait_rien : "scene_suivante",
+        les_boutons_de_la_scène: [
+        { le_texte_sur_le_bouton: "Option A", la_scène_qui_sera_jouée_si_on_clique_sur_ce_bouton: "scene_suivante"},
+        { le_texte_sur_le_bouton: "Option B", la_scène_qui_sera_jouée_si_on_clique_sur_ce_bouton: "scene_suivante" },
+        { etc... },
+    ]
+}
+*/
 
 const scenario = {
     "intro" : {
@@ -35,14 +53,31 @@ const scenario = {
     }
 };
 
+//on va prendre le conteneur qui possède l'id "conteneur-video" dans le html
 const containerVid = document.getElementById("conteneur-video");
+
+//on fait une fonction pour ajouter une vidéo dans une scène
 function addVideo(url, afk, scenePresent){
+
+    //on crée un nouvel élément vidéo
     let newVideo = document.createElement('video');
+
+    /*
+    On lui attribue sa source, on le met en autoplay et
+    en muet pour que la vidéo commence automatiquement.
+    Enfin, on lui donne la classe "video".
+     */
     newVideo.src = url;
     newVideo.autoplay = true;
     newVideo.muted = true;
     newVideo.classList.add('video');
 
+    /*
+    On fait un eventListener,
+    si la vidéo se termine sans que le joueur à fait pause,
+    on dit à la base de données qu'il n'a fait dans cette scène,
+    et on envoie le joueur dans un la scène pour les personnes qui n'ont pas choisi.
+     */
     newVideo.addEventListener('ended', function(){
         if (afk){
             getChoiceData(scenePresent, "N'a rien fait");
@@ -50,37 +85,68 @@ function addVideo(url, afk, scenePresent){
         }
     })
 
+    /*
+    On fait un eventListener,
+    lorsque le joueur clique sur la vidéo, la vidéo se met en pause
+     */
     newVideo.addEventListener("click", function (){
         this.pause();
 
+        //on va récupérer tous les boutons de la scène et on les met dans une liste
         const hiddenBtnList = document.querySelectorAll('.bouton_cacher');
+
+        //si des boutons existent, on parcourt la liste des boutons pour les rendre visibles
         if(hiddenBtnList){
             for (let i = 0; i < hiddenBtnList.length; i++) {
                 hiddenBtnList[i].style.visibility = "visible";
             }
         }
-
-        this.style.pointerEvents = "none";
     });
 
+    //on met cette vidéo dans le conteur vidéo
     containerVid.appendChild(newVideo);
 }
 
+//on va prendre le conteneur qui possède l'id "conteneur-boutons" dans le html
 const containerBtn = document.getElementById("conteneur-boutons");
+
+//on fait une fonction pour créer les boutons des scènes
 function addBouton(texte, cible, scenePresent){
+
+    //on crée un nouvel élément bouton
     let newBtn = document.createElement('button');
+
+    /*
+    On rajoute à ce bouton le texte du scénario,
+    la classe 'bouton-cacher' pour cacher les boutons avec la fonction aux dessus,
+    et on cache les boutons.
+     */
     newBtn.innerText = texte;
     newBtn.classList.add('bouton_cacher');
     newBtn.style.visibility = 'hidden';
 
+    /*
+    On fait un eventListener,
+    lorsque le joueur clique sur un des boutons,
+    on transmet ses données à la base de données
+    (la scène dans laquelle on est et le choix effectué dans cette scène).
+    Enfin, on change de scène.
+     */
     newBtn.addEventListener('click',function(){
         getChoiceData(scenePresent, texte);
         chargerScene(cible);
     });
+
+    //on met ce bouton dans le conteneur bouton
     containerBtn.appendChild(newBtn);
 }
 
+//on crée une fonction pour pouvoir changer de scène
 function chargerScene(idScene) {
+    /*
+    Pour que ça soit plus simple, j'ai fait des exceptions.
+    Le jeu considère que l'identification et la connextion sont des scènes
+     */
     if (idScene === "identification") {
         afficherFormulaireID();
         return;
@@ -92,13 +158,27 @@ function chargerScene(idScene) {
     }
 
     else {
+
+        //on met les données de la scène dans une variable
         const data = scenario[idScene];
+
+        //s'il n'y a pas de donnée, on quitte la fonction
         if (!data) return;
+
+        //on efface les anciens contenu des conteneurs
         containerVid.innerHTML = "";
         containerBtn.innerHTML = "";
 
+        //on utilise la fonction addVideo pour rajouter la vidéo
         addVideo(data.videoSrc, data.afk, idScene);
 
+        /*
+            On prend unChoix des choix present dans le scénario présent.
+            L'équivalent serait :
+            for (let unChoix of data.choix) {
+                addBouton(unChoix.texte, unChoix.cible, idScene);
+            }
+         */
         data.choix.forEach(unChoix => {
             addBouton(unChoix.texte, unChoix.cible, idScene);
         });
@@ -431,14 +511,14 @@ async function login() {
 }
 
 async function getChoiceData(scene, choix){
-    currentScenario = scene;
+    currentScene = scene;
     choosedOption = choix;
 
     const { error } = await supabaseClient.from('responses')
         .insert([
             {
                 player_id: trueID,
-                scene: currentScenario,
+                scene: currentScene,
                 choix: choosedOption,
                 run_id : run
             }
