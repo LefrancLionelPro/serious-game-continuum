@@ -453,13 +453,13 @@ async function exportData(){
     data.forEach(ligne => {
         if (!lignesTransformer[ligne.id]) {
             lignesTransformer[ligne.id] = {
-                id: ligne.id,
+                id: ligne.id.toString(),
                 Joueurs: ligne.player_id,
                 Horodateur: ligne.created_at.replace('T', ' ').split('.')[0],
             };
         }
 
-        lignesTransformer[ligne.id][ligne.scene] = ligne.choix;
+        lignesTransformer[ligne.id.toString()][ligne.scene] = ligne.choix;
     });
 
     let finalData = Object.values(lignesTransformer);
