@@ -381,7 +381,7 @@ async function login() {
             annee = data[0].birth_year;
             sexe = data[0].gender;
 
-            await supabaseClient.from('reponses').insert([
+            await supabaseClient.from('responses').insert([
                 {
                     player_id: trueID,
                     scene: "connexion",
@@ -434,7 +434,7 @@ async function getChoiceData(scene, choix){
     currentScenario = scene;
     choosedOption = choix;
 
-    const { error } = await supabaseClient.from('reponses')
+    const { error } = await supabaseClient.from('responses')
         .insert([
             {
                 player_id: trueID,
@@ -452,7 +452,7 @@ async function getChoiceData(scene, choix){
 
 async function exportData(){
 
-    const {data, error} = await supabaseClient.from("reponses")
+    const {data, error} = await supabaseClient.from("responses")
         .select('player_id, scene, choix, created_at');
 
     if (error) {
