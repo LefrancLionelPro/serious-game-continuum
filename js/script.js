@@ -12,6 +12,8 @@ let dataChoice;
 let currentScenario;
 let choosedOption;
 
+const run = crypto.randomUUID();
+
 
 
 const scenario = {
@@ -379,6 +381,15 @@ async function login() {
             annee = data[0].birth_year;
             sexe = data[0].gender;
 
+            await supabaseClient.from('reponses').insert([
+                {
+                    player_id: trueID,
+                    scene: "connexion",
+                    choix: "Connexion réussie",
+                    run_id : run
+                }
+            ])
+
 
             containerBtn.innerHTML = "";
             let successText = document.createElement("p");
@@ -429,6 +440,7 @@ async function getChoiceData(scene, choix){
                 player_id: trueID,
                 scene: currentScenario,
                 choix: choosedOption,
+                run_id : run
             }
         ]);
 
@@ -451,15 +463,15 @@ async function exportData(){
     var lignesTransformer = {};
 
     data.forEach(ligne => {
-        if (!lignesTransformer[ligne.id]) {
-            lignesTransformer[ligne.id] = {
-                id: ligne.id.toString(),
+        if (!lignesTransformer[ligne.run_id]) {
+            lignesTransformer[ligne.run_id] = {
+                id: ligne.run_id,
                 Joueurs: ligne.player_id,
                 Horodateur: ligne.created_at.replace('T', ' ').split('.')[0],
             };
         }
 
-        lignesTransformer[ligne.id.toString()][ligne.scene] = ligne.choix;
+        lignesTransformer[ligne.run_id][ligne.scene] = ligne.choix;
     });
 
     let finalData = Object.values(lignesTransformer);
