@@ -4,11 +4,6 @@ const supabaseClient = supabase.createClient('https://qbosijwcfspfexrcxcpa.supab
 
 // On crée toutes les variables dont on aura besoin
 let trueID;
-let prenom;
-let annee;
-let sexe;
-let mdp;
-let dpt;
 let dataChoice;
 
 // On crée des variables pour pouvoir envoyer la scène présente et le choix du joueur dans cette scène
@@ -197,129 +192,19 @@ function afficherFormulaireID() {
     let formIntro = document.createElement("h3");
     formIntro.innerText = "Identification";
 
-    // On crée un nouvel élément paragraphe qui aura comme texte "Votre prénom"
-    let prenomText = document.createElement("p");
-    prenomText.innerText = "Votre prénom";
+    let description = document.createElement("p");
+    description.innerHTML = "Pour vous identifier, entrez : <br>" +
+        "- Les 2 dernière chiffre de votre année de naissances<br>" +
+        "- La première et la dernière lettres votre nom de famille<br>" +
+        "- les 4 dernière chiffre de numéro de téléphone";
 
-    /*
-    On crée un nouvel élément de saisie qui aura comme ID "inputPrenom",
-    le type "text" et le contenu de la saisie sera "Entrez votre prénom."
-     */
-    let inputPrenom = document.createElement('input');
-    inputPrenom.id = "inputPrenom";
-    inputPrenom.type = "text";
-    inputPrenom.placeholder = "Entrez votre prénom";
+    let exemple = document.createElement("p");
+    exemple.innerText = "Exemple : Je m'appelle Jean Dupont, je suis née en 1980, mon numéro de téléphone est le : 06****7767"
 
-    let mdpText = document.createElement("p");
-    mdpText.innerText = "Votre mot de passe";
-
-    let motDePasse = document.createElement("input");
-    motDePasse.type = "password";
-    motDePasse.id = "motDePasse";
-    motDePasse.placeholder = "Veuillez rentrer un mot de passe";
-
-    let revealPwdCheck = document.createElement("button");
-    revealPwdCheck.innerText = "voir mot de passe"
-
-    /*
-    On fait un eventListener pour que, lorsque le joueur clique sur le bouton "voir mot de passe",
-    le mot de passe soit visible.
-     */
-    revealPwdCheck.addEventListener("click", function(event){
-        event.preventDefault(); // Permet de ne pas recharger la page (ce qui réinitialiserait tout le code)
-
-        // On va prendre la saisie qui possède l'ID "motDePasse" qu'on vient de créer
-        var checked = document.getElementById("motDePasse");
-
-        /*
-        Si le type de la saisie est "password", alors on le transforme en texte,
-        ce qui permet de révéler le texte.
-        */
-        if (checked.type === "password") {
-            checked.type = "text";
-        }
-
-        // Sinon on fait l'inverse
-        else {
-            checked.type = "password";
-        }
-    })
-
-
-    let sexeText = document.createElement("p");
-    sexeText.innerText = "Votre sexe";
-
-    /*
-    On crée un nouvel élément de sélection qui aura comme ID "sexelist".
-    Il va nous permettre de faire un menu déroulant pour que le joueur choisisse son sexe.
-     */
-    let sexelist = document.createElement("select");
-    sexelist.id = "sexelist";
-
-    /*
-    On crée un nouvel élément option qui aura comme valeur "Default",
-    le contenu de l'option sera "Veuillez sélectionner votre sexe."
-    et il sera sélectionné par défaut.
-     */
-    let optionBase = document.createElement("option");
-    optionBase.value = "Default";
-    optionBase.innerText = "Veuillez sélectionner votre sexe";
-    optionBase.selected = true;
-
-    let option1 = document.createElement("option");
-    option1.value = "Homme";
-    option1.innerText = "Homme";
-
-    let option2 = document.createElement("option");
-    option2.value = "Femme";
-    option2.innerText = "Femme";
-
-    let option3 = document.createElement("option");
-    option3.value = "Ne souhaite pas préciser";
-    option3.innerText = "Ne souhaite pas préciser";
-
-    let birthYearText = document.createElement("p");
-    birthYearText.innerText = "Votre année de naissance";
-
-    /*
-    On crée un nouvel élément de saisie qui aura comme type "tel" (pour éviter de taper des lettres).
-    Pour une raison que j'ignore, le type "number" outrepassait mes restrictions.
-    Il possédera comme pattern "[0-9]{4}",
-    [0-9] vérifie qu'il ne tape que des chiffres et
-    {4} vérifie qu'il tape exactement 4 chiffres.
-     */
-    let birthYear = document.createElement("input");
-    birthYear.type = "tel";
-    birthYear.pattern = "[0-9]{4}";
-    birthYear.placeholder = "Entrez votre année de naissance";
-    birthYear.maxLength = 4;
-
-    /*
-    On crée un nouvel élément de saisie qui aura comme type "tel" (pour éviter de taper des lettres).
-    Pour une raison que j'ignore, le type "number" outrepassait mes restrictions.
-    Il possédera comme pattern "[0-9]{4}",
-    - [0-9] : vérifie qu'il ne tape que des chiffres et
-    - {4} : vérifie qu'il tape au moins 4 chiffres.
-     */
-    let dptText = document.createElement("p");
-    dptText.innerText = "Le numéro de votre département";
-
-    let department = document.createElement("input");
-    department.type = "text";
-    department.placeholder = "Entrez le numéro de votre département";
-    department.maxLength = 3;
-
-    /*
-    On crée un regex un peu complexe (l'équivalent du pattern en HTML).
-    "[0-9]{2}" : pour la France métropolitaine
-    "/" : délimiteurs
-    "^" : sert à informer que le regex commence ici.
-    "$" : sert à informer que le regex finit ici.
-    "|" : porte logique OU (équivalent de || en JS).
-    "2A|2B" : pour la Corse, accepte les lettres uniquement dans ce cas précis.
-    "[0-9]{3}" : pour les Départements et Régions d'Outre-Mer (DROM)
-     */
-    const dptRegex = /^([0-9]{2}|2A|2B|[0-9]{3})$/;
+    let input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "ex : 80DT7767";
+    input.maxLength = 8;
 
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoice";
@@ -343,34 +228,13 @@ function afficherFormulaireID() {
         chargerScene("login");
     })
 
-
     let btnValider = document.createElement('button');
     btnValider.innerHTML = "Créer mon identifiant et/ou commencer";
 
-    // On met tous les éléments créés ci-dessus dans notre formulaire
     form.appendChild(formIntro);
-
-    form.appendChild(prenomText);
-    form.appendChild(inputPrenom);
-
-    form.appendChild(sexeText);
-    form.appendChild(sexelist);
-
-    // On met les options dans la liste "sexelist".
-    sexelist.appendChild(optionBase);
-    sexelist.appendChild(option1);
-    sexelist.appendChild(option2);
-    sexelist.appendChild(option3);
-
-    form.appendChild(birthYearText);
-    form.appendChild(birthYear);
-
-    form.appendChild(dptText);
-    form.appendChild(department);
-
-    form.appendChild(mdpText);
-    form.appendChild(motDePasse);
-    form.appendChild(revealPwdCheck);
+    form.appendChild(description);
+    form.appendChild(exemple);
+    form.appendChild(input);
 
     form.appendChild(dataChoiceText);
     form.appendChild(dataChoiceCheck);
@@ -389,68 +253,23 @@ function afficherFormulaireID() {
     btnValider.addEventListener("click", async function (event){
         event.preventDefault();
 
-        /*
-        On prend la valeur de "inputPrenom" et on crée une variable
-        qui contiendra le prénom tout en minuscules.
-         */
-        let nameValue = inputPrenom.value.trim().toLowerCase();
-
-        /*
-        On prend la valeur de "inputPrenom" et on crée une variable
-        qui contiendra la première lettre du prénom en majuscule.
-         */
-        let lettre = nameValue.charAt(0).toUpperCase();
-
-        /*
-        On prend la valeur de "department" et on crée une variable
-        qui contiendra le numéro du département tout en majuscules (pour le cas de la Corse).
-         */
-        let dptValue = department.value.toUpperCase();
-
-        // On concatène la première lettre du prénom en majuscule avec le reste en minuscules
-        prenom = lettre + nameValue.slice(1); // On retire la première lettre de "nameValue"
-        mdp = motDePasse.value;
-        sexe = sexelist.value;
-        annee = birthYear.value;
-        dpt = dptValue;
         dataChoice = dataChoiceCheck.checked;
-
-        /*
-        On génère un identifiant pour le joueur.
-        L'identifiant est la première lettre du prénom + l'année de naissance + le numéro du département de naissance.
-        On crée ensuite une variable qui génère une chaîne de caractères aléatoire.
-        On prend uniquement les 4 derniers caractères :
-            - pour replace(/-/g, '') :
-                - "/-/" : c'est du regex, on sélectionne le caractère "-" présent dans varID.
-                - "g" : g pour global, la sélection se fait sur tout le contenu.
-                - "," : délimiteur.
-                - "''" : on remplace par rien, ce qui équivaut à supprimer.
-            - slice(-4) : prend les 4 derniers caractères.
-        Exemple :
-        Dans le cas de Toto né en 1980 en Haute-Corse, son identifiant serait : T19802Bd5f4
-         */
-        const varID = crypto.randomUUID().replace(/-/g, '').slice(-4);
-
-        trueID = lettre + annee + dpt + varID;
 
         // On transmet les données du joueur dans la base de données uniquement s'il coche la case de consentement
         if (dataChoice) {
 
-            /*
-            On vérifie chaque possibilité pour empêcher les joueurs de rentrer des saisies invalides :
-                - On vérifie que le champ du prénom n'est pas vide.
-                - On vérifie que le numéro du département de naissance n'est pas vide.
-                - On vérifie que le regex du département n'est pas faux.
-                - On vérifie que le champ de la date de naissance n'est pas vide.
-                - On vérifie que le champ de la date de naissance possède bien 4 chiffres.
-                - On vérifie que le champ de la date de naissance ne possède pas de lettres.
-                - On vérifie que sexelist n'a pas été laissée sur "Veuillez sélectionner votre sexe".
-             Si l'utilisateur n'a pas respecté ces conditions, un pop-up s'affiche.
-             */
-            if (inputPrenom.value === "" || department.value === "" || !dptRegex.test(department.value) || birthYear.value === "" || birthYear.value.length !== 4 || isNaN(birthYear.value) || sexelist.value === "Default") {
-                window.alert("veuillez remplir le formulaire correctement");
+            let tempId = input.value.toUpperCase();
+
+            if (tempId.length < 8) {
+                window.alert("L'identifiant doit faire 8 caractères.");
                 return;
             }
+
+            let birthYear = tempId.slice(0, 2).replace(/[^0-9]/g, '');
+            let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
+            let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
+
+            let trueID = birthYear + alias + phoneNum;
 
             /*
              On crée une variable qui permet de transférer nos données à la base de données Supabase.
@@ -466,11 +285,7 @@ function afficherFormulaireID() {
             const { error } = await supabaseClient.from('utilisateurs')
                 .insert([
                     {
-                        player_id: trueID,
-                        name: prenom,
-                        password: mdp,
-                        gender: sexe,
-                        birth_year: annee
+                        player_id: trueID
                     }
                 ]);
 
@@ -527,30 +342,6 @@ async function login() {
     login_input.type = "text";
     login_input.placeholder = "Veuillez rentrer votre identifiant";
 
-    let pwdText = document.createElement("p");
-    pwdText.innerText = "Mot de passe : ";
-
-    let pwd_input = document.createElement("input");
-    pwd_input.type = "password";
-    pwd_input.id = "pwd_input";
-    pwd_input.placeholder = "Veuillez rentrer un mot de passe";
-
-    let revealPwdCheckLogin = document.createElement("button");
-    revealPwdCheckLogin.innerText = "voir mot de passe"
-    revealPwdCheckLogin.addEventListener("click", function(event){
-        event.preventDefault();
-
-        var checked = document.getElementById("pwd_input");
-
-        if (checked.type === "password") {
-            checked.type = "text";
-        }
-
-        else {
-            checked.type = "password";
-        }
-    })
-
     let validateBtn = document.createElement("button");
     validateBtn.innerText = "Se connecter";
 
@@ -561,8 +352,8 @@ async function login() {
         event.preventDefault();
 
         // On vérifie que les champs ne sont pas vides lors de la validation.
-        if ((login_input.value === "") || (pwd_input.value === "")) {
-            window.alert("Veuillez remplir tous les champs");
+        if (login_input.value === "") {
+            window.alert("Veuillez rentrez votre identifiant");
             return;
         }
 
@@ -579,21 +370,14 @@ async function login() {
         }
 
         // Si aucune donnée n'est trouvée, l'identifiant n'existe pas.
-        if (!data || data.length === 0) {
+        else if (!data || data.length === 0) {
             window.alert("Id non trouvé");
             return;
         }
 
-        /*
-        Sinon, si le mot de passe est correct, on transfère les données de l'utilisateur dans nos variables.
-        Le "[0]" permet d'indiquer qu'on veut la première ligne (Supabase renvoie une liste).
-         */
-        else if (data[0].password === pwd_input.value) {
+        else {
             containerBtn.innerHTML = "";
             trueID = data[0].player_id;
-            prenom = data[0].name;
-            annee = data[0].birth_year;
-            sexe = data[0].gender;
 
             /*
             Ici, on ajoute une nouvelle ligne dans la table "responses" pour marquer le début de la partie.
@@ -627,20 +411,12 @@ async function login() {
 
             containerBtn.appendChild(continueForm);
         }
-
-        else {
-            window.alert("Votre mot de passe est erroné");
-        }
     })
 
     let form_login = document.createElement("form");
 
     form_login.appendChild(loginText);
     form_login.appendChild(login_input);
-    form_login.appendChild(pwdText);
-
-    form_login.appendChild(pwd_input);
-    form_login.appendChild(revealPwdCheckLogin);
 
     form_login.appendChild(validateBtn);
 
