@@ -206,6 +206,10 @@ function afficherFormulaireID() {
     input.placeholder = "ex : 80DT7767";
     input.maxLength = 8;
 
+    let feedback = document.createElement("p");
+    feedback.id = "feedback";
+    feedback.innerHTML = "<span id='f_annee'>✘ 2 chiffres</span> | <span id='f_alias'>✘ 2 lettres</span> | <span id='f_num'>✘ 4 chiffres</span>";
+
     input.addEventListener("input", function(){
         let tempId = input.value.toUpperCase();
 
@@ -214,6 +218,12 @@ function afficherFormulaireID() {
         let birthYear = tempId.slice(0, 2).replace(/[^0-9]/g, '');
         let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
         let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
+
+        document.getElementById('f_annee').innerHTML = (annee.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
+        document.getElementById('f_alias').innerHTML = (annee.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
+        document.getElementById('f_annee').innerHTML = (annee.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+
+        feedback.style.color = (tempId.length === 8) ? "green" : "red";
 
         this.value = birthYear + alias + phoneNum;
     })
