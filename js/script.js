@@ -221,7 +221,7 @@ function afficherFormulaireID() {
 
         document.getElementById('f_annee').innerHTML = (birthYear.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
         document.getElementById('f_alias').innerHTML = (alias.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
-        document.getElementById('f_annee').innerHTML = (phoneNum.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+        document.getElementById('f_num').innerHTML = (phoneNum.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
 
         feedback.style.color = (tempId.length === 8) ? "green" : "red";
 
@@ -365,7 +365,7 @@ async function login() {
 
         document.getElementById('f_annee').innerHTML = (birthYear.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
         document.getElementById('f_alias').innerHTML = (alias.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
-        document.getElementById('f_annee').innerHTML = (phoneNum.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+        document.getElementById('f_num').innerHTML = (phoneNum.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
 
         feedback.style.color = (tempId.length === 8) ? "green" : "red";
 
