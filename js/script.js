@@ -206,6 +206,10 @@ function afficherFormulaireID() {
     input.placeholder = "ex : 80DT7767";
     input.maxLength = 8;
 
+    let birthYear = tempId.slice(0, 2).replace(/[^0-9]/g, '');
+    let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
+    let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
+
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoice";
     dataChoiceCheck.type = "checkbox";
@@ -264,10 +268,6 @@ function afficherFormulaireID() {
                 window.alert("L'identifiant doit faire 8 caractères.");
                 return;
             }
-
-            let birthYear = tempId.slice(0, 2).replace(/[^0-9]/g, '');
-            let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
-            let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
 
             let trueID = birthYear + alias + phoneNum;
 
