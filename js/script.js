@@ -208,20 +208,23 @@ function afficherFormulaireID() {
 
     let feedback = document.createElement("p");
     feedback.id = "feedback";
-    feedback.innerHTML = "<span id='f_annee'>✘ 2 chiffres</span> | <span id='f_alias'>✘ 2 lettres</span> | <span id='f_num'>✘ 4 chiffres</span>";
+
+    let fAnnee = "✘ 2 chiffres";
+    let fAlias = "✘ 2 lettres";
+    let fNum = "✘ 4 chiffres";
+
+    feedback.append(fAnnee, "|", fAlias, "|", fNum);
 
     input.addEventListener("input", function(){
-        let tempId = input.value.toUpperCase();
-
-        tempId = tempId.replace(/[^0-9A-Z]/g, '');
+        let tempId = input.value.toUpperCase().replace(/[^0-9A-Z]/g, '');
 
         let birthYear = tempId.slice(0, 2).replace(/[^0-9]/g, '');
         let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
         let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
 
-        document.getElementById('f_annee').innerHTML = (birthYear.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
-        document.getElementById('f_alias').innerHTML = (alias.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
-        document.getElementById('f_num').innerHTML = (phoneNum.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+        fAnnee.innerHTML = (birthYear.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
+        fAlias.innerHTML = (alias.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
+        fNum.innerHTML = (phoneNum.length === 4 ) ? "✔ Téléphone" : "✘ 4 chiffres";
 
         feedback.style.color = (tempId.length === 8) ? "green" : "red";
 
