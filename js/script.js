@@ -272,7 +272,7 @@ function afficherFormulaireID() {
         // On transmet les données du joueur dans la base de données uniquement s'il coche la case de consentement
         if (dataChoice) {
 
-            let trueID = input.value;
+            trueID = input.value;
 
             /*
              On crée une variable qui permet de transférer nos données à la base de données Supabase.
