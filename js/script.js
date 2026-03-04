@@ -227,8 +227,13 @@ function afficherFormulaireID() {
         let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
 
         fAnnee.innerText = (birthYear.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
+        fAnnee.style.color = (birthYear.length === 2 ) ? "green" : "red";
+
         fAlias.innerText = (alias.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
+        fAlias.style.color = (alias.length === 2 ) ? "green" : "red";
+
         fNum.innerText = (phoneNum.length === 4 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+        fNum.style.color = (phoneNum.length === 4 ) ? "green" : "red";
 
         feedback.style.color = (tempId.length === 8) ? "green" : "red";
 
