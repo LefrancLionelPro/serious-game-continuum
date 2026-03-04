@@ -447,7 +447,7 @@ function afficherFormulaireID() {
                 - On vérifie que sexelist n'a pas été laissée sur "Veuillez sélectionner votre sexe".
              Si l'utilisateur n'a pas respecté ces conditions, un pop-up s'affiche.
              */
-            if (inputPrenom.value === "" || department.value === "" || !dptRegex.test(department.value) || birthYear.value === "" || birthYear.value.length !== 4 || isNaN(birthYear.value) || sexelist.value === "Default  ") {
+            if (inputPrenom.value === "" || department.value === "" || !dptRegex.test(department.value) || birthYear.value === "" || birthYear.value.length !== 4 || isNaN(birthYear.value) || sexelist.value === "Veuillez sélectionner votre sexe") {
                 window.alert("veuillez remplir le formulaire correctement");
                 return;
             }
