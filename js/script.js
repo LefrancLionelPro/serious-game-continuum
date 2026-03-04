@@ -264,7 +264,7 @@ function afficherFormulaireID() {
         // On transmet les données du joueur dans la base de données uniquement s'il coche la case de consentement
         if (dataChoice) {
 
-            if (tempId.length < 8) {
+            if (!tempId.length === 8) {
                 window.alert("L'identifiant doit faire 8 caractères.");
                 return;
             }
