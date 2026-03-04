@@ -678,11 +678,12 @@ async function exportData(){
         return;
     }
 
+    //On crée un objet pour modifier le positionnement des éléments sur exel
+    const lignesTransformer = {};
+
     /* On parcourt chaque ligne de données reçue de la base (data).
     On utilise 'run_id' comme clé pour regrouper toutes les actions d'une même partie.
     */
-
-    const lignesTransformer = {};
 
     data.forEach(ligne => {
         // Si la partie (run_id) n'est pas encore enregistrée dans notre objet, on l'initialise
