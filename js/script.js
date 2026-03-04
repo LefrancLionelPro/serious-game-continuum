@@ -370,33 +370,33 @@ async function login() {
     let feedback = document.createElement("p");
     feedback.id = "feedback";
 
-    let fAnnee = document.createElement("span");
-    let fAlias = document.createElement("span");
-    let fNum = document.createElement("span");
+    let login_fAnnee = document.createElement("span");
+    let login_fAlias = document.createElement("span");
+    let login_fNum = document.createElement("span");
 
-    fAnnee.innerText = "✘ 2 chiffres | ";
-    fAlias.innerText = "✘ 2 lettres | ";
-    fNum.innerText = "✘ 4 chiffres";
+    login_fAnnee.innerText = "✘ 2 chiffres | ";
+    login_fAlias.innerText = "✘ 2 lettres | ";
+    login_fNum.innerText = "✘ 4 chiffres";
 
-    feedback.append(fAnnee, fAlias, fNum);
+    feedback.append(login_fAnnee, login_fAlias, login_fNum);
 
     login_input.addEventListener("input", function(){
-        let tempId = input.value.toUpperCase().replace(/[^0-9A-Z]/g, '');
+        let login_tempId = login_input.value.toUpperCase().replace(/[^0-9A-Z]/g, '');
 
-        let birthYear = tempId.slice(0, 2).replace(/[^0-9]/g, '');
-        let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
-        let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
+        let login_birthYear = login_tempId.slice(0, 2).replace(/[^0-9]/g, '');
+        let login_alias = login_tempId.slice(2, 4).replace(/[^A-Z]/g, '');
+        let login_phoneNum = login_tempId.slice(4, 8).replace(/[^0-9]/g, '');
 
-        fAnnee.innerText = (birthYear.length === 2 ) ? "✔ Année | " : "✘ 2 chiffres | ";
-        fAnnee.style.color = (birthYear.length === 2 ) ? "green" : "red";
+        login_fAnnee.innerText = (login_birthYear.length === 2 ) ? "✔ Année | " : "✘ 2 chiffres | ";
+        login_fAnnee.style.color = (login_birthYear.length === 2 ) ? "green" : "red";
 
-        fAlias.innerText = (alias.length === 2 ) ? "✔ Initiales | " : "✘ 2 lettre  | ";
-        fAlias.style.color = (alias.length === 2 ) ? "green" : "red";
+        login_fAlias.innerText = (login_alias.length === 2 ) ? "✔ Initiales | " : "✘ 2 lettre  | ";
+        login_fAlias.style.color = (login_alias.length === 2 ) ? "green" : "red";
 
-        fNum.innerText = (phoneNum.length === 4 ) ? "✔ Téléphone" : "✘ 4 chiffres";
-        fNum.style.color = (phoneNum.length === 4 ) ? "green" : "red";
+        login_fNum.innerText = (login_phoneNum.length === 4 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+        login_fNum.style.color = (login_phoneNum.length === 4 ) ? "green" : "red";
 
-        this.value = birthYear + alias + phoneNum;
+        this.value = login_birthYear + login_alias + login_phoneNum;
     });
 
     let validateBtn = document.createElement("button");
