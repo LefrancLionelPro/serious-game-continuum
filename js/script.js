@@ -209,9 +209,13 @@ function afficherFormulaireID() {
     let feedback = document.createElement("p");
     feedback.id = "feedback";
 
-    let fAnnee = "✘ 2 chiffres";
-    let fAlias = "✘ 2 lettres";
-    let fNum = "✘ 4 chiffres";
+    let fAnnee = document.createElement("span");
+    let fAlias = document.createElement("span");
+    let fNum = document.createElement("span");
+
+    fAnnee = "✘ 2 chiffres";
+    fAlias = "✘ 2 lettres";
+    fNum = "✘ 4 chiffres";
 
     feedback.append(fAnnee, "|", fAlias, "|", fNum);
 
@@ -222,9 +226,9 @@ function afficherFormulaireID() {
         let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
         let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
 
-        fAnnee.innerHTML = (birthYear.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
-        fAlias.innerHTML = (alias.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
-        fNum.innerHTML = (phoneNum.length === 4 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+        fAnnee.innerText = (birthYear.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
+        fAlias.innerText = (alias.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
+        fNum.innerText = (phoneNum.length === 4 ) ? "✔ Téléphone" : "✘ 4 chiffres";
 
         feedback.style.color = (tempId.length === 8) ? "green" : "red";
 
