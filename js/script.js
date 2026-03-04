@@ -226,8 +226,7 @@ function afficherFormulaireID() {
         feedback.style.color = (tempId.length === 8) ? "green" : "red";
 
         this.value = birthYear + alias + phoneNum;
-    })
-
+    });
 
 
     let dataChoiceCheck = document.createElement("input");
@@ -354,6 +353,24 @@ async function login() {
     let login_input = document.createElement("input");
     login_input.type = "text";
     login_input.placeholder = "Veuillez rentrer votre identifiant";
+
+    login_input.addEventListener("input", function(){
+        let tempId = input.value.toUpperCase();
+
+        tempId = tempId.replace(/[^0-9A-Z]/g, '');
+
+        let birthYear = tempId.slice(0, 2).replace(/[^0-9]/g, '');
+        let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
+        let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
+
+        document.getElementById('f_annee').innerHTML = (annee.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
+        document.getElementById('f_alias').innerHTML = (annee.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
+        document.getElementById('f_annee').innerHTML = (annee.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+
+        feedback.style.color = (tempId.length === 8) ? "green" : "red";
+
+        this.value = birthYear + alias + phoneNum;
+    });
 
     let validateBtn = document.createElement("button");
     validateBtn.innerText = "Se connecter";
