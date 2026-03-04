@@ -213,9 +213,9 @@ function afficherFormulaireID() {
     let fAlias = document.createElement("span");
     let fNum = document.createElement("span");
 
-    fAnnee = "✘ 2 chiffres";
-    fAlias = "✘ 2 lettres";
-    fNum = "✘ 4 chiffres";
+    fAnnee.innerText = "✘ 2 chiffres";
+    fAlias.innerText = "✘ 2 lettres";
+    fNum.innerText = "✘ 4 chiffres";
 
     feedback.append(fAnnee, "|", fAlias, "|", fNum);
 
