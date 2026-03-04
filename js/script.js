@@ -260,7 +260,9 @@ function afficherFormulaireID() {
     form.appendChild(formIntro);
     form.appendChild(description);
     form.appendChild(exemple);
+
     form.appendChild(input);
+    form.appendChild(feedback);
 
     form.appendChild(dataChoiceText);
     form.appendChild(dataChoiceCheck);
