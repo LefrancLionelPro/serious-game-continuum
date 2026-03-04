@@ -226,10 +226,10 @@ function afficherFormulaireID() {
         let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
         let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
 
-        fAnnee.innerText = (birthYear.length === 2 ) ? "✔ Année" : "✘ 2 chiffres | ";
+        fAnnee.innerText = (birthYear.length === 2 ) ? "✔ Année | " : "✘ 2 chiffres | ";
         fAnnee.style.color = (birthYear.length === 2 ) ? "green" : "red";
 
-        fAlias.innerText = (alias.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre  | ";
+        fAlias.innerText = (alias.length === 2 ) ? "✔ Initiales | " : "✘ 2 lettre  | ";
         fAlias.style.color = (alias.length === 2 ) ? "green" : "red";
 
         fNum.innerText = (phoneNum.length === 4 ) ? "✔ Téléphone" : "✘ 4 chiffres";
