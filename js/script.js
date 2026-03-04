@@ -206,11 +206,19 @@ function afficherFormulaireID() {
     input.placeholder = "ex : 80DT7767";
     input.maxLength = 8;
 
-    let tempId = input.value.toUpperCase();
+    input.addEventListener("input", function(){
+        let tempId = input.value.toUpperCase();
 
-    let birthYear = tempId.slice(0, 2).replace(/[^0-9]/g, '');
-    let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
-    let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
+        tempId = tempId.replace(/[^0-9A-Z]/g, '');
+
+        let birthYear = tempId.slice(0, 2).replace(/[^0-9]/g, '');
+        let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
+        let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
+
+        this.value = birthYear + alias + phoneNum;
+    })
+
+
 
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoice";
@@ -264,12 +272,7 @@ function afficherFormulaireID() {
         // On transmet les données du joueur dans la base de données uniquement s'il coche la case de consentement
         if (dataChoice) {
 
-            if (!tempId.length === 8) {
-                window.alert("L'identifiant doit faire 8 caractères.");
-                return;
-            }
-
-            let trueID = birthYear + alias + phoneNum;
+            let trueID = input.value;
 
             /*
              On crée une variable qui permet de transférer nos données à la base de données Supabase.
