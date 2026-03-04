@@ -367,8 +367,8 @@ async function login() {
     login_input.placeholder = "ex : 80DT7767";
     login_input.maxLength = 8;
 
-    let feedback = document.createElement("p");
-    feedback.id = "feedback";
+    let login_feedback = document.createElement("p");
+    login_feedback.id = "feedback";
 
     let login_fAnnee = document.createElement("span");
     let login_fAlias = document.createElement("span");
@@ -378,7 +378,7 @@ async function login() {
     login_fAlias.innerText = "✘ 2 lettres | ";
     login_fNum.innerText = "✘ 4 chiffres";
 
-    feedback.append(login_fAnnee, login_fAlias, login_fNum);
+    login_feedback.append(login_fAnnee, login_fAlias, login_fNum);
 
     login_input.addEventListener("input", function(){
         let login_tempId = login_input.value.toUpperCase().replace(/[^0-9A-Z]/g, '');
@@ -474,6 +474,7 @@ async function login() {
 
     form_login.appendChild(loginText);
     form_login.appendChild(login_input);
+    form_login.appendChild(login_feedback);
 
     form_login.appendChild(validateBtn);
 
