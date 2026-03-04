@@ -219,9 +219,9 @@ function afficherFormulaireID() {
         let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
         let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
 
-        document.getElementById('f_annee').innerHTML = (annee.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
-        document.getElementById('f_alias').innerHTML = (annee.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
-        document.getElementById('f_annee').innerHTML = (annee.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+        document.getElementById('f_annee').innerHTML = (birthYear.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
+        document.getElementById('f_alias').innerHTML = (alias.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
+        document.getElementById('f_annee').innerHTML = (phoneNum.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
 
         feedback.style.color = (tempId.length === 8) ? "green" : "red";
 
@@ -363,9 +363,9 @@ async function login() {
         let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
         let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
 
-        document.getElementById('f_annee').innerHTML = (annee.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
-        document.getElementById('f_alias').innerHTML = (annee.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
-        document.getElementById('f_annee').innerHTML = (annee.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+        document.getElementById('f_annee').innerHTML = (birthYear.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
+        document.getElementById('f_alias').innerHTML = (alias.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
+        document.getElementById('f_annee').innerHTML = (phoneNum.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
 
         feedback.style.color = (tempId.length === 8) ? "green" : "red";
 
