@@ -364,22 +364,37 @@ async function login() {
 
     let login_input = document.createElement("input");
     login_input.type = "text";
-    login_input.placeholder = "Veuillez rentrer votre identifiant";
+    login_input.placeholder = "ex : 80DT7767";
+    login_input.maxLength = 8;
+
+    let feedback = document.createElement("p");
+    feedback.id = "feedback";
+
+    let fAnnee = document.createElement("span");
+    let fAlias = document.createElement("span");
+    let fNum = document.createElement("span");
+
+    fAnnee.innerText = "✘ 2 chiffres | ";
+    fAlias.innerText = "✘ 2 lettres | ";
+    fNum.innerText = "✘ 4 chiffres";
+
+    feedback.append(fAnnee, fAlias, fNum);
 
     login_input.addEventListener("input", function(){
-        let tempId = input.value.toUpperCase();
-
-        tempId = tempId.replace(/[^0-9A-Z]/g, '');
+        let tempId = input.value.toUpperCase().replace(/[^0-9A-Z]/g, '');
 
         let birthYear = tempId.slice(0, 2).replace(/[^0-9]/g, '');
         let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
         let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
 
-        document.getElementById('f_annee').innerHTML = (birthYear.length === 2 ) ? "✔ Année" : "✘ 2 chiffres";
-        document.getElementById('f_alias').innerHTML = (alias.length === 2 ) ? "✔ Initiales" : "✘ 2 lettre";
-        document.getElementById('f_num').innerHTML = (phoneNum.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+        fAnnee.innerText = (birthYear.length === 2 ) ? "✔ Année | " : "✘ 2 chiffres | ";
+        fAnnee.style.color = (birthYear.length === 2 ) ? "green" : "red";
 
-        feedback.style.color = (tempId.length === 8) ? "green" : "red";
+        fAlias.innerText = (alias.length === 2 ) ? "✔ Initiales | " : "✘ 2 lettre  | ";
+        fAlias.style.color = (alias.length === 2 ) ? "green" : "red";
+
+        fNum.innerText = (phoneNum.length === 4 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+        fNum.style.color = (phoneNum.length === 4 ) ? "green" : "red";
 
         this.value = birthYear + alias + phoneNum;
     });
