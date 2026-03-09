@@ -11,6 +11,13 @@ form {
     justify-content: center;
     border-radius: 20px;
     background-color: papayawhip;
+    padding-top: 28.6px;
+    padding-bottom: 28.6px;
+    padding-left: 144.6px;
+    border-left-width: 0px;
+    border-left-style: solid;
+    margin-left: 106px;
+    margin-right: 106px;
 
     input[type="text"], input[type="email"] {
         border-radius: 8px;   /* Un arrondi subtil */
