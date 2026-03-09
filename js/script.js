@@ -263,7 +263,8 @@ function afficherFormulaireID() {
     let recontactLabel = document.createElement("label");
     recontactLabel.id = "recontactLabel";
     recontactLabel.setAttribute("for", "recontact");
-    recontactLabel.innerText = "Je consens à être recontacté·e dans les prochaines semaines pour participer à une nouvelle phase de l'expérimentation";
+
+    let recontactText = document.createTextNode("Je consens à être recontacté·e dans les prochaines semaines pour participer à une nouvelle phase de l'expérimentation");
 
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoiceCheck";
@@ -305,7 +306,8 @@ function afficherFormulaireID() {
     form.appendChild(email);
     emailText.appendChild(email);
 
-    form.appendChild(recontact);
+    recontactLabel.appendChild(recontactText);
+    recontactLabel.appendChild(recontact);
     form.appendChild(recontactLabel);
 
     form.appendChild(dataChoiceCheck);
