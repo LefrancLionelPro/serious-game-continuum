@@ -44,7 +44,7 @@ input[type="text"], input[type="email"] {
     font-size: 0.9rem;
 }
 
-.checkbox-container input {
+.recontactLabel input {
     width: 20px;
     height: 20px;
     cursor: pointer;
