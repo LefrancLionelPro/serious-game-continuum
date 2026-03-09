@@ -14,8 +14,8 @@ form {
     background-color: papayawhip;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    max-width: 450px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 717px;
     width: 90%;
     display: flex;
     flex-direction: column;
