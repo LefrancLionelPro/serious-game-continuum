@@ -269,6 +269,8 @@ function afficherFormulaireID() {
 
     let recontactText = document.createTextNode("Je consens à être recontacté·e dans les prochaines semaines pour participer à une nouvelle phase de l'expérimentation");
 
+    let btnContainer = document.createElement("div");
+
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoiceCheck";
     dataChoiceCheck.type = "checkbox";
@@ -318,8 +320,9 @@ function afficherFormulaireID() {
     dataChoiceLabel.appendChild(dataChoiceText);
     form.appendChild(dataChoiceLabel);
 
-    form.appendChild(loginButton);
-    form.appendChild(btnValider);
+    btnContainer.appendChild(loginButton);
+    btnContainer.appendChild(btnValider);
+    form.appendChild(btnContainer);
 
     // On met le formulaire qui possède désormais tous les éléments dans le conteneur de boutons
     containerBtn.appendChild(form);
