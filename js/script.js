@@ -98,7 +98,7 @@ function addVideo(url, afk, scenePresent){
         // Si des boutons existent, on parcourt la liste des boutons pour les rendre visibles
         if(hiddenBtnList){
             for (let i = 0; i < hiddenBtnList.length; i++) {
-                hiddenBtnList[i].style.display = "visible";
+                hiddenBtnList[i].style.visibility = "visible";
             }
         }
     });
