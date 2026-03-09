@@ -63,9 +63,10 @@ button {
 }
 
 .userInput {
-    width: 12%;
+    width: 17%;
+    align-self: center;
 }
 
 #email{
-    display: flex;
+    width: 32%;
 }

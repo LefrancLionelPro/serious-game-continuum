@@ -236,7 +236,7 @@ function afficherFormulaireID() {
         fAnnee.innerText = (birthYear.length === 2 ) ? "✔ Année | " : "✘ 2 chiffres | ";
         fAnnee.style.color = (birthYear.length === 2 ) ? "green" : "red";
 
-        fAlias.innerText = (alias.length === 2 ) ? "✔ Initiales | " : "✘ 2 lettre  | ";
+        fAlias.innerText = (alias.length === 2 ) ? "✔ Initiales | " : "✘ 2 lettres  | ";
         fAlias.style.color = (alias.length === 2 ) ? "green" : "red";
 
         fNum.innerText = (phoneNum.length === 4 ) ? "✔ Téléphone" : "✘ 4 chiffres";
