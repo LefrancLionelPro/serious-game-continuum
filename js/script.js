@@ -543,7 +543,7 @@ async function exportData(){
     // On sélectionne les colonnes nécessaires de toute la table.
     const {data, error} = await supabaseClient.from("responses")
         .select(
-            'run_id, player_id, scene, choix, utilisateurs(recontacter, adress_mail), created_at');
+            'run_id, player_id, scene, choix, utilisateurs(recontacter, address_mail), created_at');
 
     if (error) {
         window.alert("Erreur : " + error.message);
