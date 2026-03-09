@@ -305,11 +305,11 @@ function afficherFormulaireID() {
 
     form.appendChild(recontact);
     form.appendChild(recontactText);
-    recontact.appendChild(recontactText);
+    recontactText.appendChild(recontact);
 
     form.appendChild(dataChoiceCheck);
     form.appendChild(dataChoiceText);
-    dataChoiceCheck.appendChild(dataChoiceText);
+    dataChoiceText.appendChild(dataChoiceCheck);
 
     form.appendChild(loginButton);
     form.appendChild(btnValider);
