@@ -294,7 +294,6 @@ function afficherFormulaireID() {
     form.appendChild(emailText);
     form.appendChild(email);
     emailText.appendChild(email);
-    recontactInfo.appendChild(emailText);
 
     form.appendChild(recontactText);
     form.appendChild(recontact);
@@ -543,7 +542,8 @@ async function exportData(){
 
     // On sélectionne les colonnes nécessaires de toute la table.
     const {data, error} = await supabaseClient.from("responses")
-        .select('run_id, player_id, scene, choix, created_at');
+        .select(
+            'run_id, player_id, scene, choix, utilisateurs(recontacter, adress_mail), created_at');
 
     if (error) {
         window.alert("Erreur : " + error.message);
@@ -563,6 +563,9 @@ async function exportData(){
             lignesTransformer[ligne.run_id] = {
                 id_Partie: ligne.run_id,
                 Joueurs: ligne.player_id,
+                Recontacter: ligne.utilisateurs?.recontacter || "N/A",
+                Email: ligne.utilisateurs?.address_mail || "N/A",
+
                 /*
                 Nettoyage de l'horodateur :
                 1. On remplace le 'T' par un espace.
