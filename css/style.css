@@ -57,14 +57,6 @@ button {
     font-weight: bold;
 }
 
-.feedback, .userInput {
+.feedback {
     text-align: center;
-}
-
-.userInput {
-    width: 16%;
-}
-
-.email {
-    width: 32%;
 }
