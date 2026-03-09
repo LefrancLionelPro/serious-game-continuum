@@ -76,4 +76,5 @@ button {
     flex-direction: row;
     place-content: space-evenly;
     flex-wrap: wrap;
+    margin-top: 5%;
 }
