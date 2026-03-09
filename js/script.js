@@ -302,8 +302,6 @@ function afficherFormulaireID() {
     form.appendChild(recontact);
     recontactText.appendChild(recontact);
 
-    recontactInfo.appendChild(recontactText);
-
     form.appendChild(loginButton);
     form.appendChild(btnValider);
 
