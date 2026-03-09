@@ -247,12 +247,15 @@ function afficherFormulaireID() {
     email.type = "email";
     email.placeholder = "Veuillez rentrer votre adresse mail";
 
-    let recontactText = document.createElement("div");
-    recontactText.innerText = "Mon adresse mail :";
+    let emailText = document.createElement("p");
+    emailText.innerText = "Mon adresse mail :";
 
     let recontact = document.createElement("input");
     recontact.id = "recontact";
     recontact.type = "checkbox";
+
+    let recontactText = document.createElement("p");
+    recontactText.innerText = "Je consens à être recontacté·e dans les prochaines semaines pour participer à une nouvelle phase de l'expérimentation";
 
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoice";
@@ -260,12 +263,6 @@ function afficherFormulaireID() {
 
     let dataChoiceText = document.createElement("p");
     dataChoiceText.innerText = "Je consens à transmettre mes données à des fins de recherches et j'ai compris qu'elles seront anonymisées et traitées de manière strictement confidentielle";
-
-    let recontactCheckbox = document.createElement("input");
-    recontactCheckbox.type = "checkbox";
-
-    let recontactCheckboxText = document.createElement("p");
-    recontactCheckboxText.innerText = "Je consens à être recontacté·e dans les prochaines semaines pour participer à une nouvelle phase de l'expérimentation";
 
     let loginButton = document.createElement("button");
     loginButton.id = "bouton_login";
@@ -301,9 +298,11 @@ function afficherFormulaireID() {
     form.appendChild(dataChoiceCheck);
     dataChoiceText.appendChild(dataChoiceCheck);
 
-    form.appendChild(recontactCheckboxText);
-    form.appendChild(recontactCheckbox);
-    recontactCheckboxText.appendChild(recontactCheckbox);
+    form.appendChild(recontactText);
+    form.appendChild(recontact);
+    recontactText.appendChild(recontact);
+
+    recontactInfo.appendChild(recontactText);
 
     form.appendChild(loginButton);
     form.appendChild(btnValider);
