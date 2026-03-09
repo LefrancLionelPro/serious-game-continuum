@@ -254,7 +254,7 @@ function afficherFormulaireID() {
 
     let emailText = document.createElement("p");
     emailText.id = "emailText";
-    emailText.innerText = "Mon adresse mail :";
+    emailText.innerText = "Mon adresse mail : ";
 
     let recontact = document.createElement("input");
     recontact.id = "recontact";
