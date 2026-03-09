@@ -293,14 +293,15 @@ function afficherFormulaireID() {
 
     form.appendChild(emailText);
     form.appendChild(email);
-
-    form.appendChild(dataChoiceText);
-    form.appendChild(dataChoiceCheck);
-    dataChoiceText.appendChild(dataChoiceCheck);
+    emailText.appendChild(email);
 
     form.appendChild(recontactText);
     form.appendChild(recontact);
     recontactText.appendChild(recontact);
+
+    form.appendChild(dataChoiceText);
+    form.appendChild(dataChoiceCheck);
+    dataChoiceText.appendChild(dataChoiceCheck);
 
     form.appendChild(loginButton);
     form.appendChild(btnValider);
@@ -316,14 +317,18 @@ function afficherFormulaireID() {
         event.preventDefault();
 
         dataChoice = dataChoiceCheck.checked;
-        recontactChoice = recontactCheckbox.checked;
+
+
 
         // On transmet les données du joueur dans la base de données uniquement s'il coche la case de consentement
         if (dataChoice) {
-
-            mail =  (recontactChoice) ? "oui" : "non";
-
             trueID = input.value;
+            mail =  email.value;
+            recontactChoice = (recontact.checked) ? "oui" : "non";
+
+            if (!recontact.checked) {
+                mail = "";
+            }
 
             /*
              On crée une variable qui permet de transférer nos données à la base de données Supabase.
@@ -340,7 +345,8 @@ function afficherFormulaireID() {
                 .insert([
                     {
                         player_id: trueID,
-                        address_mail: mail
+                        address_mail: mail,
+                        recontacter : recontactChoice
                     }
                 ]);
 
