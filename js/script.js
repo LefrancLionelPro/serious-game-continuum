@@ -98,7 +98,7 @@ function addVideo(url, afk, scenePresent){
         // Si des boutons existent, on parcourt la liste des boutons pour les rendre visibles
         if(hiddenBtnList){
             for (let i = 0; i < hiddenBtnList.length; i++) {
-                hiddenBtnList[i].style.visibility = "visible";
+                hiddenBtnList[i].style.display = "block";
             }
         }
     });
@@ -123,7 +123,7 @@ function addBouton(texte, cible, scenePresent){
      */
     newBtn.innerText = texte;
     newBtn.classList.add('bouton_cacher');
-    newBtn.style.visibility = 'hidden';
+    newBtn.style.display = 'none';
 
     loggerSurEcran("Bouton créé : " + texte);
 
