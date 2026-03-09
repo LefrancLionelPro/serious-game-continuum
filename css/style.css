@@ -107,3 +107,24 @@ button:hover {
 button:active {
     transform: translateY(0);
 }
+
+/* On cible spécifiquement les paragraphes qui contiennent tes checkbox */
+#recontactLabel, #dataChoiceLabel {
+    display: flex;
+    justify-content: space-between; /* Texte à gauche, case à droite */
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+/* Si tu veux forcer la checkbox à rester alignée */
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
