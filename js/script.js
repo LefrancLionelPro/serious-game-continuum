@@ -211,6 +211,7 @@ function afficherFormulaireID() {
     input.id = "userInput";
     input.placeholder = "ex : 80DT7767";
     input.maxLength = 8;
+    input.autocomplete = "off";
 
     let feedback = document.createElement("p");
     feedback.id = "feedback";
@@ -252,6 +253,7 @@ function afficherFormulaireID() {
     email.id = "email";
     email.type = "email";
     email.placeholder = "Veuillez rentrer votre adresse mail ";
+    email.autocomplete = "email";
 
     let emailText = document.createElement("p");
     emailText.id = "emailText";
