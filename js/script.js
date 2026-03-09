@@ -67,6 +67,9 @@ function addVideo(url, afk, scenePresent){
     newVideo.src = url;
     newVideo.autoplay = true;
     newVideo.muted = true;
+    newVideo.setAttribute('playsinline', '');
+    newVideo.setAttribute('webkit-playsinline', '');
+
     newVideo.classList.add('video');
 
     /*
@@ -121,6 +124,8 @@ function addBouton(texte, cible, scenePresent){
     newBtn.innerText = texte;
     newBtn.classList.add('bouton_cacher');
     newBtn.style.visibility = 'hidden';
+
+    loggerSurEcran("Bouton créé : " + texte);
 
     /*
     On fait un eventListener :
@@ -181,6 +186,21 @@ function chargerScene(idScene) {
             addBouton(unChoix.texte, unChoix.cible, idScene);
         });
     }
+}
+
+function loggerSurEcran(message) {
+    let debug = document.getElementById("debug-log");
+    if (!debug) {
+        debug = document.createElement("div");
+        debug.id = "debug-log";
+        debug.style.position = "fixed";
+        debug.style.bottom = "0";
+        debug.style.background = "rgba(0,0,0,0.8)";
+        debug.style.color = "white";
+        debug.style.padding = "10px";
+        document.body.appendChild(debug);
+    }
+    debug.innerText += message + " | ";
 }
 
 // On crée une fonction pour afficher le formulaire
