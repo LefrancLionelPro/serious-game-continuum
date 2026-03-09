@@ -245,7 +245,7 @@ function afficherFormulaireID() {
 
     let email = document.createElement("input");
     email.type = "email";
-    email.placeholder = "Veuillez rentrer votre adresse mail";
+    email.placeholder = "Veuillez rentrer votre adresse mail ";
 
     let emailText = document.createElement("p");
     emailText.innerText = "Mon adresse mail :";
@@ -294,6 +294,7 @@ function afficherFormulaireID() {
     form.appendChild(emailText);
     form.appendChild(email);
     emailText.appendChild(email);
+    recontactInfo.appendChild(emailText);
 
     form.appendChild(recontactText);
     form.appendChild(recontact);
