@@ -27,7 +27,6 @@ input[type="text"], input[type="email"] {
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fff;
-    width: 100%;
     box-sizing: border-box;
 }
 
@@ -62,4 +61,12 @@ button {
 
 .feedback, .userInput {
     text-align: center;
+}
+
+.userInput {
+    width: 16%;
+}
+
+.email {
+    width: 32%;
 }
