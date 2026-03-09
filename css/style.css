@@ -57,7 +57,15 @@ button {
     font-weight: bold;
 }
 
-.feedback, .userInput {
+#feedback {
     display: flex;
     justify-content: center;
+}
+
+.userInput {
+    width: 12%;
+}
+
+#email{
+    display: flex;
 }

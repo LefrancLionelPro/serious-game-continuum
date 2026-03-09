@@ -208,7 +208,7 @@ function afficherFormulaireID() {
 
     let input = document.createElement("input");
     input.type = "text";
-    input.id = "userInput";
+    input.className = "userInput";
     input.placeholder = "ex : 80DT7767";
     input.maxLength = 8;
     input.autocomplete = "off";
