@@ -1,36 +1,109 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
+/* 1. Mise en page globale */
 body {
     font-family: 'Josefin Sans', sans-serif;
+    background-color: #f0f0f0; /* Un fond gris léger pour faire ressortir le formulaire */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
+/* 2. Le Formulaire (La "Card") */
 form {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    justify-content: center;
-    border-radius: 20px;
+    align-items: stretch; /* On étire les éléments pour qu'ils fassent tous la même largeur */
+
     background-color: papayawhip;
-    padding-top: 28.6px;
-    padding-bottom: 28.6px;
-    padding-left: 144.6px;
-    border-left-width: 0px;
-    border-left-style: solid;
-    margin-left: 106px;
-    margin-right: 106px;
+    padding: 40px; /* Padding uniforme pour éviter les décalages bizarres */
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Un petit relief pro */
 
-    input[type="text"], input[type="email"] {
-        border-radius: 8px;   /* Un arrondi subtil */
-        padding: 10px;
-        border: 1px solid #ddd;
-        background-color: #f9f9f9;
-        transition: all 0.3s; /* Pour que le changement de forme au clic soit fluide */
-    }
+    max-width: 500px;
+    width: 90%; /* Pour que ça reste beau sur téléphone */
+    gap: 20px; /* Espace automatique entre chaque élément du formulaire */
+}
 
-    /* Petit effet quand on clique dedans */
-    input:focus {
-        border-color: #2ecc71;
-        background-color: #fff;
-        box-shadow: 0 0 8px rgba(46, 204, 113, 0.2);
-    }
+/* 3. Les Titres et Textes */
+h3 {
+    text-align: center;
+    margin-top: 0;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 4. Les Champs de Saisie (Inputs) */
+input[type="text"],
+input[type="email"] {
+    font-family: inherit; /* Pour garder la Josefin Sans */
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box; /* Crucial pour que le padding n'agrandisse pas l'input */
+}
+
+input:focus {
+    outline: none;
+    border-color: #2ecc71;
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
+}
+
+/* 5. Le Feedback (Validation ID) */
+#feedback {
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 600;
+}
+
+/* 6. Les Checkboxes et Labels (Texte à gauche, Case à droite) */
+label {
+    display: flex;
+    justify-content: space-between; /* Pousse le texte à gauche et l'input à droite */
+    align-items: center;
+    cursor: pointer;
+    background: rgba(255,255,255,0.3); /* Un fond léger pour séparer les zones */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    order: 2; /* Force la checkbox à se mettre après le texte dans le flex */
+}
+
+/* 7. Les Boutons */
+button {
+    font-family: inherit;
+    font-weight: 600;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #2c3e50;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+button:hover {
+    background-color: #34495e;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
 }
