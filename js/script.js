@@ -303,13 +303,13 @@ function afficherFormulaireID() {
     form.appendChild(email);
     emailText.appendChild(email);
 
-    form.appendChild(recontactText);
     form.appendChild(recontact);
-    recontactText.appendChild(recontact);
+    form.appendChild(recontactText);
+    recontact.appendChild(recontactText);
 
-    form.appendChild(dataChoiceText);
     form.appendChild(dataChoiceCheck);
-    dataChoiceText.appendChild(dataChoiceCheck);
+    form.appendChild(dataChoiceText);
+    dataChoiceCheck.appendChild(dataChoiceText);
 
     form.appendChild(loginButton);
     form.appendChild(btnValider);
