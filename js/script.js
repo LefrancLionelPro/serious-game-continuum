@@ -241,9 +241,14 @@ function afficherFormulaireID() {
     });
 
     let recontactInfo = document.createElement("p");
-    recontactInfo.innerText = "Une nouvelle phase expérimentale se déroulera d'ici quelques semaines (15 minutes, en ligne) ; afin de vous contacter, nous avons besoin de votre adresse mail personnelle.\n" +
-        "\n" +
-        "Mon adresse mail :";
+    recontactInfo.innerText = "Une nouvelle phase expérimentale se déroulera d'ici quelques semaines (15 minutes, en ligne) ; afin de vous contacter, nous avons besoin de votre adresse mail personnelle.";
+
+    let email = document.createElement("input");
+    email.type = "email";
+    email.placeholder = "Veuillez rentrer votre adresse mail";
+
+    let recontactText = document.createElement("div");
+    recontactText.innerText = "Mon adresse mail :";
 
     let recontact = document.createElement("input");
     recontact.id = "recontact";
@@ -256,18 +261,11 @@ function afficherFormulaireID() {
     let dataChoiceText = document.createElement("p");
     dataChoiceText.innerText = "Je consens à transmettre mes données à des fins de recherches et j'ai compris qu'elles seront anonymisées et traitées de manière strictement confidentielle";
 
-    let email = document.createElement("input");
-    email.type = "email";
-    email.placeholder = "Veuillez rentrer votre adresse mail";
-
-    let recontactText = document.createElement("p");
-    recontactText.innerText = "Mon adresse mail :";
-
     let recontactCheckbox = document.createElement("input");
     recontactCheckbox.type = "checkbox";
 
     let recontactCheckboxText = document.createElement("p");
-    recontactCheckboxText.innerText = "Je consens à transmettre mes données à des fins de recherches et j'ai compris qu'elles seront anonymisées et traitées de manière strictement confidentielle";
+    recontactCheckboxText.innerText = "Je consens à être recontacté·e dans les prochaines semaines pour participer à une nouvelle phase de l'expérimentation";
 
     let loginButton = document.createElement("button");
     loginButton.id = "bouton_login";
