@@ -291,8 +291,8 @@ function afficherFormulaireID() {
 
     form.appendChild(recontactInfo);
 
-    form.appendChild(recontactText);
-    form.appendChild(recontact);
+    form.appendChild(emailText);
+    form.appendChild(email);
 
     form.appendChild(dataChoiceText);
     form.appendChild(dataChoiceCheck);
