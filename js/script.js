@@ -198,7 +198,7 @@ function afficherFormulaireID() {
     description.innerHTML = "Pour vous identifier, entrez : <br>" +
         "- Les 2 dernièrs chiffres de votre année de naissances<br>" +
         "- La première et la dernière lettre de votre nom de famille<br>" +
-        "- les 4 dernièr chiffres de votre numéro de téléphone portab";
+        "- les 4 dernièr chiffres de votre numéro de téléphone portable";
 
     let exemple = document.createElement("p");
     exemple.innerText = "Exemple : Je m'appelle Jean Dupont, je suis né en 1980, mon numéro de téléphone est le : 06****7767"
