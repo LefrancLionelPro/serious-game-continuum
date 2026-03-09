@@ -1,0 +1,10 @@
+
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: rgb(88, 20, 142);
+}
