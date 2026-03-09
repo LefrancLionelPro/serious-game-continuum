@@ -303,9 +303,11 @@ function afficherFormulaireID() {
     form.appendChild(email);
     emailText.appendChild(email);
 
-    form.appendChild(recontact);
-    form.appendChild(recontactText);
-    recontactText.appendChild(recontact);
+    let divMailCheck = document.createElement("div");
+    divMailCheck.id = "divMailCheck";
+    divMailCheck.append(recontact, recontactInfo)
+
+    form.appendChild(divMailCheck);
 
     form.appendChild(dataChoiceCheck);
     form.appendChild(dataChoiceText);
