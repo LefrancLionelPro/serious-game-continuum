@@ -26,4 +26,30 @@ form {
         background-color: #fff;
         box-shadow: 0 0 8px rgba(46, 204, 113, 0.2);
     }
+
+    /* Le conteneur qui englobe le label et la checkbox */
+    form p, .container-checkbox {
+        display: flex;
+        justify-content: space-between; /* Texte à gauche, case à droite */
+        align-items: center;           /* Aligne verticalement au centre */
+        width: 100%;
+        margin: 10px 0;
+        gap: 15px;
+    }
+
+    /* On donne un peu de style aux labels pour qu'ils ne soient pas trop serrés */
+    label {
+        flex: 1; /* Le texte prend toute la place disponible */
+        cursor: pointer;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    /* La checkbox */
+    input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        accent-color: #27ae60; /* Change la couleur de la coche */
+    }
 }

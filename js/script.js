@@ -267,7 +267,6 @@ function afficherFormulaireID() {
 
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoiceCheck";
-    dataChoiceCheck.id = "dataChoice";
     dataChoiceCheck.type = "checkbox";
 
     let dataChoiceLabel = document.createElement("label");
