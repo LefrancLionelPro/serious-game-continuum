@@ -259,10 +259,11 @@ function afficherFormulaireID() {
     let recontact = document.createElement("input");
     recontact.id = "recontact";
     recontact.type = "checkbox";
+    recontact.innerText = "Je consens à être recontacté·e dans les prochaines semaines pour participer à une nouvelle phase de l'expérimentation";
 
     let recontactText = document.createElement("p");
     recontactText.id = "recontactText";
-    recontactText.innerText = "Je consens à être recontacté·e dans les prochaines semaines pour participer à une nouvelle phase de l'expérimentation";
+
 
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoiceCheck";
@@ -303,11 +304,9 @@ function afficherFormulaireID() {
     form.appendChild(email);
     emailText.appendChild(email);
 
-    let divMailCheck = document.createElement("div");
-    divMailCheck.id = "divMailCheck";
-    divMailCheck.append(recontact, recontactInfo)
-
-    form.appendChild(divMailCheck);
+    form.appendChild(recontact);
+    form.appendChild(recontactText);
+    recontactText.appendChild(recontact);
 
     form.appendChild(dataChoiceCheck);
     form.appendChild(dataChoiceText);
