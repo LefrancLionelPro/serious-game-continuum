@@ -270,6 +270,7 @@ function afficherFormulaireID() {
     let recontactText = document.createTextNode("Je consens à être recontacté·e dans les prochaines semaines pour participer à une nouvelle phase de l'expérimentation");
 
     let btnContainer = document.createElement("div");
+    btnContainer.id = "btnContainer";
 
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoiceCheck";
