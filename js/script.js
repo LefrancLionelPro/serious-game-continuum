@@ -446,7 +446,7 @@ async function login() {
         login_fAnnee.innerText = (login_birthYear.length === 2 ) ? "✔ Année | " : "✘ 2 chiffres | ";
         login_fAnnee.style.color = (login_birthYear.length === 2 ) ? "green" : "red";
 
-        login_fAlias.innerText = (login_alias.length === 2 ) ? "✔ Initiales | " : "✘ 2 lettre  | ";
+        login_fAlias.innerText = (login_alias.length === 2 ) ? "✔ Initiales | " : "✘ 2 lettres  | ";
         login_fAlias.style.color = (login_alias.length === 2 ) ? "green" : "red";
 
         login_fNum.innerText = (login_phoneNum.length === 4 ) ? "✔ Téléphone" : "✘ 4 chiffres";
