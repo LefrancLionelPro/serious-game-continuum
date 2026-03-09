@@ -12,14 +12,14 @@ body {
 
 form {
     background-color: papayawhip;
-    padding: 40px;
+    padding: 20px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     max-width: 717px;
     width: 90%;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
 input[type="text"], input[type="email"] {
@@ -58,4 +58,8 @@ button {
     color: white;
     cursor: pointer;
     font-weight: bold;
+}
+
+.feedback, .userInput {
+    text-align: center;
 }
