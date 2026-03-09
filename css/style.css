@@ -57,6 +57,7 @@ button {
     font-weight: bold;
 }
 
-.feedback {
-    text-align: center;
+.feedback, .userInput {
+    display: flex;
+    justify-content: center;
 }
