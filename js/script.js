@@ -5,6 +5,8 @@ const supabaseClient = supabase.createClient('https://qbosijwcfspfexrcxcpa.supab
 // On crée toutes les variables dont on aura besoin
 let trueID;
 let dataChoice;
+let mail;
+let recontactChoice;
 
 // On crée des variables pour pouvoir envoyer la scène présente et le choix du joueur dans cette scène
 let currentScene;
@@ -194,12 +196,12 @@ function afficherFormulaireID() {
 
     let description = document.createElement("p");
     description.innerHTML = "Pour vous identifier, entrez : <br>" +
-        "- Les 2 dernière chiffre de votre année de naissances<br>" +
-        "- La première et la dernière lettres votre nom de famille<br>" +
-        "- les 4 dernière chiffre de numéro de téléphone";
+        "- Les 2 dernièrs chiffres de votre année de naissances<br>" +
+        "- La première et la dernière lettre de votre nom de famille<br>" +
+        "- les 4 dernièr chiffres de votre numéro de téléphone portab";
 
     let exemple = document.createElement("p");
-    exemple.innerText = "Exemple : Je m'appelle Jean Dupont, je suis née en 1980, mon numéro de téléphone est le : 06****7767"
+    exemple.innerText = "Exemple : Je m'appelle Jean Dupont, je suis né en 1980, mon numéro de téléphone est le : 06****7767"
 
     let input = document.createElement("input");
     input.type = "text";
@@ -238,17 +240,38 @@ function afficherFormulaireID() {
         this.value = birthYear + alias + phoneNum;
     });
 
+    let recontactInfo = document.createElement("p");
+    recontactInfo.innerText = "Une nouvelle phase expérimentale se déroulera d'ici quelques semaines (15 minutes, en ligne) ; afin de vous contacter, nous avons besoin de votre adresse mail personnelle.\n" +
+        "\n" +
+        "Mon adresse mail :";
+
+    let recontact = document.createElement("input");
+    recontact.id = "recontact";
+    recontact.type = "checkbox";
 
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoice";
     dataChoiceCheck.type = "checkbox";
 
     let dataChoiceText = document.createElement("p");
-    dataChoiceText.innerText = "Je consens à transmettre mes données à des fins de recherches"
+    dataChoiceText.innerText = "Je consens à transmettre mes données à des fins de recherches et j'ai compris qu'elles seront anonymisées et traitées de manière strictement confidentielle";
+
+    let email = document.createElement("input");
+    email.type = "email";
+    email.placeholder = "Veuillez rentrer votre adresse mail";
+
+    let recontactText = document.createElement("p");
+    recontactText.innerText = "Mon adresse mail :";
+
+    let recontactCheckbox = document.createElement("input");
+    recontactCheckbox.type = "checkbox";
+
+    let recontactCheckboxText = document.createElement("p");
+    recontactCheckboxText.innerText = "Je consens à transmettre mes données à des fins de recherches et j'ai compris qu'elles seront anonymisées et traitées de manière strictement confidentielle";
 
     let loginButton = document.createElement("button");
     loginButton.id = "bouton_login";
-    loginButton.innerHTML = "J'ai déjà un identifiant et je me connecte"
+    loginButton.innerHTML = "J'ai déjà un identifiant et je me connecte";
 
     /*
     On fait un eventListener :
@@ -271,9 +294,18 @@ function afficherFormulaireID() {
     form.appendChild(input);
     form.appendChild(feedback);
 
+    form.appendChild(recontactInfo);
+
+    form.appendChild(recontactText);
+    form.appendChild(recontact);
+
     form.appendChild(dataChoiceText);
     form.appendChild(dataChoiceCheck);
     dataChoiceText.appendChild(dataChoiceCheck);
+
+    form.appendChild(recontactCheckboxText);
+    form.appendChild(recontactCheckbox);
+    recontactCheckboxText.appendChild(recontactCheckbox);
 
     form.appendChild(loginButton);
     form.appendChild(btnValider);
@@ -289,9 +321,12 @@ function afficherFormulaireID() {
         event.preventDefault();
 
         dataChoice = dataChoiceCheck.checked;
+        recontactChoice = recontactCheckbox.checked;
 
         // On transmet les données du joueur dans la base de données uniquement s'il coche la case de consentement
         if (dataChoice) {
+
+            mail =  (recontactChoice) ? "oui" : "non";
 
             trueID = input.value;
 
@@ -309,7 +344,8 @@ function afficherFormulaireID() {
             const { error } = await supabaseClient.from('utilisateurs')
                 .insert([
                     {
-                        player_id: trueID
+                        player_id: trueID,
+                        address_mail: mail
                     }
                 ]);
 
