@@ -274,7 +274,7 @@ function afficherFormulaireID() {
     dataChoiceLabel.id = "dataChoiceLabel";
     dataChoiceLabel.setAttribute("for", "dataChoiceCheck");
 
-    let dataChoiceText = document.createElement("Je consens à transmettre mes données à des fins de recherches et j'ai compris qu'elles seront anonymisées et traitées de manière strictement confidentielle");
+    let dataChoiceText = document.createTextNode("Je consens à transmettre mes données à des fins de recherches et j'ai compris qu'elles seront anonymisées et traitées de manière strictement confidentielle");
 
     let loginButton = document.createElement("button");
     loginButton.id = "loginButton";
