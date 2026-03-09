@@ -193,6 +193,8 @@ function afficherFormulaireID() {
     // On crée un nouvel élément en-tête 3 qui aura comme texte "Identification"
     let formIntro = document.createElement("h3");
     formIntro.innerText = "Identification";
+    formIntro.id = "formIntro";
+
 
     let description = document.createElement("p");
     description.innerHTML = "Pour vous identifier, entrez : <br>" +
@@ -202,6 +204,7 @@ function afficherFormulaireID() {
 
     let exemple = document.createElement("p");
     exemple.innerText = "Exemple : Je m'appelle Jean Dupont, je suis né en 1980, mon numéro de téléphone est le : 06****7767"
+    exemple.id = "exemple";
 
     let input = document.createElement("input");
     input.type = "text";
@@ -241,13 +244,16 @@ function afficherFormulaireID() {
     });
 
     let recontactInfo = document.createElement("p");
+    recontactInfo.id = "recontactInfo";
     recontactInfo.innerText = "Une nouvelle phase expérimentale se déroulera d'ici quelques semaines (15 minutes, en ligne) ; afin de vous contacter, nous avons besoin de votre adresse mail personnelle.";
 
     let email = document.createElement("input");
+    email.id = "email";
     email.type = "email";
     email.placeholder = "Veuillez rentrer votre adresse mail ";
 
     let emailText = document.createElement("p");
+    emailText.id = "emailText";
     emailText.innerText = "Mon adresse mail :";
 
     let recontact = document.createElement("input");
@@ -255,9 +261,11 @@ function afficherFormulaireID() {
     recontact.type = "checkbox";
 
     let recontactText = document.createElement("p");
+    recontactText.id = "recontactText";
     recontactText.innerText = "Je consens à être recontacté·e dans les prochaines semaines pour participer à une nouvelle phase de l'expérimentation";
 
     let dataChoiceCheck = document.createElement("input");
+    dataChoiceCheck.id = "dataChoiceCheck";
     dataChoiceCheck.id = "dataChoice";
     dataChoiceCheck.type = "checkbox";
 
@@ -265,7 +273,7 @@ function afficherFormulaireID() {
     dataChoiceText.innerText = "Je consens à transmettre mes données à des fins de recherches et j'ai compris qu'elles seront anonymisées et traitées de manière strictement confidentielle";
 
     let loginButton = document.createElement("button");
-    loginButton.id = "bouton_login";
+    loginButton.id = "loginButton";
     loginButton.innerHTML = "J'ai déjà un identifiant et je me connecte";
 
     /*
