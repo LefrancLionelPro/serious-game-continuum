@@ -30,7 +30,6 @@ input[type="text"], input[type="email"] {
     box-sizing: border-box;
 }
 
-/* LE SECRET POUR TES CHECKBOXES */
 .recontactLabel, .dataChoiceLabel {
     display: flex;
     align-items: center;
