@@ -273,7 +273,8 @@ function afficherFormulaireID() {
     let dataChoiceLabel = document.createElement("label");
     dataChoiceLabel.id = "dataChoiceLabel";
     dataChoiceLabel.setAttribute("for", "dataChoiceCheck");
-    dataChoiceLabel.innerText = "Je consens à transmettre mes données à des fins de recherches et j'ai compris qu'elles seront anonymisées et traitées de manière strictement confidentielle";
+
+    let dataChoiceText = document.createElement("Je consens à transmettre mes données à des fins de recherches et j'ai compris qu'elles seront anonymisées et traitées de manière strictement confidentielle");
 
     let loginButton = document.createElement("button");
     loginButton.id = "loginButton";
@@ -310,7 +311,8 @@ function afficherFormulaireID() {
     recontactLabel.appendChild(recontactText);
     form.appendChild(recontactLabel);
 
-    form.appendChild(dataChoiceCheck);
+    dataChoiceLabel.appendChild(dataChoiceCheck);
+    dataChoiceLabel.appendChild(dataChoiceText);
     form.appendChild(dataChoiceLabel);
 
     form.appendChild(loginButton);

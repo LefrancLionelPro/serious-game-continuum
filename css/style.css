@@ -32,7 +32,7 @@ input[type="text"], input[type="email"] {
 }
 
 /* LE SECRET POUR TES CHECKBOXES */
-.recontactLabel {
+.recontactLabel, .dataChoiceLabel {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -44,7 +44,7 @@ input[type="text"], input[type="email"] {
     font-size: 0.9rem;
 }
 
-.recontactLabel input {
+.recontactLabel, .dataChoiceLabel input {
     width: 20px;
     height: 20px;
     cursor: pointer;
