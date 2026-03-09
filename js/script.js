@@ -259,19 +259,21 @@ function afficherFormulaireID() {
     let recontact = document.createElement("input");
     recontact.id = "recontact";
     recontact.type = "checkbox";
-    recontact.innerText = "Je consens à être recontacté·e dans les prochaines semaines pour participer à une nouvelle phase de l'expérimentation";
 
-    let recontactText = document.createElement("p");
-    recontactText.id = "recontactText";
-
+    let recontactLabel = document.createElement("label");
+    recontactLabel.id = "recontactLabel";
+    recontactLabel.setAttribute("for", "recontact");
+    recontactLabel.innerText = "Je consens à être recontacté·e dans les prochaines semaines pour participer à une nouvelle phase de l'expérimentation";
 
     let dataChoiceCheck = document.createElement("input");
     dataChoiceCheck.id = "dataChoiceCheck";
     dataChoiceCheck.id = "dataChoice";
     dataChoiceCheck.type = "checkbox";
 
-    let dataChoiceText = document.createElement("p");
-    dataChoiceText.innerText = "Je consens à transmettre mes données à des fins de recherches et j'ai compris qu'elles seront anonymisées et traitées de manière strictement confidentielle";
+    let dataChoiceLabel = document.createElement("label");
+    dataChoiceLabel.id = "dataChoiceLabel";
+    dataChoiceLabel.setAttribute("for", "dataChoiceCheck");
+    dataChoiceLabel.innerText = "Je consens à transmettre mes données à des fins de recherches et j'ai compris qu'elles seront anonymisées et traitées de manière strictement confidentielle";
 
     let loginButton = document.createElement("button");
     loginButton.id = "loginButton";
@@ -305,12 +307,10 @@ function afficherFormulaireID() {
     emailText.appendChild(email);
 
     form.appendChild(recontact);
-    form.appendChild(recontactText);
-    recontactText.appendChild(recontact);
+    form.appendChild(recontactLabel);
 
     form.appendChild(dataChoiceCheck);
-    form.appendChild(dataChoiceText);
-    dataChoiceText.appendChild(dataChoiceCheck);
+    form.appendChild(dataChoiceLabel);
 
     form.appendChild(loginButton);
     form.appendChild(btnValider);
