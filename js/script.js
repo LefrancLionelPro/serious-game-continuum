@@ -19,7 +19,7 @@ window.onload = function () {
 window.addEventListener("load", function () {
     setTimeout(function () {
         window.scrollTo(0, 1);
-        document.style.transform = "scale(1.00000001)";
+        document.style.transform = "scale(1.0001)";
 
         setTimeout(function () {
             document.style.transform = "scale(1)";
