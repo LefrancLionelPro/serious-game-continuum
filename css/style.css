@@ -3,6 +3,7 @@
 html {
     overflow-y: hidden;
 }
+
 body {
     font-family: 'Josefin Sans', sans-serif;
     background-color: #F8F9FA;
@@ -34,8 +35,8 @@ form > * {
 }
 
 input[type="text"], input[type="email"] {
-    padding: 12px;
-    border: 1px solid #ddd;
+    padding: 10px;
+    border: 2px solid #2c3e50;
     border-radius: 8px;
     background-color: #F8F9FA;
     box-sizing: border-box;
@@ -60,7 +61,7 @@ input[type="text"], input[type="email"] {
 }
 
 button {
-    padding: 11px;
+    padding: 10px;
     border-radius: 8px;
     background-color: #F8F9FA;
     color: #2c3e50;
