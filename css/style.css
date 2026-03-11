@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Josefin Sans', sans-serif;
-    background-color: #f0f0f0;
+    background-color: snow;
     display: flex;
     min-height: 100vh;
     margin: 0;
@@ -19,14 +19,10 @@ section {
 }
 
 form {
-    background-color: papayawhip;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    max-width: 717px;
     min-width: 300px;
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
 form > * {
@@ -89,5 +85,4 @@ button {
     flex-direction: row;
     place-content: space-evenly;
     flex-wrap: wrap;
-    margin-top: 5%;
 }
