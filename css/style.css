@@ -72,10 +72,10 @@ button {
     width: 32%;
 }
 
-#btnContainer {
-    display: flex;
-    flex-direction: row;
-    place-content: space-evenly;
-    flex-wrap: wrap;
-    margin-top: 5%;
-}
+/*#btnContainer {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    place-content: space-evenly;*/
+/*    flex-wrap: wrap;*/
+/*    margin-top: 5%;*/
+/*}*/
