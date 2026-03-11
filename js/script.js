@@ -614,8 +614,8 @@ async function exportData(){
             lignesTransformer[ligne.run_id] = {
                 id_Partie: ligne.run_id,
                 Joueurs: ligne.player_id,
-                Recontacter: ligne.utilisateurs?.recontacter || "N/A",
-                Email: ligne.utilisateurs?.address_mail || "N/A",
+                Recontacter: (ligne.utilisateurs && ligne.utilisateurs.recontacter) ? ligne.utilisateurs.recontacter : "N/A",
+                Email: (ligne.utilisateurs && ligne.utilisateurs.address_mail) ? ligne.utilisateurs.address_mail : "N/A",
 
                 /*
                 Nettoyage de l'horodateur :
