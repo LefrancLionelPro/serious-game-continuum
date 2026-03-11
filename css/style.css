@@ -6,9 +6,16 @@ body {
     display: flex;
     min-height: 100vh;
     margin: 0;
-    justify-content: flex-start;
-    align-items: stretch;
     flex-direction: column;
+}
+
+section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 form {
