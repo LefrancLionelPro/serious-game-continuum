@@ -31,10 +31,14 @@ section {
 }
 
 form {
+    max-width: 720px;
     min-width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+    scale: 80%;
+    position: relative;
+    bottom: 35px;
 }
 
 form > * {
