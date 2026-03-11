@@ -15,8 +15,12 @@
 </head>
 <body>
   <header>
-      <button id="buttonExport">Exporter toutes les données</button>
-      <button id="fullScreen">Mettre la page en pleine écran</button>
+      <button id="burger-btn">☰</button>
+
+      <div id="burger-menu" class="hidden">
+          <button onclick="exportData()">Exporter les données</button>
+          <button onclick="fullScreen()">Plein écran</button>
+      </div>
   </header>
 
   <section>
