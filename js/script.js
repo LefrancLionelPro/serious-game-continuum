@@ -674,3 +674,25 @@ let exportBtn = document.getElementById("buttonExport");
 if (exportBtn) {
     exportBtn.addEventListener("click",  exportData);
 }
+
+function fullScreen(){
+    const elem = document.documentElement;
+
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    }
+    else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+    }
+    else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+    }
+    else {
+        this.visibility.hidden;
+    }
+}
+
+let fullScreenBtn = document.getElementById("fullScreen");
+if (fullScreenBtn) {
+    fullScreenBtn.addEventListener("click", fullScreen);
+}
