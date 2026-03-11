@@ -16,6 +16,17 @@ window.onload = function () {
     }
 }
 
+window.addEventListener("load", function () {
+    setTimeout(function () {
+        window.scrollTo(0, 1);
+        document.style.transform = "scale(1.00000001)";
+
+        setTimeout(function () {
+            document.style.transform = "scale(1)";
+        }, 100);
+    }, 500);
+});
+
 // On crée toutes les variables dont on aura besoin
 let trueID;
 let dataChoice;
