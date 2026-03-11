@@ -26,6 +26,8 @@ let recontactChoice;
 let currentScene;
 let choosedOption;
 
+let fullScreenBool = false;
+
 // On crée une variable qui va générer un ID aléatoire pour pouvoir stocker plusieurs runs d'un même joueur
 const run = Math.random().toString(36).substr(2, 15) + Math.random().toString(36).substr(2, 15);
 
@@ -678,18 +680,36 @@ if (exportBtn) {
 function fullScreen(){
     const elem = document.documentElement;
 
-    if (elem.requestFullscreen) {
-        elem.requestFullscreen();
+    if (!fullScreenBool) {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        }
+        else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        }
+        else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+        else {
+            window.alert("Votre appareille n'est pas compatible avec la fonction pleine écran")
+            document.getElementById("fullScreen").style.display = "none";
+        }
+
+        fullScreenBool = true;
     }
-    else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen();
-    }
-    else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen();
-    }
+
     else {
-        window.alert("Votre appareille n'est pas compatible avec la fonction pleine écran")
-        this.visibility.hidden;
+        // Sortie du plein écran
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+        else if (document.webkitExitFullscreen) { // Safari/Chrome mobile
+            document.webkitExitFullscreen();
+        }
+        else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+        fullScreenBool = false;
     }
 }
 
