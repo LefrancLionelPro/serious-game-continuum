@@ -214,21 +214,6 @@ function chargerScene(idScene) {
     }
 }
 
-function loggerSurEcran(message) {
-    let debug = document.getElementById("debug-log");
-    if (!debug) {
-        debug = document.createElement("div");
-        debug.id = "debug-log";
-        debug.style.position = "fixed";
-        debug.style.bottom = "0";
-        debug.style.background = "rgba(0,0,0,0.8)";
-        debug.style.color = "white";
-        debug.style.padding = "10px";
-        document.body.appendChild(debug);
-    }
-    debug.innerText += message + " | ";
-}
-
 // On crée une fonction pour afficher le formulaire
 function afficherFormulaireID() {
     containerBtn.innerHTML = "";
