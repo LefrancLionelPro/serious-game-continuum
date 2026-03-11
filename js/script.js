@@ -4,6 +4,7 @@
 let supabaseClient = null;
 
 window.onload = function () {
+    //a
     if (typeof supabase === "undefined") {
         window.alert("Supabase n'est pas chargé ! Vérifie ta connexion internet ou le lien du script.");
     }
