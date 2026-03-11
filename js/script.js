@@ -79,7 +79,7 @@ function addVideo(url, afk, scenePresent){
 
     let playPromise = newVideo.play();
     if (!playPromise !== undefined) {
-        playPromise.catch(error => {
+        playPromise.catch(function(error) {
             console.log("L'autoplay a été bloqué, l'utilisateur doit cliquer.");
         });
     }
@@ -194,7 +194,7 @@ function chargerScene(idScene) {
                 addBouton(unChoix.texte, unChoix.cible, idScene);
             }
          */
-        data.choix.forEach(unChoix => {
+        data.choix.forEach(function(unChoix) {
             addBouton(unChoix.texte, unChoix.cible, idScene);
         });
     }
@@ -608,7 +608,7 @@ async function exportData(){
     On utilise 'run_id' comme clé pour regrouper toutes les actions d'une même partie.
     */
 
-    data.forEach(ligne => {
+    data.forEach(function(ligne) {
         // Si la partie (run_id) n'est pas encore enregistrée dans notre objet, on l'initialise
         if (!lignesTransformer[ligne.run_id]) {
             lignesTransformer[ligne.run_id] = {
