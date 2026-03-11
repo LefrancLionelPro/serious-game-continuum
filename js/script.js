@@ -24,6 +24,9 @@ window.addEventListener("load", function () {
         setTimeout(function () {
             document.style.transform = "scale(1)";
         }, 100);
+
+        let html = document.getElementsByTagName("html")[0];
+        html.style.overflowY = "hidden";
     }, 500);
 });
 
