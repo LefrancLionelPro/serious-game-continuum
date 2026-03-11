@@ -17,15 +17,16 @@ window.onload = function () {
 }
 
 window.addEventListener("load", function () {
+    let html = document.getElementsByTagName("html")[0];
     setTimeout(function () {
-        window.scrollTo(0, 1);
+        html.style.overflowY = "scroll";
+        window.scrollTo(0, 10);
         document.body.style.transform = "scale(1.0001)";
 
         setTimeout(function () {
             document.body.style.transform = "scale(1)";
         }, 100);
 
-        let html = document.getElementsByTagName("html")[0];
         html.style.overflowY = "hidden";
     }, 500);
 });
