@@ -27,7 +27,10 @@ form {
     min-width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+}
+
+form > * {
+    margin: 0;
 }
 
 input[type="text"], input[type="email"] {
