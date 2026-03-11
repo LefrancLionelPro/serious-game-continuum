@@ -1,10 +1,15 @@
 // On crée une variable pour notre client supabase (pour rajouter la base de données dans le code)
 // Pour info, le client s'écrit comme ça : const nomDeLaVariable = supabase.createClient('l'url du projet', 'la clé publiable')
-if (typeof supabase === "undefined") {
-    window.alert("Supabase n'est pas chargé ! Vérifie ta connexion internet ou le lien du script.");
-}
-else {
-    const supabaseClient = supabase.createClient('https://qbosijwcfspfexrcxcpa.supabase.co', 'sb_publishable_T1dqF1VvIR-L3ZTSc4LgBQ_uAcJ_jKE');
+window.onload = function () {
+    if (typeof supabase === "undefined") {
+        window.alert("Supabase n'est pas chargé ! Vérifie ta connexion internet ou le lien du script.");
+    }
+    else {
+        const supabaseClient = supabase.createClient('https://qbosijwcfspfexrcxcpa.supabase.co', 'sb_publishable_T1dqF1VvIR-L3ZTSc4LgBQ_uAcJ_jKE');
+
+        // On démarre le jeu avec la scène d'identification
+        chargerScene("identification");
+    }
 }
 
 // On crée toutes les variables dont on aura besoin
@@ -680,6 +685,3 @@ let exportBtn = document.getElementById("buttonExport");
 if (exportBtn) {
     exportBtn.addEventListener("click",  exportData);
 }
-
-// On démarre le jeu avec la scène d'identification
-chargerScene("identification");
