@@ -13,8 +13,11 @@ let currentScene;
 let choosedOption;
 
 // On crée une variable qui va générer un ID aléatoire pour pouvoir stocker plusieurs runs d'un même joueur
-const run = crypto.randomUUID();
+const run = Math.random().toString(36).substr(2, 15) + Math.random().toString(36).substr(2, 15);
 
+window.onerror = function(message, source, lineno, colno, error) {
+    alert("ERREUR JS : " + message + " à la ligne " + lineno);
+};
 
 // On crée nos différentes scènes
 
@@ -67,10 +70,19 @@ function addVideo(url, afk, scenePresent){
     newVideo.src = url;
     newVideo.autoplay = true;
     newVideo.muted = true;
-    newVideo.setAttribute('playsinline', '');
-    newVideo.setAttribute('webkit-playsinline', '');
+    newVideo.setAttribute('playsinline', 'true');
+    newVideo.setAttribute('webkit-playsinline', 'true');
+    newVideo.setAttribute('preload', 'auto');
+    newVideo.playsInline = true;
 
     newVideo.classList.add('video');
+
+    let playPromise = newVideo.play();
+    if (!playPromise !== undefined) {
+        playPromise.catch(error => {
+            console.log("L'autoplay a été bloqué, l'utilisateur doit cliquer.");
+        });
+    }
 
     /*
     On fait un eventListener :
