@@ -688,7 +688,7 @@ function fullScreen(){
         elem.msRequestFullscreen();
     }
     else {
-        windows.alert("Votre appareille n'est pas compatible avec la fonction pleine écran")
+        window.alert("Votre appareille n'est pas compatible avec la fonction pleine écran")
         this.visibility.hidden;
     }
 }
