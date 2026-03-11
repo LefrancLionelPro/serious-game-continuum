@@ -3,11 +3,11 @@
 html {
     overflow-y: hidden;
     overflow-x: hidden;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #F8F9FA;
 }
 
 body {
-    font-family: 'Josefin Sans', sans-serif;
-    background-color: #F8F9FA;
     display: flex;
     min-height: 100vh;
     margin: 0;
