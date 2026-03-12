@@ -137,6 +137,7 @@
     position: relative;
     display: inline-block;
     cursor: pointer;
+    text-decoration: none;
     transition: color 0.4s ease;
 }
 
@@ -147,7 +148,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background-color: snow;
+    background-color: red;
     transition: width 0.4s ease;
 }
 
