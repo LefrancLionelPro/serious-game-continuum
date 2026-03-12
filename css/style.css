@@ -101,3 +101,7 @@ button {
     place-content: space-evenly;
     flex-wrap: wrap;
 }
+
+#buttonExport, #fullScreen {
+    cursor: pointer;
+}

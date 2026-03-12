@@ -43,7 +43,7 @@
     height: 2px;
     background-color: snow;
     transform-origin: center;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .hamburger > #line-3 {
@@ -54,7 +54,7 @@
     height: 2px;
     background-color: snow;
     transform-origin: center;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .hamburger > #line-4, .hamburger > #line-5{
@@ -65,7 +65,7 @@
     height: 2px;
     background-color: snow;
     transform-origin: center;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     transform: rotate(0deg);
 }
 
@@ -130,4 +130,19 @@
 
 #checkbox-toggle:checked ~ .hamburger > #line-5 {
     transform: rotate(-45deg);
+}
+
+a:after {
+    content: "";
+    position: absolute;
+    bottom: -.15em;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: snow;
+    transition: width 0.4s ease;
+}
+
+a:hover:after {
+    width: 100%;
 }
