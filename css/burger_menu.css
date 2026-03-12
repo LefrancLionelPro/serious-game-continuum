@@ -37,7 +37,17 @@
     justify-content: center;
 }
 
-.hamburger > #line-1,
+.hamburger > #line-1 {
+    position: absolute;
+    top: 25%;
+    left: 10px;
+    width: 30px;
+    height: 2px;
+    background-color: snow;
+    transition: all ease 0.4s;
+    transform-origin: center;
+}
+
 .hamburger > #line-3 {
     position: absolute;
     top: 50%;
