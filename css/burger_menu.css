@@ -1,6 +1,8 @@
 .outer-menu{
     position: relative;
-    width: 100%;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 255, 255, 0.5);
     outline: 2px solid deeppink;
 }
 
@@ -88,8 +90,4 @@
     pointer-events: auto;
     transform: scale(1);
     border-radius: 0;
-}
-
-#checkbox-toggle:checked + .hamburger {
-    background-color: lime !important;
 }
