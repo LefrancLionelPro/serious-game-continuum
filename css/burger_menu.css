@@ -103,7 +103,7 @@
 #checkbox-toggle:checked ~ .hamburger > #line-2,
 #checkbox-toggle:checked ~ .hamburger > #line-3 {
     transition-delay: 0.2s;
-    transition: transform ease-out 0.3s;
+    transition: transform ease-out 0.4s;
     opacity: 0;
 }
 
