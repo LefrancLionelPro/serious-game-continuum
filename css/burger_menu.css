@@ -143,6 +143,8 @@ menu li {
 }
 
 ul {
+    display: flex;
+    flex-direction: column;
     gap: 75px;
 }
 
