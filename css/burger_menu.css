@@ -31,8 +31,8 @@
     width: 30px;
     height: 2px;
     background-color: snow;
-    transition: all ease 0.4s;
     transform-origin: center;
+    transition: transform ease-out 0.2s;
 }
 
 .hamburger > #line-2, .hamburger > #line-4, .hamburger > #line-5{
@@ -42,8 +42,10 @@
     width: 30px;
     height: 2px;
     background-color: snow;
-    transition: all ease 0.4s;
     transform-origin: center;
+
+    transition-delay: 0.2s;
+    transition: transform ease-out 0.4s;
 }
 
 .hamburger > #line-3 {
@@ -53,8 +55,8 @@
     width: 30px;
     height: 2px;
     background-color: snow;
-    transition: all ease 0.4s;
     transform-origin: center;
+    transition: transform ease-out 0.2s;
 }
 
 #checkbox-toggle {
@@ -102,14 +104,11 @@
 #checkbox-toggle:checked ~ .hamburger > #line-1,
 #checkbox-toggle:checked ~ .hamburger > #line-2,
 #checkbox-toggle:checked ~ .hamburger > #line-3 {
-    transition-delay: 0.2s;
-    transition: transform ease-out 0.4s;
     opacity: 0;
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-1,
 #checkbox-toggle:checked ~ .hamburger > #line-3 {
-    transition: transform ease-out 0.2s;
     top: 25px;
 }
 
