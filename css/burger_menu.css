@@ -33,7 +33,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    bottom: 13px;
+    top: -13px;
+    left: 60px;
 }
 
 .hamburger > #line-2 {
@@ -48,6 +49,7 @@
     align-items: center;
     justify-content: center;
     top: -10px;
+    left: 30px;
 }
 
 .hamburger > #line-3 {
