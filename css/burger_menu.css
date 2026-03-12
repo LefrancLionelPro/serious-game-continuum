@@ -112,13 +112,15 @@
 #checkbox-toggle:checked ~ .hamburger > #line-1,
 #checkbox-toggle:checked ~ .hamburger > #line-3 {
     transition: transform ease-out 0.2s;
-    top: 50%;
+    top: 25px;
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-4 {
+    transition-delay: 0.2s;
     transform: rotate(45deg);
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-5 {
+    transition-delay: 0.2s;
     transform: rotate(-45deg);
 }
