@@ -29,6 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 0;
 }
 
 .hamburger > div::after {
@@ -39,6 +40,7 @@
     background-color: snow;
     align-items: center;
     justify-content: end;
+    top: -10px;
 }
 
 .hamburger > div::before{
@@ -49,4 +51,5 @@
     background-color: snow;
     align-items: center;
     justify-content: start;
+    top: 10px;
 }
