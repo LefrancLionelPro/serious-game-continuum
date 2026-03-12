@@ -81,10 +81,11 @@
 
     transform: scale(0);
     transform-origin: top left;
-    transition: transform ease-out 0.5s;
+    transition: transform ease 0.5s;
     border-radius: 0 0 100% 0;
     background: #2c3e50;
     pointer-events: none;
+    color: snow;
 }
 
 #checkbox-toggle:checked~.menu {
@@ -106,10 +107,12 @@
     transform: rotate(45deg);
     top: 0;
     transition: transform ease-out 0.5s;
+    opacity: 1;
 }
 
 #checkbox-toggle:checked~.hamburger > div::after {
     transform: rotate(-45deg);
     top: 0;
     transition: transform ease-out 0.5s;
+    opacity: 1;
 }
