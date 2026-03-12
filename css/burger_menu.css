@@ -106,7 +106,6 @@
     place-content: center;
     text-align: center;
     font-size: x-large;
-    gap: 75px;
 }
 
 #checkbox-toggle:checked ~ .menu {
@@ -141,6 +140,10 @@
 
 menu li {
     margin-bottom: 20px;
+}
+
+ul {
+    gap: 75px;
 }
 
 .menu li a {
