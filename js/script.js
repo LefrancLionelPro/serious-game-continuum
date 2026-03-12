@@ -152,9 +152,6 @@ function addBouton(texte, cible, scenePresent){
     newBtn.innerText = texte;
     newBtn.classList.add('bouton_cacher');
     newBtn.style.visibility = 'hidden';
-
-    loggerSurEcran("Bouton créé : " + texte);
-
     /*
     On fait un eventListener :
     lorsque le joueur clique sur un des boutons,
@@ -692,7 +689,6 @@ function fullScreen(){
         }
         else {
             window.alert("Votre appareille n'est pas compatible avec la fonction pleine écran")
-            document.getElementById("fullScreen").style.display = "none";
         }
 
         fullScreenBool = true;
