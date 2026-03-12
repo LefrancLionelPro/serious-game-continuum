@@ -56,7 +56,7 @@
     height: 2px;
     background-color: snow;
     transform-origin: center;
-    transition: transform ease-out 0.2s;
+    transition: transform ease 0.2s;
 }
 
 #checkbox-toggle {
