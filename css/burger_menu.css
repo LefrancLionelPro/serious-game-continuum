@@ -35,7 +35,7 @@
     transform-origin: center;
 }
 
-.hamburger > #line-2 {
+.hamburger > #line-2, .hamburger > #line-4, .hamburger > #line-5{
     position: absolute;
     top: 50%;
     left: 10px;
@@ -101,16 +101,15 @@
     border-radius: 0;
 }
 
+#checkbox-toggle:checked ~ .hamburger > #line-1, .hamburger > #line-2, .hamburger > #line-3 {
+    transition: transform ease-out 0.5s;
+    opacity: 0;
+}
 
-#checkbox-toggle:checked~.hamburger > #line-1 {
+#checkbox-toggle:checked ~ .hamburger > #line-4 {
     transform: rotate(45deg);
 }
 
-#checkbox-toggle:checked ~ .hamburger > #line-2 {
+#checkbox-toggle:checked ~ .hamburger > #line-5 {
     transform: rotate(-45deg);
-}
-
-#checkbox-toggle:checked ~ .hamburger > #line-3 {
-    transition: transform ease-out 0.5s;
-    opacity: 0;
 }
