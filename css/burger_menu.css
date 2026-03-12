@@ -37,7 +37,7 @@
     justify-content: center;
 }
 
-.hamburger > #line-2,
+.hamburger > #line-1,
 .hamburger > #line-3 {
     position: absolute;
     top: 50%;
