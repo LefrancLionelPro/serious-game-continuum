@@ -32,8 +32,7 @@
     height: 2px;
     background-color: snow;
     transform-origin: center;
-    transition-delay: 0.4s;
-    transition: transform ease-out 0.4s;
+    transition: all 0.4s ease;
 }
 
 .hamburger > #line-2, .hamburger > #line-4, .hamburger > #line-5{
@@ -44,9 +43,8 @@
     height: 2px;
     background-color: snow;
     transform-origin: center;
-
-    transition-delay: 0.4s;
-    transition: transform ease-out 0.4s;
+    transition: all 0.4s ease;
+    transform: rotate(0deg);
 }
 
 .hamburger > #line-3 {
@@ -57,8 +55,7 @@
     height: 2px;
     background-color: snow;
     transform-origin: center;
-    transition-delay: 0.4s;
-    transition: transform ease-out 0.4s;
+    transition: all 0.4s ease;
 }
 
 #checkbox-toggle {
@@ -87,7 +84,7 @@
 
     transform: scale(0);
     transform-origin: top left;
-    transition: transform ease 0.5s;
+    transition: all 0.4s ease;
     border-radius: 0 0 100% 0;
     background: #2c3e50;
     pointer-events: none;
@@ -106,13 +103,8 @@
 #checkbox-toggle:checked ~ .hamburger > #line-1,
 #checkbox-toggle:checked ~ .hamburger > #line-2,
 #checkbox-toggle:checked ~ .hamburger > #line-3 {
-    top: 50%;
+    transform: translateY(50%);
     opacity: 0;
-}
-
-#checkbox-toggle:checked ~ .hamburger > #line-1,
-#checkbox-toggle:checked ~ .hamburger > #line-3 {
-    top: 25px;
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-4 {
