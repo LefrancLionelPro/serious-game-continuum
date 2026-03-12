@@ -66,6 +66,8 @@
 
 .menu{
     transform: scale(0);
+    transform-origin: top left;
+    transition: transform ease 0.5s;
 }
 
 #checkbox-toggle:checked~.menu {
