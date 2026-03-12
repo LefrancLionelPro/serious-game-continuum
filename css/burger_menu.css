@@ -104,6 +104,7 @@
 #checkbox-toggle:checked ~ .hamburger > #line-1,
 #checkbox-toggle:checked ~ .hamburger > #line-2,
 #checkbox-toggle:checked ~ .hamburger > #line-3 {
+    top: 50%;
     opacity: 0;
 }
 
