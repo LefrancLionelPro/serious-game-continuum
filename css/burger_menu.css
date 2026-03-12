@@ -53,3 +53,8 @@
     justify-content: center;
     top: 10px;
 }
+
+#checkbox-toggle {
+    position: absolute;
+    z-index: 10;
+}
