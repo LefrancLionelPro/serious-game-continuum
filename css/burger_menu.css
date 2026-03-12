@@ -114,11 +114,9 @@
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-4 {
-    transition-delay: 0.5s;
     transform: rotate(45deg);
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-5 {
-    transition-delay: 0.5s;
     transform: rotate(-45deg);
 }
