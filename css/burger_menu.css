@@ -106,6 +106,7 @@
     place-content: center;
     text-align: center;
     font-size: x-large;
+    gap: 75px;
 }
 
 #checkbox-toggle:checked ~ .menu {
@@ -132,10 +133,17 @@
     transform: rotate(-45deg);
 }
 
-a:after {
+.menu li a {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: color 0.4s ease;
+}
+
+.menu li a:after {
     content: "";
     position: absolute;
-    bottom: -.15em;
+    bottom: -5px;
     left: 0;
     width: 0;
     height: 2px;
@@ -143,6 +151,6 @@ a:after {
     transition: width 0.4s ease;
 }
 
-a:hover:after {
+.menu li a:hover:after {
     width: 100%;
 }
