@@ -4,6 +4,8 @@
     z-index: 100;
     height: 50px;
     width: 50px;
+    top: 20px;
+    left: 20px;
 }
 
 .hamburger {
@@ -20,7 +22,7 @@
     justify-content: flex-end;
 }
 
-.hamburger > div {
+.hamburger > #line-1 {
     position: relative;
     flex: none;
     width: 100%;
@@ -34,7 +36,7 @@
     bottom: 13px;
 }
 
-.hamburger > div::after {
+.hamburger > #line-2 {
     content: "";
     position: absolute;
     width: 100%;
@@ -45,7 +47,7 @@
     top: -10px;
 }
 
-.hamburger > div::before{
+.hamburger > #line-3 {
     content: "";
     position: absolute;
     width: 100%;
@@ -98,20 +100,20 @@
     border-radius: 0;
 }
 
-#checkbox-toggle:checked~.hamburger > div {
+#checkbox-toggle:checked~.hamburger > #line-1 {
     opacity: 0;
     transition: transform ease-out 0.5s;
     background-color: transparent;
 }
 
-#checkbox-toggle:checked~.hamburger > div::before {
+#checkbox-toggle:checked~.hamburger > #line-2 {
     transform: rotate(45deg);
     top: 0;
     transition: transform ease-out 0.5s;
     opacity: 1;
 }
 
-#checkbox-toggle:checked~.hamburger > div::after {
+#checkbox-toggle:checked~.hamburger > #line-3 {
     transform: rotate(-45deg);
     top: 0;
     transition: transform ease-out 0.5s;
