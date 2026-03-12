@@ -85,7 +85,7 @@
 
     transform: scale(0);
     transform-origin: top left;
-    transition: transform ease 0.5s;
+    transition: transform ease 0.7s;
     border-radius: 0 0 100% 0;
     background: #2c3e50;
     pointer-events: none;
@@ -104,8 +104,15 @@
 #checkbox-toggle:checked ~ .hamburger > #line-1,
 #checkbox-toggle:checked ~ .hamburger > #line-2,
 #checkbox-toggle:checked ~ .hamburger > #line-3 {
+    transition-delay: 0.2s;
     transition: transform ease-out 0.5s;
     opacity: 0;
+}
+
+#checkbox-toggle:checked ~ .hamburger > #line-1,
+#checkbox-toggle:checked ~ .hamburger > #line-3 {
+    transition: transform ease-out 0.2s;
+    top: 50%;
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-4 {
