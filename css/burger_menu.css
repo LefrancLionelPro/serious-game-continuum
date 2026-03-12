@@ -134,7 +134,7 @@
 }
 
 .menu li a {
-    position: relative; /* Indispensable */
+    position: relative;
     display: inline-block;
     color: snow;
     text-decoration: none;
@@ -145,8 +145,12 @@
     position: absolute;
     left: 0;
     bottom: -5px;
-    width: 100%; /* Force à 100% pour voir si ça apparaît */
-    height: 3px;
-    background: red; /* Couleur flashy pour repérer le trait */
-    z-index: 999;    /* Force le passage au premier plan */
+    width: 0;
+    height: 2px;
+    background: snow;
+    z-index: 999;
+}
+
+.menu li a:hover::after {
+    width: 100%;
 }
