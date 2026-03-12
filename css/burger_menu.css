@@ -105,6 +105,7 @@
 #checkbox-toggle:checked ~ .hamburger > #line-2,
 #checkbox-toggle:checked ~ .hamburger > #line-3 {
     transition: transform ease-out 0.5s;
+    opacity: 0;
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-4 {
