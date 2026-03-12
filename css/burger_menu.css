@@ -104,12 +104,11 @@
 
 #checkbox-toggle:checked~.hamburger > #line-1 {
     transform: rotate(45deg);
-    transition: transform ease-out 0.5s;
-    opacity: 1;
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-2 {
-    transform: rotate(45deg);
+    transition: transform ease-out 0.5s;
+    opacity: 0;
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-3 {
