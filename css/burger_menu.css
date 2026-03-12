@@ -100,6 +100,12 @@
     background: #2c3e50;
     pointer-events: none;
     color: snow;
+
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    text-align: center;
+    font-size: x-large;
 }
 
 #checkbox-toggle:checked ~ .menu {
