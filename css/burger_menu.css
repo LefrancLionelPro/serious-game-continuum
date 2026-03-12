@@ -81,9 +81,9 @@
 
     transform: scale(0);
     transform-origin: top left;
-    transition: transform ease 0.5s;
-    border-radius: 0 0 100% 0;
-    background: rgba(44, 62, 80, 0.9);
+    transition: transform ease-out 0.5s;
+    border-radius: 50%;
+    background: #2c3e50;
     pointer-events: none;
 }
 
@@ -94,4 +94,22 @@
     pointer-events: auto;
     transform: scale(1);
     border-radius: 0;
+}
+
+#checkbox-toggle:checked~.hamburger > div {
+    opacity: 0;
+    transition: transform ease-out 0.5s;
+    background-color: transparent;
+}
+
+#checkbox-toggle:checked~.hamburger > div::before {
+    transform: rotate(45deg);
+    top: 0;
+    transition: transform ease-out 0.5s;
+}
+
+#checkbox-toggle:checked~.hamburger > div::after {
+    transform: rotate(-45deg);
+    top: 0;
+    transition: transform ease-out 0.5s;
 }
