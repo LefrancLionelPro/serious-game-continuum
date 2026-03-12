@@ -41,8 +41,8 @@
 .hamburger > #line-3 {
     position: absolute;
     top: 50%;
-    left: 10px; /* Aligne-les avec le padding de ton bouton */
-    width: 30px; /* La largeur de tes traits */
+    left: 10px;
+    width: 30px;
     height: 2px;
     background-color: snow;
     transition: all ease 0.4s;
