@@ -1,6 +1,7 @@
 .outer-menu{
     position: relative;
     width: 100%;
+    outline: 2px solid deeppink;
 }
 
 .hamburger {
