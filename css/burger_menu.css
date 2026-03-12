@@ -97,7 +97,7 @@
 }
 
 #line-2, #line-3 {
-    transform-origin: center center;
+    transform-origin: center;
 }
 
 #checkbox-toggle:checked ~ .menu {
