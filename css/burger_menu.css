@@ -1,12 +1,13 @@
 .outer-menu{
     position: relative;
-    width: 100%;
     display: inline-block;
     z-index: 100;
+    height: 50px;
+    width: 50px;
+    background-color: cyan;
 }
 
 .hamburger {
-    position: absolute;
     width: 30px;
     height: 30px;
     z-index: 10;
@@ -17,7 +18,6 @@
     display: flex;
     align-items: end;
     justify-content: flex-end;
-    margin-left: 20px;
 }
 
 .hamburger > div {
