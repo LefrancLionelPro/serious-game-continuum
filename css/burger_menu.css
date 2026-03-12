@@ -137,10 +137,11 @@
     position: relative;
     display: inline-block;
     color: snow;
+    cursor: pointer;
     text-decoration: none;
 }
 
-.menu li a::after {
+.menu li a:after {
     content: '';
     position: absolute;
     left: 0;
@@ -149,6 +150,7 @@
     height: 2px;
     background: snow;
     z-index: 999;
+    transition: width 0.4s ease;
 }
 
 .menu li a:hover::after {
