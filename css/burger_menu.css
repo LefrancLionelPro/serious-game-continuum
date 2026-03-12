@@ -32,7 +32,7 @@
     height: 2px;
     background-color: snow;
     transform-origin: center;
-    transition: all 0.4s ease;
+    transition: all 0.2s ease;
 }
 
 .hamburger > #line-2, .hamburger > #line-4, .hamburger > #line-5{
@@ -55,7 +55,7 @@
     height: 2px;
     background-color: snow;
     transform-origin: center;
-    transition: all 0.4s ease;
+    transition: all 0.2s ease;
 }
 
 #checkbox-toggle {
