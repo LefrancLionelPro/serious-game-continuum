@@ -120,7 +120,7 @@
     visibility: visible;
 }
 
-#menu-content {
+.menu-content {
     position: fixed;
     top: 50%;
     left: 50%;
