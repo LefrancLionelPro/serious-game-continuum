@@ -115,7 +115,6 @@
     visibility: visible;
     pointer-events: auto;
     transform: scale(1);
-    border-radius: 0;
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-1,
@@ -145,9 +144,9 @@ menu li {
 
 ul {
     /* On force le contenu à rester dans la zone visible de la fenêtre */
-    position: relative;
-    top: 9%;
-    left: 19%;
+    position: fixed;
+    top: 57%;
+    left: 66%;
     transform: translate(-50%, -50%);
     gap: 30px;
     display: flex;
