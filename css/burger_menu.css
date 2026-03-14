@@ -85,27 +85,28 @@
     border: 0;
 }
 
-.menu{
+.menu {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
+    top: 45px;
+    left: 45px;
+
+    width: 300vmax;
+    height: 300vmax;
+
+    margin-top: -150vmax;
+    margin-left: -150vmax;
+
+    border-radius: 50%;
+    background: #2c3e50;
 
     transform: scale(0);
-    transform-origin: top left;
-    transition: all 0.4s ease;
-    border-radius: 0 0 100% 0;
-    background: #2c3e50;
-    pointer-events: none;
-    color: snow;
+    transform-origin: center;
+    transition: all 0.5s ease-in-out;
 
+    z-index: 10;
     display: flex;
-    flex-direction: column;
-    place-content: center;
-    text-align: center;
-    font-size: x-large;
+    align-items: center;
+    justify-content: center;
 }
 
 #checkbox-toggle:checked ~ .menu {
@@ -143,9 +144,16 @@ menu li {
 }
 
 ul {
+    /* On force le contenu à rester dans la zone visible de la fenêtre */
+    position: relative;
+    top: 9%;
+    left: 19%;
+    transform: translate(-50%, -50%);
+    gap: 30px;
     display: flex;
     flex-direction: column;
-    gap: 75px;
+    scale: 150%;
+    text-align: center;
 }
 
 .menu li a {
