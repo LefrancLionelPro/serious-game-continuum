@@ -145,7 +145,7 @@ menu li {
 ul {
     /* On force le contenu à rester dans la zone visible de la fenêtre */
     position: fixed;
-    top: 57%;
+    top: 60%;
     left: 66%;
     transform: translate(-50%, -50%);
     gap: 30px;
