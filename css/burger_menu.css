@@ -115,20 +115,14 @@
     transform: scale(1);
 }
 
-#checkbox-toggle:checked ~ .menu-content {
-    opacity: 1;
-    visibility: visible;
-}
-
 .menu-content {
     position: fixed;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 20;
     opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease;
+    transition: all 0.5s ease;
     color: snow;
 }
 
@@ -145,6 +139,12 @@
 
 #checkbox-toggle:checked ~ .hamburger > #line-5 {
     transform: rotate(-45deg);
+}
+
+#checkbox-toggle:checked ~ .menu-content {
+    transition-delay: 0.5s;
+    opacity: 1;
+    top: 50%;
 }
 
 .menu-content ul {
