@@ -158,8 +158,7 @@
 }
 
 ul {
-    transform: translate(175%, 175%);
-    gap: 30px;
+    gap: 15px;
     display: flex;
     flex-direction: column;
     scale: 150%;
