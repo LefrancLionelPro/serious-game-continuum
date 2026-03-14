@@ -129,6 +129,7 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease;
+    color: snow;
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-1,
@@ -146,13 +147,13 @@
     transform: rotate(-45deg);
 }
 
-.menu ul {
+.menu-content ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-menu li {
+.menu-content li {
     margin-bottom: 20px;
 }
 
@@ -165,7 +166,7 @@ ul {
     text-align: center;
 }
 
-.menu li a {
+.menu-content li a {
     position: relative;
     display: inline-block;
     color: snow;
@@ -173,7 +174,7 @@ ul {
     text-decoration: none;
 }
 
-.menu li a:after {
+.menu-content li a:after {
     content: '';
     position: absolute;
     left: 0;
@@ -185,6 +186,6 @@ ul {
     transition: width 0.4s ease;
 }
 
-.menu li a:hover::after {
+.menu-content li a:hover::after {
     width: 100%;
 }
