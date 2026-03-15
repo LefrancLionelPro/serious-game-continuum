@@ -117,13 +117,14 @@
 
 .menu-content {
     position: fixed;
-    top: 51%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 20;
     opacity: 0;
     transition: all 0.3s ease;
     color: snow;
+    visibility: hidden;
 }
 
 #checkbox-toggle:checked ~ .hamburger > #line-1,
@@ -143,6 +144,7 @@
 }
 
 #checkbox-toggle:checked ~ .menu-content {
+    visibility: visible;
     transition-delay: 0.5s;
     opacity: 1;
     top: 50%;
