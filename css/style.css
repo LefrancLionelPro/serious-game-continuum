@@ -38,7 +38,6 @@ form {
     gap: 10px;
     scale: 80%;
     position: relative;
-    bottom: 35px;
 }
 
 form > * {
@@ -103,5 +102,37 @@ button {
 }
 
 .video {
-    max-width: 100%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#conteneur-boutons {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    width: 90%;
+    pointer-events: none;
+}
+
+#conteneur-boutons > * {
+    pointer-events: auto;
+}
+
+#conteneur-boutons button {
+    position: relative;
+    min-width: 200px;
+    padding: 15px;
 }
