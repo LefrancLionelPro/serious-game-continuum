@@ -30,7 +30,7 @@
     left: 10px;
     width: 30px;
     height: 2px;
-    background-color: snow;
+    background-color: #F8F9FA;
     transform-origin: center;
     transition: all 0.3s ease;
 }
@@ -41,7 +41,7 @@
     left: 10px;
     width: 30px;
     height: 2px;
-    background-color: snow;
+    background-color: #F8F9FA;
     transform-origin: center;
     transition: all 0.3s ease;
 }
@@ -52,7 +52,7 @@
     left: 10px;
     width: 30px;
     height: 2px;
-    background-color: snow;
+    background-color: #F8F9FA;
     transform-origin: center;
     transition: all 0.3s ease;
 }
@@ -63,7 +63,7 @@
     left: 10px;
     width: 30px;
     height: 2px;
-    background-color: snow;
+    background-color: #F8F9FA;
     transform-origin: center;
     transition: all 0.3s ease;
     transform: rotate(0deg);
@@ -123,7 +123,7 @@
     z-index: 20;
     opacity: 0;
     transition: all 0.3s ease;
-    color: snow;
+    color: #F8F9FA;
     visibility: hidden;
 }
 
@@ -171,7 +171,7 @@ ul {
 .menu-content li a {
     position: relative;
     display: inline-block;
-    color: snow;
+    color: #F8F9FA;
     cursor: pointer;
     text-decoration: none;
 }
@@ -183,7 +183,7 @@ ul {
     bottom: -5px;
     width: 0;
     height: 2px;
-    background: snow;
+    background: #F8F9FA;
     z-index: 999;
     transition: width 0.4s ease;
 }
