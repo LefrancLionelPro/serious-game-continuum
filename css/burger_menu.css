@@ -191,3 +191,7 @@ ul {
 .menu-content li a:hover::after {
     width: 100%;
 }
+
+@media (min-width: 740px) {
+    scale: 100%;
+}
