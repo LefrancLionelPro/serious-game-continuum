@@ -426,12 +426,8 @@ function afficherFormulaireID() {
             });
         }
 
-        /*
-        Même sans cocher la case de consentement, le joueur peut accéder au jeu,
-        ses données ne seront simplement pas récoltées.
-         */
         else {
-            chargerScene("intro");
+            window.alert("Merci de vous inscrire/connecter afin de pouvoir jouer au jeu");
         }
     });
 }
