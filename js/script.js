@@ -26,8 +26,6 @@ let recontactChoice;
 let currentScene;
 let choosedOption;
 
-let fullScreenBool = false;
-
 // On crée une variable qui va générer un ID aléatoire pour pouvoir stocker plusieurs runs d'un même joueur
 const run = Math.random().toString(36).substr(2, 15) + Math.random().toString(36).substr(2, 15);
 
@@ -674,24 +672,29 @@ if (exportBtn) {
     exportBtn.addEventListener("click",  exportData);
 }
 
+function isFullScreen() {
+    return !!(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+}
+
 function fullScreen(){
     const elem = document.documentElement;
 
-    if (!fullScreenBool) {
+    if (!isFullScreen()) {
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
         }
-        else if (elem.webkitRequestFullscreen) {
-            elem.webkitRequestFullscreen();
+        else if (elem.webkitRequestFullScreen) {
+            elem.webkitRequestFullScreen();
         }
-        else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen();
+        else if (elem.msRequestFullScreen) {
+            elem.msRequestFullScreen();
+        }
+        else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
         }
         else {
             window.alert("Votre appareille n'est pas compatible avec la fonction pleine écran")
         }
-
-        fullScreenBool = true;
     }
 
     else {
@@ -699,13 +702,15 @@ function fullScreen(){
         if (document.exitFullscreen) {
             document.exitFullscreen();
         }
-        else if (document.webkitExitFullscreen) { // Safari/Chrome mobile
+        else if (document.webkitExitFullscreen) {
             document.webkitExitFullscreen();
         }
         else if (document.msExitFullscreen) {
             document.msExitFullscreen();
         }
-        fullScreenBool = false;
+        else if (document.mozCancelFullScreen){
+            document.mozCancelFullScreen();
+        }
     }
 }
 
