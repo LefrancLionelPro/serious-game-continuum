@@ -3,7 +3,6 @@
 html {
     scrollbar-width: none;
     -ms-overflow-style: none;
-    overflow: hidden;
     font-family: 'Josefin Sans', sans-serif;
     background-color: #F8F9FA;
     height: 100%;

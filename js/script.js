@@ -423,6 +423,7 @@ function afficherFormulaireID() {
                 event.preventDefault();
 
                 chargerScene("intro");
+                document.querySelector("html").style.overflow = "hidden";
             });
         }
 
@@ -539,6 +540,7 @@ async function login() {
                 event.preventDefault();
 
                 chargerScene("intro");
+                document.querySelector("html").style.overflow = "hidden";
             })
 
             let continueForm = document.createElement("form");
