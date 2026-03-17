@@ -403,6 +403,8 @@ function afficherFormulaireID() {
                 return;
             }
 
+            document.querySelector("html").style.overflow = "hidden";
+
             containerBtn.innerHTML = "";
             let text1 = document.createElement("h3");
             text1.innerText = "Veuillez noter votre identifiant pour vos prochaines sessions";
@@ -423,7 +425,6 @@ function afficherFormulaireID() {
                 event.preventDefault();
 
                 chargerScene("intro");
-                document.querySelector("html").style.overflow = "hidden";
             });
         }
 
@@ -435,6 +436,7 @@ function afficherFormulaireID() {
 
 async function login() {
 
+    document.querySelector("html").style.overflow = "hidden";
     containerBtn.innerHTML = "";
 
     let introText = document.createElement("h3");
@@ -489,6 +491,7 @@ async function login() {
     validateBtn.addEventListener("click", async function (event) {
         event.preventDefault();
 
+
         // On vérifie que les champs ne sont pas vides lors de la validation.
         if (login_input.value === "") {
             window.alert("Veuillez rentrez votre identifiant");
@@ -540,7 +543,6 @@ async function login() {
                 event.preventDefault();
 
                 chargerScene("intro");
-                document.querySelector("html").style.overflow = "hidden";
             })
 
             let continueForm = document.createElement("form");

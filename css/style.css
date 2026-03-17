@@ -6,6 +6,7 @@ html {
     font-family: 'Josefin Sans', sans-serif;
     background-color: #F8F9FA;
     height: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
 html::-webkit-scrollbar {
@@ -34,13 +35,6 @@ section {
     top: auto;
     left: auto;
     transform: none;
-}
-
-.scroll-container {
-    flex: 1;
-    overflow-y: auto;
-    overscroll-behavior-y: contain;
-    -webkit-overflow-scrolling: touch;
 }
 
 form {
