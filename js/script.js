@@ -423,8 +423,6 @@ function afficherFormulaireID() {
                 event.preventDefault();
 
                 chargerScene("intro");
-                containerBtn.style.top = "100%";
-                containerBtn.style.left = "0%";
             });
         }
 
@@ -435,9 +433,6 @@ function afficherFormulaireID() {
 }
 
 async function login() {
-
-    containerBtn.style.top = "100%";
-    containerBtn.style.left = "0%";
 
     containerBtn.innerHTML = "";
 
