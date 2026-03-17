@@ -119,10 +119,7 @@ button {
 }
 
 #conteneur-boutons {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     z-index: 2;
 
     display: flex;
