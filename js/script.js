@@ -689,7 +689,7 @@ function fullScreen(){
             elem.mozRequestFullScreen();
         }
         else {
-            window.alert("Votre appareille n'est pas compatible avec la fonction pleine écran")
+            window.alert("Votre appareille n'est pas compatible avec la fonction pleine écran, vous pouvez rajouter le site à votre page d'accueil pour un expérience plus immersif");
         }
     }
 

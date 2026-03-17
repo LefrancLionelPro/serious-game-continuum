@@ -3,10 +3,10 @@
 html {
     scrollbar-width: none;
     -ms-overflow-style: none;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    overflow: hidden;
     font-family: 'Josefin Sans', sans-serif;
     background-color: #F8F9FA;
+    height: 100%;
 }
 
 html::-webkit-scrollbar {
@@ -16,9 +16,17 @@ html::-webkit-scrollbar {
 body {
     display: flex;
     min-height: 100vh;
+    height: 100dvh;
     margin: 0;
     flex-direction: column;
     color: #2c3e50;
+}
+
+.scroll-container {
+    flex: 1;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 section {
