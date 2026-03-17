@@ -423,6 +423,8 @@ function afficherFormulaireID() {
                 event.preventDefault();
 
                 chargerScene("intro");
+                containerBtn.style.top = "100%";
+                containerBtn.style.left = "0%";
             });
         }
 
