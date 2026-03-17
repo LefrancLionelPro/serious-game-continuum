@@ -436,6 +436,9 @@ function afficherFormulaireID() {
 
 async function login() {
 
+    containerBtn.style.top = "100%";
+    containerBtn.style.left = "0%";
+
     containerBtn.innerHTML = "";
 
     let introText = document.createElement("h3");
