@@ -51,7 +51,7 @@ form > * {
     margin: 0;
 }
 
-p {
+h3, p, label {
     color: #2c3e50;
 }
 
