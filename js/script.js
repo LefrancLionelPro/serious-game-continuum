@@ -276,7 +276,7 @@ function afficherFormulaireID() {
     });
 
     let sexeText = document.createElement("p");
-    sexeText.innerText = "Votre sexe";
+    sexeText.innerText = "Votre sexe : ";
 
     /*
     On crée un nouvel élément de sélection qui aura comme id, "sexelist".
@@ -308,7 +308,7 @@ function afficherFormulaireID() {
     option3.innerText = "Ne souhaite pas préciser";
 
     let ageText = document.createElement("p");
-    ageText.innerText = "Votre année de naissance";
+    ageText.innerText = "Votre âge : ";
 
     let age = document.createElement("input");
     age.id = "age";
@@ -329,7 +329,7 @@ function afficherFormulaireID() {
 
     let emailText = document.createElement("p");
     emailText.id = "emailText";
-    emailText.innerText = "Mon adresse mail : ";
+    emailText.innerText = "Votre adresse mail : ";
 
     let recontact = document.createElement("input");
     recontact.id = "recontact";
@@ -381,9 +381,11 @@ function afficherFormulaireID() {
 
     form.appendChild(sexeText);
     form.appendChild(sexelist);
+    sexeText.appendChild(sexelist);
 
     form.appendChild(ageText);
     form.appendChild(age);
+    ageText.appendChild(age);
 
     //on met les options "Veuillez sélectionner votre sexe", "Homme", "Femme" et "Ne souhaite pas préciser" dans la liste "sexelist".
     sexelist.appendChild(optionBase);
