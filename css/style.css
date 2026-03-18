@@ -186,6 +186,6 @@ label {cursor: pointer}
 
 @media (min-width: 992px) {
     form {
-        scale: 100;
+        scale: 100%;
     }
 }
