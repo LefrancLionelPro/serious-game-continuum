@@ -126,7 +126,7 @@ label {cursor: pointer}
 #btnContainer {
     display: flex;
     flex-direction: row;
-    place-content: space-evenly;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
