@@ -381,6 +381,9 @@ function afficherFormulaireID() {
     form.appendChild(sexeText);
     form.appendChild(sexelist);
 
+    form.appendChild(ageText);
+    form.appendChild(age);
+
     //on met les options "Veuillez sélectionner votre sexe", "Homme", "Femme" et "Ne souhaite pas préciser" dans la liste "sexelist".
     sexelist.appendChild(optionBase);
     sexelist.appendChild(option1);

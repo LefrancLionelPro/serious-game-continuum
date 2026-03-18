@@ -51,7 +51,7 @@ form > * {
     margin: 0;
 }
 
-input[type="text"], input[type="email"] {
+input[type="text"], input[type="email"], input[type="tel"], #sexelist {
     padding: 8px;
     border: 2px solid #2c3e50;
     border-radius: 8px;
@@ -101,6 +101,11 @@ button:hover {
 .userInput {
     width: 17%;
     align-self: center;
+}
+
+#sexelist {
+    width: 35%;
+    font-weight: bold;
 }
 
 #email{
