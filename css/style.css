@@ -167,7 +167,7 @@ label {cursor: pointer}
 
 @media (min-width: 840px) {
     .userInput {
-        width: 14%;
+        width: 14%; /*oui*/
         align-self: center;
     }
 
