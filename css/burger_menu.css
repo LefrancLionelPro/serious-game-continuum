@@ -264,7 +264,3 @@ ul {
 .menu-content li a:hover::after {
     width: 100%;
 }
-
-@media (min-width: 992px) {
-    left: 1321px;
-}
