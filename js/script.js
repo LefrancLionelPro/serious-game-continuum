@@ -17,8 +17,10 @@ window.onload = function () {
 }
 
 // On crée toutes les variables dont on aura besoin
-let trueID;
 let dataChoice;
+let trueID;
+let gender;
+let trueAge;
 let mail;
 let recontactChoice;
 
@@ -273,6 +275,47 @@ function afficherFormulaireID() {
         this.value = birthYear + alias + phoneNum;
     });
 
+    let sexeText = document.createElement("p");
+    sexeText.innerText = "Votre sexe";
+
+    /*
+    On crée un nouvel élément de sélection qui aura comme id, "sexelist".
+    Elle va nous permettre de faire un menu déroulant pour que le joueur choisi son sexe."
+     */
+    let sexelist = document.createElement("select");
+    sexelist.id = "sexelist";
+
+    /*
+    on crée un nouvel élément option qui aura comme valeur "Default",
+    le contenu de l'option qui sera "Veuillez sélectionner votre sexe."
+    et il sera sélectionner par défaut.
+     */
+    let optionBase = document.createElement("option");
+    optionBase.value = "Default";
+    optionBase.innerText = "Veuillez sélectionner votre sexe";
+    optionBase.selected = true;
+
+    let option1 = document.createElement("option");
+    option1.value = "Homme";
+    option1.innerText = "Homme";
+
+    let option2 = document.createElement("option");
+    option2.value = "Femme";
+    option2.innerText = "Femme";
+
+    let option3 = document.createElement("option");
+    option3.value = "Ne souhaite pas préciser";
+    option3.innerText = "Ne souhaite pas préciser";
+
+    let ageText = document.createElement("p");
+    ageText.innerText = "Votre année de naissance";
+
+    let age = document.createElement("input");
+    age.type = "tel";
+    age.pattern = "[0-9]{2}";
+    age.placeholder = "Veuillez rentrer votre âge";
+    age.maxLength = 2;
+
     let recontactInfo = document.createElement("p");
     recontactInfo.id = "recontactInfo";
     recontactInfo.innerText = "Une nouvelle phase expérimentale se déroulera d'ici quelques semaines (15 minutes, en ligne) ; afin de vous contacter, nous avons besoin de votre adresse mail personnelle.";
@@ -335,6 +378,15 @@ function afficherFormulaireID() {
     form.appendChild(input);
     form.appendChild(feedback);
 
+    form.appendChild(sexeText);
+    form.appendChild(sexelist);
+
+    //on met les options "Veuillez sélectionner votre sexe", "Homme", "Femme" et "Ne souhaite pas préciser" dans la liste "sexelist".
+    sexelist.appendChild(optionBase);
+    sexelist.appendChild(option1);
+    sexelist.appendChild(option2);
+    sexelist.appendChild(option3);
+
     form.appendChild(recontactInfo);
 
     form.appendChild(emailText);
@@ -365,11 +417,17 @@ function afficherFormulaireID() {
 
         dataChoice = dataChoiceCheck.checked;
 
-
-
         // On transmet les données du joueur dans la base de données uniquement s'il coche la case de consentement
         if (dataChoice) {
+
+            if (input.value === "" || input.value.length !== 6 || age.value === "" || age.value.length !== 4 || isNaN(age.value) || sexelist.value === "Default") {
+                window.alert("Merci de remplir tout les champs");
+                return;
+            }
+
             trueID = input.value;
+            trueAge = age.value;
+            gender = sexelist.value;
             mail =  email.value;
             recontactChoice = (recontact.checked) ? "oui" : "non";
 
@@ -392,6 +450,8 @@ function afficherFormulaireID() {
                 .insert([
                     {
                         player_id: trueID,
+                        age: trueAge,
+                        sexe: gender,
                         address_mail: mail,
                         recontacter : recontactChoice
                     }
@@ -447,8 +507,8 @@ async function login() {
 
     let login_input = document.createElement("input");
     login_input.type = "text";
-    login_input.placeholder = "ex : 80DT7767";
-    login_input.maxLength = 8;
+    login_input.placeholder = "ex : 80EL67";
+    login_input.maxLength = 6;
 
     let login_feedback = document.createElement("p");
     login_feedback.id = "feedback";
@@ -590,7 +650,7 @@ async function exportData(){
     // On sélectionne les colonnes nécessaires de toute la table.
     const {data, error} = await supabaseClient.from("responses")
         .select(
-            'run_id, player_id, scene, choix, utilisateurs(recontacter, address_mail), created_at');
+            'run_id, player_id, scene, choix, utilisateurs(age, sexe, recontacter, address_mail), created_at');
 
     if (error) {
         window.alert("Erreur : " + error.message);
@@ -610,6 +670,8 @@ async function exportData(){
             lignesTransformer[ligne.run_id] = {
                 id_Partie: ligne.run_id,
                 Joueurs: ligne.player_id,
+                Age: (ligne.utilisateurs && ligne.utilisateurs.age) ? ligne.utilisateurs.age : "N/A",
+                Sexe: (ligne.utilisateurs && ligne.utilisateurs.sexe) ? ligne.utilisateurs.sexe : "N/A",
                 Recontacter: (ligne.utilisateurs && ligne.utilisateurs.recontacter) ? ligne.utilisateurs.recontacter : "N/A",
                 Email: (ligne.utilisateurs && ligne.utilisateurs.address_mail) ? ligne.utilisateurs.address_mail : "N/A",
 
