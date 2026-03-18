@@ -105,20 +105,20 @@ button:hover {
 }
 
 .userInput {
-    width: 14%;
+    width: 29%;
     align-self: center;
 }
 
 #sexelist {
-    width: 32%;
+    width: 69%;
 }
 
 #age{
-    width: 26%;
+    width: 55%;
 }
 
 #email{
-    width: 34%;
+    width: 72%;
 }
 
 label {cursor: pointer}
@@ -164,7 +164,30 @@ label {cursor: pointer}
     padding: 15px;
 }
 
+
+@media (min-width: 760px) {
+    .userInput {
+        width: 14%;
+        align-self: center;
+    }
+
+    #sexelist {
+        width: 32%;
+    }
+
+    #age{
+        width: 26%;
+    }
+
+    #email{
+        width: 34%;
+    }
+}
+
 @media (min-width: 992px) {
+    form {
+        scale: 100%;
+    }
 
     .userInput {
         width: 13%;
@@ -181,11 +204,5 @@ label {cursor: pointer}
 
     #email{
         width: 31%;
-    }
-}
-
-@media (min-width: 992px) {
-    form {
-        scale: 100%;
     }
 }
