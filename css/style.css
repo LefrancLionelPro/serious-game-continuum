@@ -110,11 +110,11 @@ button:hover {
 }
 
 #sexelist {
-    width: 69%;
+    width: 71%;
 }
 
 #age{
-    width: 55%;
+    width: 57%;
 }
 
 #email{
@@ -165,9 +165,9 @@ label {cursor: pointer}
 }
 
 
-@media (min-width: 840px) {
+@media (orientation: landscape) {
     .userInput {
-        width: 14%; /*oui*/
+        width: 14%;
         align-self: center;
     }
 
