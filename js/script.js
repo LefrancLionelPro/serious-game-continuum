@@ -227,18 +227,18 @@ function afficherFormulaireID() {
     let description = document.createElement("p");
     description.innerHTML = "Pour vous identifier, entrez : <br>" +
         "- Les 2 dernièrs chiffres de votre année de naissances<br>" +
-        "- La première et la dernière lettre de votre nom de famille<br>" +
-        "- les 4 dernièr chiffres de votre numéro de téléphone portable";
+        "- Les 2 premières lettres du nom de votre mère<br>" +
+        "- les 2 derniers chiffres de votre numéro de téléphone portable";
 
     let exemple = document.createElement("p");
-    exemple.innerText = "Exemple : Je m'appelle Jean Dupont, je suis né en 1980, mon numéro de téléphone est le : 06****7767"
+    exemple.innerText = "Exemple : Ma mère s'appelle Elodie, je suis né en 1980, mon numéro de téléphone est le : 06******67"
     exemple.id = "exemple";
 
     let input = document.createElement("input");
     input.type = "text";
     input.className = "userInput";
-    input.placeholder = "ex : 80DT7767";
-    input.maxLength = 8;
+    input.placeholder = "ex : 80EL67";
+    input.maxLength = 6;
     input.autocomplete = "off";
 
     let feedback = document.createElement("p");
@@ -250,7 +250,7 @@ function afficherFormulaireID() {
 
     fAnnee.innerText = "✘ 2 chiffres | ";
     fAlias.innerText = "✘ 2 lettres | ";
-    fNum.innerText = "✘ 4 chiffres";
+    fNum.innerText = "✘ 2 chiffres";
 
     feedback.append(fAnnee, fAlias, fNum);
 
@@ -259,7 +259,7 @@ function afficherFormulaireID() {
 
         let birthYear = tempId.slice(0, 2).replace(/[^0-9]/g, '');
         let alias = tempId.slice(2, 4).replace(/[^A-Z]/g, '');
-        let phoneNum = tempId.slice(4, 8).replace(/[^0-9]/g, '');
+        let phoneNum = tempId.slice(4, 6).replace(/[^0-9]/g, '');
 
         fAnnee.innerText = (birthYear.length === 2 ) ? "✔ Année | " : "✘ 2 chiffres | ";
         fAnnee.style.color = (birthYear.length === 2 ) ? "green" : "red";
@@ -267,8 +267,8 @@ function afficherFormulaireID() {
         fAlias.innerText = (alias.length === 2 ) ? "✔ Initiales | " : "✘ 2 lettres  | ";
         fAlias.style.color = (alias.length === 2 ) ? "green" : "red";
 
-        fNum.innerText = (phoneNum.length === 4 ) ? "✔ Téléphone" : "✘ 4 chiffres";
-        fNum.style.color = (phoneNum.length === 4 ) ? "green" : "red";
+        fNum.innerText = (phoneNum.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+        fNum.style.color = (phoneNum.length === 2 ) ? "green" : "red";
 
         this.value = birthYear + alias + phoneNum;
     });
