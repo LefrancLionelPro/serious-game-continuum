@@ -267,7 +267,7 @@ function afficherFormulaireID() {
         fAlias.innerText = (alias.length === 2 ) ? "✔ Initiales | " : "✘ 2 lettres  | ";
         fAlias.style.color = (alias.length === 2 ) ? "green" : "red";
 
-        fNum.innerText = (phoneNum.length === 2 ) ? "✔ Téléphone" : "✘ 4 chiffres";
+        fNum.innerText = (phoneNum.length === 2 ) ? "✔ Téléphone" : "✘ 2 chiffres";
         fNum.style.color = (phoneNum.length === 2 ) ? "green" : "red";
 
         this.value = birthYear + alias + phoneNum;
