@@ -113,11 +113,15 @@ button:hover {
     width: 30%;
 }
 
-
+#age{
+    width: 24%;
+}
 
 #email{
     width: 31%;
 }
+
+label {cursor: pointer}
 
 #btnContainer {
     display: flex;

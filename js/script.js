@@ -311,6 +311,7 @@ function afficherFormulaireID() {
     ageText.innerText = "Votre année de naissance";
 
     let age = document.createElement("input");
+    age.id = "age";
     age.type = "tel";
     age.pattern = "[0-9]{2}";
     age.placeholder = "Veuillez rentrer votre âge";
