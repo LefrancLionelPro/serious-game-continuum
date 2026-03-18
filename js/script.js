@@ -424,14 +424,14 @@ function afficherFormulaireID() {
         // On transmet les données du joueur dans la base de données uniquement s'il coche la case de consentement
         if (dataChoice) {
 
-            if (input.value === "" || input.value.length !== 6 || age.value === "" || age.value.length !== 4 || isNaN(age.value) || sexelist.value === "Default") {
+            if (input.value === "" || input.value.length !== 6 || sexelist.value === "Default" || age.value === "" || age.value.length !== 4 || isNaN(age.value)) {
                 window.alert("Merci de remplir tout les champs");
                 return;
             }
 
             trueID = input.value;
-            trueAge = age.value;
             gender = sexelist.value;
+            trueAge = age.value;
             mail =  email.value;
             recontactChoice = (recontact.checked) ? "oui" : "non";
 
@@ -454,8 +454,8 @@ function afficherFormulaireID() {
                 .insert([
                     {
                         player_id: trueID,
-                        age: trueAge,
                         sexe: gender,
+                        age: trueAge,
                         address_mail: mail,
                         recontacter : recontactChoice
                     }
@@ -674,8 +674,8 @@ async function exportData(){
             lignesTransformer[ligne.run_id] = {
                 id_Partie: ligne.run_id,
                 Joueurs: ligne.player_id,
-                Age: (ligne.utilisateurs && ligne.utilisateurs.age) ? ligne.utilisateurs.age : "N/A",
                 Sexe: (ligne.utilisateurs && ligne.utilisateurs.sexe) ? ligne.utilisateurs.sexe : "N/A",
+                Age: (ligne.utilisateurs && ligne.utilisateurs.age) ? ligne.utilisateurs.age : "N/A",
                 Recontacter: (ligne.utilisateurs && ligne.utilisateurs.recontacter) ? ligne.utilisateurs.recontacter : "N/A",
                 Email: (ligne.utilisateurs && ligne.utilisateurs.address_mail) ? ligne.utilisateurs.address_mail : "N/A",
 
