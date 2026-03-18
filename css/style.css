@@ -87,6 +87,11 @@ button {
     font-weight: bold;
 }
 
+button:hover {
+    background-color: #2c3e50;
+    color: #F8F9FA;
+}
+
 #feedback, #formIntro {
     display: flex;
     justify-content: center;
