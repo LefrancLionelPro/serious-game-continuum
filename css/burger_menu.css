@@ -5,8 +5,81 @@
     height: 50px;
     width: 50px;
     top: 20px;
-    left: 20px;
+    left: 700px;
 }
+
+/*Le top et left de menu doit toujours avoir +25px que le top et left de outer-menu pour qu'il soit alignéx
+    Pour le burger menu à gauche :
+    .outer-menu {
+        position: fixed;
+        display: inline-block;
+        z-index: 100;
+        height: 50px;
+        width: 50px;
+        top: 20px;
+        left: 20px;
+    }
+
+    .menu {
+        position: fixed;
+        top: 45px;
+        left: 45px;
+
+        width: 300vmax;
+        height: 300vmax;
+
+        margin-top: -150vmax;
+        margin-left: -150vmax;
+
+        border-radius: 50%;
+        background: #2c3e50;
+
+        transform: scale(0);
+        transform-origin: center;
+        transition: all 0.5s ease-in-out;
+
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    Pour le burger menu à droite :
+
+    .outer-menu {
+        position: fixed;
+        display: inline-block;
+        z-index: 100;
+        height: 50px;
+        width: 50px;
+        top: 20px;
+        left: 700px; (ou right: 20px)
+    }
+
+    .menu {
+        position: fixed;
+        top: 45px;
+        left: 725px;
+
+        width: 300vmax;
+        height: 300vmax;
+
+        margin-top: -150vmax;
+        margin-left: -150vmax;
+
+        border-radius: 50%;
+        background: #2c3e50;
+
+        transform: scale(0);
+        transform-origin: center;
+        transition: all 0.5s ease-in-out;
+
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+*/
 
 .hamburger {
     position: fixed;
@@ -88,7 +161,7 @@
 .menu {
     position: fixed;
     top: 45px;
-    left: 45px;
+    left: 725px;
 
     width: 300vmax;
     height: 300vmax;

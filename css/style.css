@@ -43,7 +43,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    scale: 80%;
+    scale: 100%;
     position: relative;
 }
 
@@ -105,20 +105,20 @@ button:hover {
 }
 
 .userInput {
-    width: 13%;
+    width: 14%;
     align-self: center;
 }
 
 #sexelist {
-    width: 30%;
+    width: 32%;
 }
 
 #age{
-    width: 24%;
+    width: 26%;
 }
 
 #email{
-    width: 31%;
+    width: 34%;
 }
 
 label {cursor: pointer}
@@ -161,4 +161,24 @@ label {cursor: pointer}
     position: relative;
     min-width: 200px;
     padding: 15px;
+}
+
+@media (min-width: 992px) {
+
+    .userInput {
+        width: 13%;
+        align-self: center;
+    }
+
+    #sexelist {
+        width: 30%;
+    }
+
+    #age{
+        width: 24%;
+    }
+
+    #email{
+        width: 31%;
+    }
 }
