@@ -51,11 +51,17 @@ form > * {
     margin: 0;
 }
 
+p {
+    color: #2c3e50;
+}
+
 input[type="text"], input[type="email"], input[type="tel"], #sexelist {
     padding: 8px;
     border: 2px solid #2c3e50;
     border-radius: 8px;
+    color: #2c3e50;
     background-color: #F8F9FA;
+    font-family: "Josefin Sans", sans-serif;
     box-sizing: border-box;
 }
 
@@ -104,12 +110,13 @@ button:hover {
 }
 
 #sexelist {
-    width: 35%;
-    font-weight: bold;
+    width: 30%;
 }
 
+
+
 #email{
-    width: 32%;
+    width: 31%;
 }
 
 #btnContainer {
