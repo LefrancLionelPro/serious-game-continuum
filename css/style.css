@@ -43,7 +43,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    scale: 100%;
+    scale: 90%;
     position: relative;
 }
 
@@ -128,6 +128,7 @@ label {cursor: pointer}
     flex-direction: row;
     gap: 10px;
     flex-wrap: wrap;
+    place-content: space-evenly;
 }
 
 .video {
@@ -180,5 +181,11 @@ label {cursor: pointer}
 
     #email{
         width: 31%;
+    }
+}
+
+@media (min-width: 992px) {
+    form {
+        scale: 100;
     }
 }
