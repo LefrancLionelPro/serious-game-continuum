@@ -714,6 +714,12 @@ function fullScreen(){
     }
 }
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+        .then(()=> console.log("Service worker à été enregistré."))
+        .catch(err => console.log("Erreur SW : " + err));
+}
+
 let fullScreenBtn = document.getElementById("fullScreen");
 if (fullScreenBtn) {
     fullScreenBtn.addEventListener("click", fullScreen);
