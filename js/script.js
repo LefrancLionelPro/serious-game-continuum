@@ -525,7 +525,7 @@ async function login() {
 
     login_fAnnee.innerText = "✘ 2 chiffres | ";
     login_fAlias.innerText = "✘ 2 lettres | ";
-    login_fNum.innerText = "✘ 4 chiffres";
+    login_fNum.innerText = "✘ 2 chiffres";
 
     login_feedback.append(login_fAnnee, login_fAlias, login_fNum);
 
