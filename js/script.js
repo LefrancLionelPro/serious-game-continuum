@@ -19,10 +19,6 @@ window.onload = function () {
 // On crée toutes les variables dont on aura besoin
 let dataChoice;
 let trueID;
-let gender;
-let trueAge;
-let mail;
-let recontactChoice;
 
 // On crée des variables pour pouvoir envoyer la scène présente et le choix du joueur dans cette scène
 let currentScene;
