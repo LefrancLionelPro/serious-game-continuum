@@ -168,7 +168,7 @@ label {cursor: pointer}
 @media (orientation: landscape) {
     .userInput {
         width: 14%;
-        align-self: center;
+        align-self: center; /**/
     }
 
     #sexelist {
