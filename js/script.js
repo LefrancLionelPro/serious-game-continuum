@@ -426,7 +426,7 @@ function afficherFormulaireID() {
         // On transmet les données du joueur dans la base de données uniquement s'il coche la case de consentement
         if (dataChoice) {
 
-            if (input.value === "" || input.value.length !== 6 || sexelist.value === "Default" || age.value === "" || age.value.length !== 4 || isNaN(age.value)) {
+            if (input.value === "" || input.value.length !== 6 || sexelist.value === "Default" || age.value === "" || age.value.length !== 2 || isNaN(age.value)) {
                 window.alert("Merci de remplir tout les champs");
                 return;
             }
