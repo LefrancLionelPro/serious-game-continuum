@@ -23,6 +23,7 @@ let trueID;
 // On crée des variables pour pouvoir envoyer la scène présente et le choix du joueur dans cette scène
 let currentScene;
 let choosedOption;
+let ChoosedAt;
 
 // On crée une variable qui va générer un ID aléatoire pour pouvoir stocker plusieurs runs d'un même joueur
 const run = Math.random().toString(36).substr(2, 15) + Math.random().toString(36).substr(2, 15);
