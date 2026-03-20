@@ -49,6 +49,8 @@ Exemple de scène :
 const scenario = {
     "intro" : {
         videoSrc : "assets/video/Collab.mp4",
+        actionStart : 4.5,
+        actionEnd : 6.5,
         afk : "scene_suivante_A",
         choix: [
             { texte: "Option A", cible: "intro"},
@@ -86,8 +88,10 @@ function addVideo(url, afk, scenePresent){
     newVideo.setAttribute('webkit-playsinline', 'true');
     newVideo.setAttribute('preload', 'auto');
     newVideo.playsInline = true;
-
     newVideo.classList.add('video');
+
+    const debutAction = scenario[scenePresent].actionStart;
+    const finAction = scenario[scenePresent].actionEnd;
 
     let playPromise = newVideo.play();
     if (!playPromise !== undefined) {
@@ -114,15 +118,23 @@ function addVideo(url, afk, scenePresent){
     lorsque le joueur clique sur la vidéo, la vidéo se met en pause.
      */
     newVideo.addEventListener("click", function (){
-        this.pause();
+        const tempsActuel = this.currentTime;
 
-        // On va récupérer tous les boutons de la scène et on les met dans une liste
-        const hiddenBtnList = document.querySelectorAll('.bouton_cacher');
+        if (debutAction !== undefined && finAction !== undefined){
 
-        // Si des boutons existent, on parcourt la liste des boutons pour les rendre visibles
-        if(hiddenBtnList){
-            for (let i = 0; i < hiddenBtnList.length; i++) {
-                hiddenBtnList[i].style.visibility = "visible";
+            if (tempsActuel >= debutAction && tempsActuel <= finAction){
+                this.pause();
+
+                // On va récupérer tous les boutons de la scène et on les met dans une liste
+                const hiddenBtnList = document.querySelectorAll('.bouton_cacher');
+
+                // Si des boutons existent, on parcourt la liste des boutons pour les rendre visibles
+                if(hiddenBtnList){
+                    for (let i = 0; i < hiddenBtnList.length; i++) {
+                        hiddenBtnList[i].style.visibility = "visible";
+                        hiddenBtnList[i].classList.add('fade-in');
+                    }
+                }
             }
         }
     });
