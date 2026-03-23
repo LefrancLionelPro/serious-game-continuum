@@ -1,18 +1,18 @@
-// On crée une variable pour notre client supabase (pour rajouter la base de données dans le code)
-// Pour info, le client s'écrit comme ça : const nomDeLaVariable = supabase.createClient('l'url du projet', 'la clé publiable')
+console.log("LE SCRIPT EST BIEN CHARGÉ ET LANCÉ !");
+alert("Script actif");
 
-let supabaseClient = null;
-
-window.onload = function () {
-    //a
-    if (typeof supabase === "undefined") {
-        window.alert("Supabase n'est pas chargé ! Vérifie ta connexion internet ou le lien du script.");
+async function envoyerVersServeur(action, payload) {
+    try {
+        const response = await fetch('save.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({action: action, data: payload}),
+        });
+        return await response.json();
     }
-    else {
-        supabaseClient = supabase.createClient('https://qbosijwcfspfexrcxcpa.supabase.co', 'sb_publishable_T1dqF1VvIR-L3ZTSc4LgBQ_uAcJ_jKE');
-
-        // On démarre le jeu avec la scène d'identification
-        chargerScene("identification");
+    catch (error) {
+        console.error("Erreur serveur :", error);
+        return {error: true};
     }
 }
 
@@ -352,27 +352,10 @@ function afficherFormulaireID() {
 
             trueID = input.value;
 
-            /*
-             On crée une variable qui permet de transférer nos données à la base de données Supabase.
-             Exemple d'insertion :
-             const { error } = await supabaseClient.from('nomDeLaTable')
-                .insert([
-                    {
-                        colonneDeLaBase: variableSouhaitée,
-                        etc...
-                    }
-                ]);
-             */
-            const { error } = await supabaseClient.from('utilisateurs')
-                .insert([
-                    {
-                        player_id: trueID
-                    }
-                ]);
+            const result = await envoyerVersServeur('creer_utilisateur', {player_id: trueID});
 
-            // S'il y a bien une erreur, on l'affiche via un pop-up
-            if (error) {
-                alert("Erreur lors de l'inscription : " + error.message);
+            if (result.error) {
+                alert("Erreur lors de l'inscription : " + result.error);
                 return;
             }
 
@@ -449,8 +432,8 @@ async function login() {
         login_fAlias.innerText = (login_alias.length === 2 ) ? "✔ Initiales | " : "✘ 2 lettres  | ";
         login_fAlias.style.color = (login_alias.length === 2 ) ? "green" : "red";
 
-        login_fNum.innerText = (login_phoneNum.length === 4 ) ? "✔ Téléphone" : "✘ 4 chiffres";
-        login_fNum.style.color = (login_phoneNum.length === 4 ) ? "green" : "red";
+        login_fNum.innerText = (login_phoneNum.length === 2 ) ? "✔ Téléphone" : "✘ 2 chiffres";
+        login_fNum.style.color = (login_phoneNum.length === 2 ) ? "green" : "red";
 
         this.value = login_birthYear + login_alias + login_phoneNum;
     });
@@ -471,21 +454,14 @@ async function login() {
             return;
         }
 
-        const { data, error } = await supabaseClient.
-        from('utilisateurs').
-        select('*'). // On sélectionne toutes les colonnes de la table
+        const result = await envoyerVersServeur('login', {player_id: login_input.value});
 
-            /* Puis, on compare l'identifiant en table avec celui rentré par le joueur. */
-            eq('player_id', login_input.value);
-
-        if (error) {
-            window.alert("Erreur lors de la connexion : " + error.message);
+        if (result.error) {
+            window.alert("Erreur de serveur : " + result.error);
             return;
         }
-
-        // Si aucune donnée n'est trouvée, l'identifiant n'existe pas.
-        else if (!data || data.length === 0) {
-            window.alert("Id non trouvé");
+        else if (!result.exists) {
+            window.alert("Identifiant non trouvé");
             return;
         }
 
@@ -493,17 +469,7 @@ async function login() {
             containerBtn.innerHTML = "";
             trueID = data[0].player_id;
 
-            /*
-            Ici, on ajoute une nouvelle ligne dans la table "responses" pour marquer le début de la partie.
-             */
-            await supabaseClient.from('responses').insert([
-                {
-                    player_id: trueID,
-                    scene: "connexion",
-                    choix: "Connexion réussie",
-                    run_id : run
-                }
-            ])
+
 
 
             containerBtn.innerHTML = "";
@@ -543,97 +509,63 @@ async function getChoiceData(scene, choix){
     currentScene = scene;
     choosedOption = choix;
 
-    const { error } = await supabaseClient.from('responses')
-        .insert([
-            {
-                player_id: trueID,
-                scene: currentScene,
-                choix: choosedOption,
-                run_id : run
-            }
-        ]);
+    const payload = {
+        player_id: trueID,
+        scene: currentScene,
+        choix: choosedOption,
+        run_id: run
+    };
 
-    if (error) {
-        alert("Erreur : " + error.message);
+    const result = await envoyerVersServeur('sauvegarder_choix', payload);
+
+    if (result.error) {
+        console.error("Échec de la sauvegarde du choix : " + result.error);
     }
 }
 
-async function exportData(){
+async function exportData() {
 
-    // On sélectionne les colonnes nécessaires de toute la table.
-    const {data, error} = await supabaseClient.from("responses")
-        .select(
-            'run_id, player_id, scene, choix, utilisateurs(age, sexe, recontacter, address_mail), created_at');
+    const result = await envoyerVersServeur('export', {});
 
-    if (error) {
-        window.alert("Erreur : " + error.message);
+    if (result.error || !result.success) {
+        window.alert("Erreur lors de la récupération des données sur le serveur.");
         return;
     }
 
-    //On crée un objet pour modifier le positionnement des éléments sur exel
+    const data = result.data;
+
     const lignesTransformer = {};
 
-    /* On parcourt chaque ligne de données reçue de la base (data).
-    On utilise 'run_id' comme clé pour regrouper toutes les actions d'une même partie.
-    */
-
     data.forEach(function(ligne) {
-        // Si la partie (run_id) n'est pas encore enregistrée dans notre objet, on l'initialise
         if (!lignesTransformer[ligne.run_id]) {
             lignesTransformer[ligne.run_id] = {
                 id_Partie: ligne.run_id,
                 Joueurs: ligne.player_id,
-
-                /*
-                Nettoyage de l'horodateur :
-                1. On remplace le 'T' par un espace.
-                2. On coupe la chaîne au point.
-                3. On garde la première partie [0].
-                */
-                Horodateur: ligne.created_at.replace('T', ' ').split('.')[0],
+                Horodateur: ligne.created_at
             };
         }
 
-        /*
-        On crée une nouvelle colonne avec le nom de la scène et on y stocke le choix du joueur.
-        */
         lignesTransformer[ligne.run_id][ligne.scene] = ligne.choix;
     });
 
-    // On transforme l'objet 'lignesTransformer' en liste pour pouvoir exporter
     let finalData = Object.values(lignesTransformer);
 
-    /*
-    On utilise la bibliothèque PapaParse pour convertir nos données en format CSV avec le séparateur ";".
-     */
     let csvRaw = Papa.unparse(finalData, {
         delimiter: ";"
     });
 
-    // On ajoute une instruction spécifique à Excel pour forcer la reconnaissance du séparateur.
+    // On force le séparateur pour Excel
     let textCSV = "sep=;\n" + csvRaw;
 
-    /*
-    On crée un "Blob" (un fichier virtuel en mémoire) avec nos données CSV.
-     */
+    // 5. Téléchargement automatique
     let blob = new Blob([textCSV], { type: "text/csv;charset=utf-8" });
-
-    // On crée un lien pour exporter notre blob
     let exportUrl = URL.createObjectURL(blob);
-
-    /*
-    On crée une balise "<a>" invisible qu'on clique automatiquement pour lancer le téléchargement.
-     */
     let baliseLien = document.createElement("a");
     baliseLien.href = exportUrl;
-
-    baliseLien.setAttribute("download", "resultats_jeu.csv");
-
+    baliseLien.setAttribute("download", "resultats_jeu_sciencespo.csv");
     document.body.appendChild(baliseLien);
     baliseLien.click();
     document.body.removeChild(baliseLien);
-
-    // On supprime l'URL pour libérer de la mémoire.
     URL.revokeObjectURL(exportUrl);
 }
 
